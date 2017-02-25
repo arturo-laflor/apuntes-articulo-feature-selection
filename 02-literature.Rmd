@@ -1,3 +1,8 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # Obtaining data from population
 
 
@@ -25,7 +30,7 @@ Similar than *Emotional* variable, the health variable asks if the respondent su
 
 
 ### Quality of Sleep
-The PSQI has been used to estimate the quality of sleep in clinical and nonclinical population [@mastin2006], and has been referred by numerous researchs in diverse sleep assessments [@bai2012]. This questionnaire evaluates the quality of sleep using nineteen items grouped in seven components: subjective sleep quality, sleep duration, sleep latency, sleep disturbances, use of sleep medication, day time disfunction and sleep latency. The questionnaire provide a baremo to score each component and sumarize the final score resulting in a dicotomic varaible; *\-good quality of sleep\-* or *\-poor quality of sleep\-* [@psqi1989]. For the purposes of this study, eighteen of the nineteen items was used in the second section, it fact does not affect the score results, since that latter item is not taken into account for the computation of the scale in the original questionnaire. On the other hand, the last item has to do with specific sleep disorders, for example, *\-sleep apnea\-*, while this study seeks to understand sleep habits in healthy people.
+The PSQI is considered the gold standard questionnaire to evaluate subjective sleep quality [@Cameron2010], and has been used to estimate the quality of sleep in clinical and nonclinical population [@mastin2006], and has been referred by numerous researchs in diverse sleep assessments [@bai2012]. This questionnaire evaluates the quality of sleep using nineteen items grouped in seven components: subjective sleep quality, sleep duration, sleep latency, sleep disturbances, use of sleep medication, day time disfunction and sleep latency. The questionnaire provide a baremo to score each component and sumarize the final score resulting in a dicotomic varaible; *\-good quality of sleep\-* or *\-poor quality of sleep\-* [@psqi1989]. For the purposes of this study, eighteen of the nineteen items was used in the second section, it fact does not affect the score results, since that latter item is not taken into account for the computation of the scale in the original questionnaire. On the other hand, the last item has to do with specific sleep disorders, for example, *\-sleep apnea\-*, while this study seeks to understand sleep habits in healthy people.
 
 
 ### Sleep Hygiene Index
@@ -37,5 +42,7 @@ For the purposes of this study and based on what the literature reports regardin
 
 * Item six of the original questionnaire that asked about the use of tobacco, alcohol, or caffeine, became three items to ask separately about the use of these three substances.
 
-* 
-Esta es una prueba para test a ver quepasa con los branches
+* Item 11 in the original questionnaire asks about an uncomfortable bedroom, due to four environment factors. In the questionnaire for this study, four items was generated from this one.
+
+* Based on what the literature says about dinner type and schedule, and its negative impact on sleep quality, an item was added to the questionnaire [@Posner2011].
+
