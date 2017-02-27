@@ -6,7 +6,7 @@ output:
 # Obtaining data from population
 
 
-## Questionnaires
+## Questionnaire
 
 In order to obtain data that contribute with evidence, regarding of relations between Sleep Hygiene Factors (FSH) and the Quality of Sleep (QS), we selected two questionnaires clinically used. The Sleep Hygiene Index (SHI) and the Pitsburgh Sleep Quality Index (PSQI). As the population where the new questionnaire would be applied is Spanish-speaking and original questionnaires are in English language, we proceed to do the process of translation. The valid process to obtain a reliable translation consist of following stages: A person `A` translate the questionnaires from English to Spanish, a person `B` getback the spanish translation to the English language, and, a person `C`, compare the questionnaire obtained by the translation of the `B` person agains the original questionnaire. The `C` person, writes comments regarding of those itemes that do not match in meaning, corrections are done, and the process iterate until reach a satisfactory result (see  Fig. \@ref(fig:double-tr)).  
 
@@ -44,5 +44,12 @@ For the purposes of this study and based on what the literature reports regardin
 
 * Item 11 in the original questionnaire asks about an uncomfortable bedroom, due to four environment factors. In the questionnaire for this study, four items was generated from this one.
 
-* Based on what the literature says about dinner type and schedule, and its negative impact on sleep quality, an item was added to the questionnaire [@Posner2011].
+* Based on what the literature says about dinner type and schedule, and its negative impact on sleep quality, an item was added to the questionnaire [@Posner2011,Stefano2014,@Irish2015,@Wentz2011].
+
+
+## Validity and reliability
+
+After the instrument was completed, it was validated by five experts that qualify each item on a escale of 1 to 5 for two metrics, clarity and pertinence. All items were qualified as clear and relevant. with the mean of 4.5 and 4.7 respectively. A sample of 30 people was randomly selected to perform the pilot test and obtain the internal validity of the instrument. Cronbach's alpha for the instrument after pilot test was $\alpha=0.68$. This $\alpha$ value is acceptable and consistent with that reported by [@mastin2006] for the SHI scale, with this we proceeded to apply the questionnaire to a wider population to collect the dataset with which the analyzes were made for the selection of Variables that will be taken into account for the construction of the model.
+
+## Sample
 
