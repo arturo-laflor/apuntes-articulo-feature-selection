@@ -14,8 +14,11 @@ calc_tiempo_sueno=function(dtsleep){
   SQSE<-apply(dtsleep,1,calcula_sueno)
   
 }
+user<-Sys.info()[7]
+user<-user[[1]]
 
-source(file="C:/Users/Arturo Laflor/OneDrive/R util-codes/shqs_general_functions/regresa_datos_completos.R",encoding = "UTF8")
+source(file=paste("C:/Users/",user,"/OneDrive/R util-codes/shqs_general_functions/regresa_datos_completos.R",sep = "")
+         ,encoding = "UTF8")
 library(magrittr)
 shqs<-regresa_datos_completos()%$%data.frame(SQ1,SQ2,SQ3,SQ4)
 

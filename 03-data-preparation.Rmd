@@ -5,7 +5,25 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-source("code/asigna_nombres.R",encoding = "UTF8")
+#Es necesario poner encoding=utf8 para que los acentossean tratados como acentos
+
+source(file="./code/preproceso.R",encoding = "UTF8")
+source(file="./code/selecciona_muestra.R",encoding = "UTF8")
+source(file="./code/elimina_faltantes.R",encoding = "UTF8")
+source(file="./code/convierte_binaria.R",encoding = "UTF8")
+source(file="./code/preproceso_1.R",encoding = "UTF8")
+source(file="./code/baremo_PSQI.R",encoding = "UTF8")
+source(file="./code/baremo_SHI.R",encoding = "UTF8")
+source(file="./code/graba_recupera_archivo.R",encoding = "UTF8")
+source(file="./code/preproceso.R",encoding = "UTF8")
+source(file="./code/elige_sanos.R",encoding = "UTF8")
+source(file="./code/elige_no_sanos.R",encoding = "UTF8")
+source(file="./code/elige_no_anonimos.R",encoding = "UTF8")
+source(file="./code/elige_anonimos.R",encoding = "UTF8")
+source(file="./code/calcula_por_grupos.R",encoding = "UTF8")
+source(file="./code/asigna_nombres.R",encoding = "UTF8")
+
+
 library(ggplot2)
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -16,7 +34,9 @@ This pre-process of refinenment of data has the goal of generate a set of qualit
 
 ## Missing values
 ```{r elimina-faltantes, echo=FALSE}
-ruta<-"C:/Users/artur/Google Drive/Doctorado/Tesis/Data/"
+user<-Sys.info()[7]
+user<-user[[1]]
+ruta<-paste("C:/Users/",user,"/Google Drive/Doctorado/Tesis/Data/",sep = "") 
   d_crudos<-read.csv(file=paste(ruta,"responses.csv",sep = ""),header = T,sep = ",")
   
   dt<-d_crudos[-1]
@@ -70,8 +90,17 @@ knitr::include_graphics("images/NumberOfNasPerVariableBar.png")
 
 ```
 
-
 ## Irregular Cardinality
+```{r cleaning-data, echo=FALSE}
+d_preproc<-preproceso(d_crudos,"2_clases")
+
+table(d_preproc$DD3)
+length(levels(factor(d_preproc$SH9)))
+
+```
+
+
+
 ## Outliers
 
 # Bibliography
