@@ -106,7 +106,7 @@ knitr::include_graphics("images/NumberOfNasPerVariableBar.png")
 
 After the deletion of rows with missing values, it was proceeded to clean the data. Many data were not captured in correct format, for example, the time that people was to the bed should be in this format "hh:mm", however many people added the p.m. acronym. In the same way, the latency time should be captured as "mm" in integer format, nevertheless, had people that added the word "minute" to the field. On the other hand, columns to record data corresponding to the compute of the scales for the PSQI and SHI questionnaires were added to the dataset. A dozen of R functions were written to accomplish this task. At the end of this pre-process, the dataset was conformed by 62 columns. This dataset contains  The following table shows the distribution of the 62 collumns grouped by its nature.
 
-<center>
+
 | Group             | Categorical | Continuous | Total |
 |-------------------|------------:|-----------:|------:|
 | Demographics data |      7      |      2     |   9   |
@@ -116,8 +116,8 @@ After the deletion of rows with missing values, it was proceeded to clean the da
 | Scale SHI         |      4      |      1     |   5   |
 |------------------ |------------ |----------- |------ |
 | Total             |      54     |      8     |   62  |
-</center>
-This dataset contains 60 variables that can be used as predictive variables, one continuous target variable (SQTT) that describes the quality of sleep in a range of $[0-21]$ were $0$ is the best quality of sleep and $21$ is the worst one; and one categorical tarjet variable that describes the quality of sleep as -poor quality of sleep- and -good quality of sleep-, based in the following formula provided by the PSQI questionnaire.  
+
+This dataset contains 60 variables that can be used as predictive variables, one continuous target variable (SQTT) that describes the quality of sleep in a range of $[0-21]$ were $0$ is the best quality of sleep and $21$ is the worst one; and one categorical tarjet variable that describes the quality of sleep as *poor quality of sleep* and *good quality of sleep*, based in the following formula provided by the PSQI questionnaire.  
 
 $$
 SQ=\begin{cases}\text{good quality of sleep} & 0\geq SQTT \leq 5\\\text{poor quality of sleep} & SQTT > 5 \end{cases}
