@@ -108,7 +108,7 @@ knitr::include_graphics("images/NumberOfNasPerVariableBar.png")
 
 ```
 
-```{r cleaning-data}
+```{r cleaning-data0}
 # d_preproc<-preproceso(d_crudos,"2_clases")
 # 
 # dtContinuous<-cbind.data.frame(DD1=d_preproc$DD1,d_preproc[,10:13],DD1=d_preproc$SQTT,d_preproc[,58:62])  
@@ -119,18 +119,34 @@ knitr::include_graphics("images/NumberOfNasPerVariableBar.png")
 
 ## Data quality
 
-After the deletion of rows with missing values, it was proceeded to clean the data. Many data were not captured in correct format, for example, the time that people was to the bed should be in this format "hh:mm", however many people added the p.m. acronym. In the same way, the latency time should be captured as "mm" in integer format, nevertheless, had people that added the word "minute" to the field. On the other hand, columns to record data corresponding to the compute of the scales for the PSQI and SHI questionnaires were added to the dataset. A dozen of R functions were written to accomplish this task. At the end of this pre-process, the dataset was conformed by 62 columns. This dataset contains  The following table shows the distribution of the 62 collumns grouped by its nature.
+After the deletion of rows with missing values, it was proceeded to clean the data. Many data were not captured in correct format, for example, the time that people was to the bed should be in this format "hh:mm", however many people added the p.m. acronym. In the same way, the latency time should be captured as "mm" in integer format, nevertheless, had people that added the word "minute" to the field. On the other hand, columns to record data corresponding to the compute of the scales for the PSQI and SHI questionnaires were added to the dataset. A dozen of R functions were written to accomplish this task. At the end of this pre-process, the dataset was conformed by 62 columns. The Table \@ref(tab-columns-distribution) shows the distribution of the 62 collumns grouped by its nature.
 
 
-| Group             | Categorical | Continuous | Total |
-|-------------------|------------:|-----------:|------:|
-| Demographics data |      7      |      2     |   9   |
-| PSQI              |      14     |      4     |   18  |
-| SHI               |      21     |      0     |   21  |
-| Scale PSQI        |      8      |      1     |   9   |
-| Scale SHI         |      4      |      1     |   5   |
-|------------------ |------------ |----------- |------ |
-| Total             |      54     |      8     |   62  |
+\begin{table}[ht]
+\centering
+\caption{Columns distribution by its nature}
+\label{tab-columns-distribution}
+\begin{tabular}{lrrr}
+\hline
+Group             & Categorical & Continuous & Total \\ \hline
+Demographics data & 7           & 2          & 9     \\
+PSQI              & 14          & 4          & 18    \\
+SHI               & 21          & 0          & 21    \\
+Scale PSQI        & 8           & 1          & 9     \\
+Scale SHI         & 4           & 1          & 5     \\ \hline
+Total             & 54          & 8          & 62    \\ \hline
+\end{tabular}
+\end{table}
+
+<!-- | Group             | Categorical | Continuous | Total | -->
+<!-- |-------------------|------------:|-----------:|------:| -->
+<!-- | Demographics data |      7      |      2     |   9   | -->
+<!-- | PSQI              |      14     |      4     |   18  | -->
+<!-- | SHI               |      21     |      0     |   21  | -->
+<!-- | Scale PSQI        |      8      |      1     |   9   | -->
+<!-- | Scale SHI         |      4      |      1     |   5   | -->
+<!-- |------------------ |------------ |----------- |------ | -->
+<!-- | Total             |      54     |      8     |   62  | -->
 
 This dataset contains 60 variables that can be used as predictive variables, one continuous target variable (SQTT) that describes the quality of sleep in a range of $[0-21]$ were $0$ is the best quality of sleep and $21$ is the worst one; and one categorical tarjet variable that describes the quality of sleep as *poor quality of sleep* and *good quality of sleep*, based in the following formula provided by the PSQI questionnaire.  
 
@@ -142,7 +158,7 @@ Of the 60 variables, only 21 of them were used as predictive variables to meet w
 
 Nevertheless, in the following step, an analysis of quality of data was performed to the total of the variables due to the variables that do not intervene as predictive, are used with filter purposes. For instance, in demographics variables, the categorical variable DD7, indicates if the person has a chronic illness as diabetes or hypertension. In the case where this variable has a value distinct of $0$, the record was eliminated for the process of model training.
 
-For categorical variables, nine metrics were analyzed: quantity, missing values, cardinality, mode, mode frequency, mode percent, second mode, second mode frequency and second mode percent, while for continuous variables ten metrics were analyzed: quantity, missing values, cardinality, minimum value, first quartile, median, third quartile, maximum value, mean, and standard deviation. In total 10 tables were generated, five for continuous variables and five for categorical variables. To ilustrate how tables are, two of them are shown here, one for categorical and one for continuous variables.
+For categorical variables, nine metrics were analyzed: quantity, missing values, cardinality, mode, mode frequency, mode percent, second mode, second mode frequency and second mode percent, while for continuous variables ten metrics were analyzed: quantity, missing values, cardinality, minimum value, first quartile, median, third quartile, maximum value, mean, and standard deviation. In total 10 tables were generated, five for continuous variables and five for categorical variables. To show the estructure and content of the tables, two of them are shown here, one for continuous (See Tab. \@ref(tab-continuous-quality-data)) and one for categorical variables \@ref{tab-categorical-quality-data}.
 
 
 
@@ -165,25 +181,75 @@ QualityTableSQDUR<-QOfContinuousF(SQDUR)
 ```
 \pagebreak
 
-### Four variables containing the duration of sleep
+
 
 ```{r continuousVar}
-QualityTableSQDUR
+#QualityTableSQDUR
 
 ```
-It is possible to observe in this table that there are some irregularities in the data, as we can see, a negative value is the minimum value in the SQ4 variable; this variable represents the -time to wake up-, thus no negative value must be enter in this field, likewise, it appear a $0.0$ value as the minimun value in the SQ1 variable, which is wrong because this is the time that respondents said go to bed, and, in this case, the appropriate answer should be $12:00$. All other data in the table indicate that the variables have good quality to participate in the analysis, so after refining the procedure of filtering and transforming numeric data, these variables can be used when required. One relevant indicator of quality/no quality is the cardianality, however, this subject will be analyzed in the next section taken into account all involved variables.
+\begin{table}[ht]
+\centering
+\caption{Four continuous variables containing the duration of sleep}
+\label{tab-continuous-quality-data}
+\begin{tabular}{lllllllllll}
+\hline
+    &  Count & Miss & Card  & Min & Qrt1 & Median & Qrt3 &  Max &  Mean &  Sdev     \\ \hline
+SQ1 &  316  &  0  & 29 & 0.00 & 10.00 & 11.00 & 11.02 & 12.50 & 10.02 & 2.65 \\
+SQ2 &  316  &  0  & 15 & 1.00 & 5.00 &  15.00 & 20.00 & 60.00 & 15.07 & 11.99 \\
+SQ3 &  316  &  0  & 39 & 3.00 & 5.08 &   6.00 & 7.00 & 11.00  & 6.19  & 1.28 \\
+SQ4 &  316  &  0  & 101 & -0.05 & 6.17  & 6.88 & 7.75 & 10.75 & 6.94  & 1.31 \\ \hline
+\end{tabular}
+\end{table}
 
-### First 10 categorical variables containing data of sleep hygiene
+
+
+It is possible to observe in this table that there are some irregularities in the data, as we can see, a negative value is the minimum value in the SQ4 variable; this variable represents the -time to wake up-, thus no negative value must be enter in this field, likewise, it appear a $0.0$ value as the minimun value in the SQ1 variable, which is wrong because this is the time that respondents said go to bed, and, in this case, the appropriate answer should be $12:00$. All other data in the table indicate that the variables have good quality to participate in the analysis, so after refining the procedure of filtering and transforming numeric data, these variables can be used when required. One relevant indicator of quality/no quality is the cardianality, however, this subject will be analyzed in the next section taken into account all involved variables. The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and the potential strategies to attend them. 
+
+\begin{table}[ht]
+\centering
+\caption{Data quality plan}
+\label{tab-data-quality-plan}
+\begin{tabular}{|l|p{5cm}|p{5cm}|}
+\hline
+Feature & Data quality issue  & Strategie \\ \hline
+SQ1     & Data contain 0.0, the correct value should be 12.00  & Refine the process of convert data for this field  \\ \hline
+SQ9     & Data contain negative values, it is wrong because the data represents the time to wake up & Refine the process validating the data, to correct the problem, or to eliminate the records with this issue. \\ \hline  
+\end{tabular}
+\end{table}
+
+
 ```{r table-quality-analysis-2}
 
 SHI10<-cbind.data.frame(d_preproc[,28:37])
 QualityTableSHI10<-QOfCategoricalF(SHI10)
-QualityTableSHI10
+#QualityTableSHI10
 
 
 #datatable(QualityTableSQDUR)
 
 ```
+
+
+\begin{table}[ht]
+\centering
+\caption{First 10 categorical variables containing data of sleep hygiene}
+\label{tab-categorical-quality-data}
+\begin{tabular}{llllllllll}
+\hline
+Name & Count & Miss & Card & Mode & ModeFrec & ModePerc & Mode2 & Mode2Frec & Mode2Perc \\ \hline
+SH1  & 316   & 0    & 5    & 1    & 110      & 34.81\%  & 0     & 106       & 33.54\%   \\
+SH2  & 316   & 0    & 5    & 2    & 110      & 34.81\%  & 1     & 105       & 33.23\%   \\
+SH3  & 316   & 0    & 5    & 1    & 150      & 47.47\%  & 2     & 73        & 23.10\%   \\
+SH4  & 316   & 0    & 5    & 0    & 190      & 60.13\%  & 1     & 63        & 19.94\%   \\
+SH5  & 316   & 0    & 5    & 0    & 167      & 52.85\%  & 2     & 59        & 18.67\%   \\
+SH6  & 316   & 0    & 5    & 0    & 142      & 44.94\%  & 1     & 69        & 21.84\%   \\
+SH7  & 316   & 0    & 5    & 0    & 135      & 42.72\%  & 1     & 100       & 31.65\%   \\
+SH8  & 316   & 0    & 5    & 0    & 301      & 95.25\%  & 3     & 5         & 1.58\%    \\
+SH9  & 316   & 0    & 4    & 0    & 262      & 82.91\%  & 1     & 29        & 9.18\%    \\
+SH10 & 316   & 0    & 5    & 0    & 209      & 66.14\%  & 1     & 54        & 17.09\%   \\ \hline
+\end{tabular}
+\end{table}
+
 
 In this table, the cardinality shows that all possible value $[0-5]$ for each answer is represented in the data, except by the SH9 variable where a value is not in the answers of the respondents. It is good for the quality of data, however, there are two variables with high mode. The 82.9 % of the respondents, answered *never* to the question SH9, while the 95.25% answered *never*  to the question SH8, which means that there are few variability in the data in these two variables andIt is possible to dispense with these data for the analysis, since they do not contribute much information to the studied phenomenon, at least for this population.
 
