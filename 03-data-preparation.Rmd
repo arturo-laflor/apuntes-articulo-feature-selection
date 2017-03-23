@@ -191,7 +191,7 @@ The same analysis was performed with the 10 tables of continuous and categorical
 
 
 ## Irregular Cardinality
-
+In this section, we present the table taht
 
 ## Outliers
 
