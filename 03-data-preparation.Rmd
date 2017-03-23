@@ -42,34 +42,13 @@ source(file="./code/elige_anonimos.R",encoding = "UTF8")
 source(file="./code/calcula_por_grupos.R",encoding = "UTF8")
 source(file="./code/asigna_nombres.R",encoding = "UTF8")
 
-<<<<<<< HEAD
 
-
-#loading public functions
-rutaPublicFunctions<-paste("C:/Users/",user,"/Google Drive/R-util-functions/",sep = "") 
-source(file=paste(rutaPublicFunctions,"QOfCategoricalF.R",sep = ""),encoding = "UTF8")
-source(file=paste(rutaPublicFunctions,"QOfContinuousF.R",sep = ""),encoding = "UTF8")
-
-
-#loading libraries
-library(ggplot2)
-library(DT)
-
-
-
-=======
->>>>>>> 3670414821c28af938873e94c98c79ceeec9b12e
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
 # Data preparation
-<<<<<<< HEAD
-This pre-process of refinenment of data has the goal of generate a set of quality data. For this work, it is based in [@Kelleher2015]. The resulting dataset will allow runs the algorithms to select the relevant features to generate the model. Three aspects are considered for the pre-process:  missing values, cardinality and outliers. Using the right metrics, it is possible to take a decision of columns and records that must remain in the dataset as relevant information, as well as data that must be removed.
 
-Begining with the analysis, two tables were elaborated to observe the quality of the data. One for continuos variables and a second for discrete variables. For space reasons and better visualization, the variables were divided in subgroups.
-=======
 This pre-process of refinenment of data has the goal of generate a set of quality data is based in the recommendations of [@Kelleher2015]. The resulting dataset will allow runs the algorithms to select the relevant features to generate the model. Three aspects are considered for the pre-process:  missing values, cardinality and outliers. Using the right metrics, it is possible to take a decision of columns and records that must remain in the data set as relevant information, as well as data that must be removed.
->>>>>>> 3670414821c28af938873e94c98c79ceeec9b12e
 
 
 ## Missing values
