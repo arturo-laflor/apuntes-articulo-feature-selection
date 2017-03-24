@@ -253,7 +253,13 @@ SH10 & 316   & 0    & 5    & 0    & 209      & 66.14\%  & 1     & 54        & 17
 
 In this table, the cardinality shows that all possible value $[0-5]$ for each answer is represented in the data, except by the SH9 variable where a value is not in the answers of the respondents. It is good for the quality of data, however, there are two variables with high mode. The 82.9 % of the respondents, answered *never* to the question SH9, while the 95.25% answered *never*  to the question SH8, which means that there are few variability in the data in these two variables andIt is possible to dispense with these data for the analysis, since they do not contribute much information to the studied phenomenon, at least for this population.
 
-The same analysis was performed with the 10 tables of continuous and categorical variables. Aditionally, histograms, normality tests and box charts were generated for the continuous variables in order to identify atypical values.   we show the relevant outcomes in the next sections and we make an evaluation of the quality of data in general terms.
+The same analysis was performed with the 10 tables of continuous and categorical variables. Aditionally, histograms, normality tests and box plots were generated for the continuous variables in order to identify atypical values. We show the relevant outcomes in the next sections and we make an evaluation of the quality of data in general terms. The Fig. \@ref(fig-hist-boxplots-cv) shows the histograms and boxplots of the four continuos variables in the Table \@ref(tab-continuous-quality-data), those plots make visible 
+
+```{r fig-hist-boxplots-cv, fig.cap='Histogramas and boxplot of continuous variables', out.width='100%', fig.asp=.90, fig.align='center', echo=FALSE}
+knitr::include_graphics("images/hist-boxplots-continuous-variables.png")
+
+```
+
 
 
 ## Irregular Cardinality
