@@ -4,6 +4,7 @@
 #quita timespam y correo electronico
 preproceso_1<-function(tablaDatos,numero_clases){
   
+  setwd("C:/Master/apuntes-articulo-feature-selection")
   source(file="./code/asigna_nombres.R",encoding = "UTF8") 
   source(file="./code/cambia_tipo_fc.R",encoding = "UTF8")
   source(file="./code/codifica_respuestas.R",encoding = "UTF8")
@@ -12,6 +13,18 @@ preproceso_1<-function(tablaDatos,numero_clases){
   source(file="./code/valida_edad.R",encoding = "UTF8")
   source(file="./code/valida_minutos.R",encoding = "UTF8")
   source(file="./code/calc_tiempo_sueno.R",encoding = "UTF8")
+  
+  
+  # #elimina el id timestamp
+  # #asigna NA a los campos vacíos excepto en el primer campo que es el email.
+  # #este campo es opcional por lo tanto en muchos registros no estará.
+  tablaDatos<-tablaDatos[-1]
+  tablaDatos[,1]<-as.character(tablaDatos[,1])
+  tablaDatos[tablaDatos[,1]=='',1]<-'anonimo'
+  tablaDatos[tablaDatos=='']<-NA
+  
+  
+  #tablaDatos<-dtQS #para pruebas
   
   # DD1 Edad
   # DD2 Sexo
@@ -89,13 +102,18 @@ preproceso_1<-function(tablaDatos,numero_clases){
   responses$SQ3<-sapply(responses$SQ3,valida_tiempo)
   responses$SQ4<-sapply(responses$SQ4,valida_tiempo)
   
-  responses<-responses[complete.cases(responses),]
+  #responses<-responses[complete.cases(responses),]
  
   responses$SQ4<-calc_tiempo_sueno(data.frame(responses$SQ1,responses$SQ2,responses$SQ3,responses$SQ4))
   
   responses<-cambia_tipo_ci(responses)
   
   #convierte a double las respuestas de tiempo
+  # ifelse(is.na(responses$SQ1),responses$SQ1<-NA,responses$SQ1<-as.double(responses$SQ1))
+  # ifelse(is.na(responses$SQ2),responses$SQ2<-NA,responses$SQ2<-as.double(responses$SQ2))
+  # ifelse(is.na(responses$SQ3),responses$SQ3<-NA,responses$SQ3<-as.double(responses$SQ3))
+  # ifelse(is.na(responses$SQ4),responses$SQ4<-NA,responses$SQ4<-as.double(responses$SQ4))
+  # 
   responses$SQ1<-as.double(responses$SQ1)
   responses$SQ2<-as.double(responses$SQ2)
   responses$SQ3<-as.double(responses$SQ3)

@@ -1,0 +1,52 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Analysis of quality on ABT
+
+
+As first step, the ABT will be grouped as Table \@ref(tab-columns-distribution) shows the distribution of variables. ABT contains five groups of variables and each group will be divided in categorical and continuous variables to perform the analysis. At the end, eight tables of analysis of quality will be generated since there are two groups that contains only one type of variables (the SHI group have only  categorical variables, while the Scale SHI contains only continuous variables).
+
+## Meaning of the groups names
+
+  * DDCON:    Demografic data for contiuous variables
+  * DDCAT:    Demografic data for categorical variables
+  * PSQICON:  Continuous variables of the PSQI questionnaire
+  * PSQICAT:  Categorical variables of the PSQI questionnaire
+  * SHICAT:   Categorical variables of the SHI questionnaire
+  * SPSQICON: Continuous variables of the *scale* for PSQI questionnaire
+  * SPSQICAT: Categorical variables of the *scale* for PSQI questionnaire
+  * SSHICON:  Continuous variables of the *scale* for SHI questionnaire
+  * SSHICAT:  Categorical variables of the *scale* for SHI questionnaire
+
+
+```{r, grouping_variables, echo=FALSE}
+
+DDCON<-data.frame(DD1=d_preproc[,2]) #data.frame(NM=d_preproc[,1],DD1=as.factor(d_preproc[,2]))
+DDCAT<-d_preproc[,3:8]
+PSQICON<-d_preproc[,10:13] 
+PSQICAT<-d_preproc[,14:27] 
+SHICAT<- d_preproc[,28:48]   
+SPSQICON<-data.frame(SQTT=d_preproc[,56])
+SPSQICAT<-cbind.data.frame(d_preproc[,49:55],SQCL=d_preproc[,57])
+SSHICON<- d_preproc[,58:62]   
+```
+
+
+## Tables containing data for analysis of the continuous variables 
+
+```{r QofCD_execution}
+CONTFEAT<-QOfContinuousF(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON))
+CONTFEAT
+
+#Arreglar las funciones en github 
+Qrt1<-apply(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON),2,FUN = function(x) round(quantile(as.numeric(x),.25,na.rm = T),digits = 2))
+```
+
+
+## Tables containing data for analysis of the categorical variables 
+
+
+
+

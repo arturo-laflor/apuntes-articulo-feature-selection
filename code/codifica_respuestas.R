@@ -1,4 +1,7 @@
 codifica_respuestas=function(dataSet){
+  
+  dataSet<-responses #para prueba
+  
   dataSet[dataSet=='Nunca']<-0
   dataSet[dataSet=='Casi nunca']<-1
   dataSet[dataSet=='Algunas veces']<-2
@@ -44,7 +47,10 @@ codifica_respuestas=function(dataSet){
   # dataSet[dataSet=='Soltera(o)']<-2
   # dataSet[dataSet=='Divorciada(o)']<-3
   # dataSet[dataSet=='Unión Libre']<-4
-   dataSet[dataSet$DD6=='Unión libre',7]<-"Unión Libre"
+  
+  ifelse(is.na(dataSet$DD6),dataSet$DD6<-NA,dataSet$DD6<-"Unión Libre")
+  #dataSet[dataSet$DD6=='Unión libre',7]<-"Unión Libre"
+  
   # dataSet[dataSet=='Otro']<-5
   
   # dataSet[dataSet=='Ninguno']<-1

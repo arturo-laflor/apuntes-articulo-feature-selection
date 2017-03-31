@@ -5,11 +5,16 @@
 
 valida_edad=function(strEdad){
   #valorqs<-as.character(responses$QS1)
-  qs<-regexpr('[0-9]{1,2}',strEdad)
-  if(qs[1]!=-1){
+  if(!is.na(strEdad)){
+    qs<-regexpr('[0-9]{1,2}',strEdad)
+    if(qs[1]!=-1){
       s3<-substr(strEdad,qs[1],qs[1]+attr(qs,'match.length')-1)
-  }else {
+    }else {
       s3<-NA
+    }
+  }else{
+    s3<-NA
   }
+  
   return(s3)
 }

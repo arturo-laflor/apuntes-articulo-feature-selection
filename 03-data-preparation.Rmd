@@ -119,7 +119,7 @@ knitr::include_graphics("images/NumberOfNasPerVariableBar.png")
 
 ## Data quality
 
-After the deletion of rows with missing values, it was proceeded to clean the data. Many data were not captured in correct format, for example, the time that people was to the bed should be in this format "hh:mm", however many people added the p.m. acronym. In the same way, the latency time should be captured as "mm" in integer format, nevertheless, had people that added the word "minute" to the field. On the other hand, columns to record data corresponding to the compute of the scales for the PSQI and SHI questionnaires were added to the dataset. A dozen of R functions were written to accomplish this task. At the end of this pre-process, the dataset was conformed by 62 columns. The Table \@ref(tab-columns-distribution) shows the distribution of the 62 collumns grouped by its nature.
+After the deletion of rows with missing values, it was proceeded to clean the data. Many data were not captured in correct format, for example, the time that people was to the bed should be in this format "hh:mm", however many people added the p.m. acronym. In the same way, the latency time should be captured as "mm" in integer format, nevertheless, had people that added the word "minute" to the field. On the other hand, columns to record data corresponding to the compute of the scales for the PSQI and SHI questionnaires were added to the dataset. A dozen of R functions were written to accomplish this task. At the end of this pre-process, the dataset was conformed by 61 columns. The Table \@ref(tab-columns-distribution) shows the distribution of the 61 columns grouped by its nature.
 
 
 \begin{table}[ht]
@@ -129,12 +129,12 @@ After the deletion of rows with missing values, it was proceeded to clean the da
 \begin{tabular}{lrrr}
 \hline
 Group             & Categorical & Continuous & Total \\ \hline
-Demographics data & 7           & 2          & 9     \\
+Demographics data & 7           & 1          & 8     \\
 PSQI              & 14          & 4          & 18    \\
 SHI               & 21          & 0          & 21    \\
 Scale PSQI        & 8           & 1          & 9     \\
-Scale SHI         & 4           & 1          & 5     \\ \hline
-Total             & 54          & 8          & 62    \\ \hline
+Scale SHI         & 0           & 5          & 5     \\ \hline
+Total             & 50          & 11         & 61    \\ \hline
 \end{tabular}
 \end{table}
 
@@ -203,7 +203,7 @@ SQ4 &  316  &  0  & 101 & -0.05 & 6.17  & 6.88 & 7.75 & 10.75 & 6.94  & 1.31 \\ 
 
 
 
-It is possible to observe in this table that there are some irregularities in the data, as we can see, a negative value is the minimum value in the SQ4 variable; this variable represents the -time to wake up-, thus no negative value must be enter in this field, likewise, it appear a $0.0$ value as the minimun value in the SQ1 variable, which is wrong because this is the time that respondents said go to bed, and, in this case, the appropriate answer should be $12:00$. All other data in the table indicate that the variables have good quality to participate in the analysis, so after refining the procedure of filtering and transforming numeric data, these variables can be used when required. One relevant indicator of quality/no quality is the cardianality, however, this subject will be analyzed in the next section taken into account all involved variables. The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and the potential strategies to attend them. 
+It is possible to observe in this table that there are some irregularities in the data, as we can see, a negative value is the minimum value in the SQ4 variable; this variable represents the *time to wake up*, thus no negative value must be enter in this field, likewise, it appear a $0.0$ value as the minimun value in the SQ1 variable, which is wrong because this is the time that respondents said go to bed, and, in this case, the appropriate answer should be $12:00$. All other data in the table indicate that the variables have good quality to participate in the analysis, so, after refining the procedure of filtering and transforming numeric data, these variables can be used when required. The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and the potential strategies to attend them. The cardinality, one relevant metrics of quality/no quality, will be analyzed in the next section taken into account all involved variables.  
 
 \begin{table}[ht]
 \centering
@@ -213,7 +213,7 @@ It is possible to observe in this table that there are some irregularities in th
 \hline
 Feature & Data quality issue  & Strategie \\ \hline
 SQ1     & Data contain 0.0, the correct value should be 12.00  & Refine the process of convert data for this field  \\ \hline
-SQ9     & Data contain negative values, it is wrong because the data represents the time to wake up & Refine the process validating the data, to correct the problem, or to eliminate the records with this issue. \\ \hline  
+SQ9     & Data contain negative values, it is wrong because the data represents the time to wake up & Refine the process validating the data, to correct the problem, or, eliminate the records with this issue. \\ \hline  
 \end{tabular}
 \end{table}
 
@@ -251,19 +251,21 @@ SH10 & 316   & 0    & 5    & 0    & 209      & 66.14\%  & 1     & 54        & 17
 \end{table}
 
 
-In this table, the cardinality shows that all possible value $[0-5]$ for each answer is represented in the data, except by the SH9 variable where a value is not in the answers of the respondents. It is good for the quality of data, however, there are two variables with high mode. The 82.9 % of the respondents, answered *never* to the question SH9, while the 95.25% answered *never*  to the question SH8, which means that there are few variability in the data in these two variables andIt is possible to dispense with these data for the analysis, since they do not contribute much information to the studied phenomenon, at least for this population.
-
-The same analysis was performed with the 10 tables of continuous and categorical variables. Aditionally, histograms, normality tests and box plots were generated for the continuous variables in order to identify atypical values. We show the relevant outcomes in the next sections and we make an evaluation of the quality of data in general terms. The Fig. \@ref(fig-hist-boxplots-cv) shows the histograms and boxplots of the four continuos variables in the Table \@ref(tab-continuous-quality-data), those plots make visible 
+The same analysis was performed with the 10 tables of continuous and categorical variables. Aditionally, histograms and box plots were generated for the continuous variables in order to identify outliers. We show the relevant outcomes in the next sections and we make an evaluation of the quality of data in general terms. The Fig. \@ref(fig-hist-boxplots-cv) shows the histograms and boxplots of the four continuous variables in the Table \@ref(tab-continuous-quality-data). 
 
 ```{r fig-hist-boxplots-cv, fig.cap='Histogramas and boxplot of continuous variables', out.width='100%', fig.asp=.90, fig.align='center', echo=FALSE}
 knitr::include_graphics("images/hist-boxplots-continuous-variables.png")
 
 ```
 
+These plots shows some outliers in the dataset, 
 
 
-## Irregular Cardinality
-In this section, we present the table taht
+
+## Irregular Cardinality and mode
+
+In Table \@ref(tab-categorical-quality-data), the cardinality shows that all possible value $[0-5]$ for each answer is represented in the data, except by the SH9 variable where a value is not in the answers of the respondents. It is good for the quality of data, however, there are two variables with high mode. The 82.9 % of the respondents, answered *never ($0$)*  to the question SH9 **I use alcohol within 4 hours of going to bed or after going to bed.**, while the 95.25% answered *never ($0$)*  to the question SH8 **I use tobacco within 4 hours of going to bed or after going to bed.**, which means that there are few variability in the data in these two variables and it is possible to dispense with these data for the analysis, since they do not contribute much information to the studied phenomenon, at least for this population. The other 11 categorical variables for SHI, have a cardinality of 5, and the higher mode is placed in SH17 **I sleep in an uncomfortable bedroom, due to too cold.** were a $65.51\%$ of the respondents answered *never ($0$)* for this question. This means that the answers have a good range of variability to be analized, and to participate as candidate of be selected as feature to training the model.
+
 
 ## Outliers
 

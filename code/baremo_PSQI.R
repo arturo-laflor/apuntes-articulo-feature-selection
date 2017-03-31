@@ -15,8 +15,12 @@
 
 baremo_PSQI=function(dtQS,clases){
   
-  #dtQS<-dQS #se utiliza para las pruebas dentro de la funcion
-  #una vez cargados los datos en el main
+  #se utiliza para las pruebas dentro de la funcion
+    # dtQS<-d_crudos 
+    # clases=2
+    # dtQS<-preproceso_1(dtQS,2)
+  #se utiliza para las pruebas dentro de la funcion
+  
   
   #SQDUR  duration of sleep
   # PSQIDURAT 		DURATION OF SLEEP
@@ -28,16 +32,19 @@ baremo_PSQI=function(dtQS,clases){
   #
   
   f_SQDUR=function(SQ4){
-    var<-0
-    if(SQ4>=6 && SQ4<7){
-      var<-1
-    }else if(SQ4>=5 && SQ4<6){
-      var<-2
-    }else if(SQ4<5){
-      var<-3
-    }
+    if(!is.na(SQ4)){
+      var<-0
+      if(SQ4>=6 && SQ4<7){
+        var<-1
+      }else if(SQ4>=5 && SQ4<6){
+        var<-2
+      }else if(SQ4<5){
+        var<-3
+      }
+    }else {var<-NA}
     return(var)
   }
+
   SQDUR<-sapply(dtQS$SQ4,f_SQDUR)
   dtQS<-cbind.data.frame(dtQS,SQDUR)
   #SQDUR  duration of sleep
@@ -59,14 +66,20 @@ baremo_PSQI=function(dtQS,clases){
   # Minimum Score = 0 (better); Maximum Score = 3 (worse)
   #
   f_SQDIS=function(SQ5b_j){
-    var<-0
-    if(SQ5b_j>1 && SQ5b_j<=9){
-      var<-1
-    }else if(SQ5b_j>9 && SQ5b_j<=18){
-      var<-2
-    }else if(SQ5b_j>18){
-      var<-3
+    
+    if(!is.na(SQ5b_j)){
+      var<-0
+      if(SQ5b_j>1 && SQ5b_j<=9){
+        var<-1
+      }else if(SQ5b_j>9 && SQ5b_j<=18){
+        var<-2
+      }else if(SQ5b_j>18){
+        var<-3
+      }
+    }else{
+      var<-NA
     }
+    
     return(var)
   }
   
@@ -92,22 +105,29 @@ baremo_PSQI=function(dtQS,clases){
   # IF Q5a + Q2new > 5 and < 6, THEN set value to 3
   # 
   f_SQLAT=function(SQ25a){
-    SQ2<-SQ25a[1] 
-    SQ5a<-SQ25a[2]
-    var<-0
-    if(SQ2>=0 && SQ2<15){
-      var<-0
-    }else if(SQ2>=15 && SQ2<29){
-      var<-1
-    }else if(SQ2>=30 && SQ2<60){
-      var<-2  
-    }else if(SQ2>=60){
-      var<-3
+      
+      SQ2<-SQ25a[1] 
+      SQ5a<-SQ25a[2]
+      if(!is.na(SQ2) && !is.na(SQ5a) ){
+        var<-0
+        if(SQ2>=0 && SQ2<15){
+          var<-0
+        }else if(SQ2>=15 && SQ2<29){
+          var<-1
+        }else if(SQ2>=30 && SQ2<60){
+          var<-2  
+        }else if(SQ2>=60){
+          var<-3
+        }
+        if(var+SQ5a == 0){return(0)}
+        else if(var+SQ5a >= 1 && var+SQ5a <= 2){return(1)}
+        else if(var+SQ5a >= 3 && var+SQ5a <= 4){return(2)}
+        else{return(3)}
+    }else{
+      return(NA)
     }
-    if(var+SQ5a == 0){return(0)}
-    else if(var+SQ5a >= 1 && var+SQ5a <= 2){return(1)}
-    else if(var+SQ5a >= 3 && var+SQ5a <= 4){return(2)}
-    else{return(3)}
+    
+    
   }
   
   temppsq25<-cbind.data.frame(dtQS$SQ2,dtQS$SQ5a)
@@ -124,14 +144,19 @@ baremo_PSQI=function(dtQS,clases){
   # Minimum Score = 0 (better); Maximum Score = 3 (worse)
   #
   f_SQDD=function(SQ78){
-    var<-0
-    if(SQ78>0 && SQ78<=2){
-      var<-1
-    }else if(SQ78>2 && SQ78<=4){
-      var<-2
-    }else if(SQ78>4 && SQ78<=6){
-      var<-3  
+    if(!is.na(SQ78)){
+      var<-0
+      if(SQ78>0 && SQ78<=2){
+        var<-1
+      }else if(SQ78>2 && SQ78<=4){
+        var<-2
+      }else if(SQ78>4 && SQ78<=6){
+        var<-3  
+      }
+    }else{
+      var<-NA
     }
+    
     return(var)
   }
   #temppsq78<-apply(dtQS[,24:25],1,sum)
@@ -156,19 +181,35 @@ baremo_PSQI=function(dtQS,clases){
   #
  
   f_SQSE=function(SQ134){
+    
     SQ1<-as.numeric(SQ134[1])
     SQ3<-as.numeric(SQ134[2])
     SQ4<-as.numeric(SQ134[3])
-    if(SQ1>SQ3){SQ1<-SQ1-12.00}
-    SE<-abs(SQ3-SQ1)
-    SE= as.double(SQ4/SE*100)
-    var<-0
-    if(SE>=75 && SE<85){
-      var<-1
-    }else if(SE>=65 && SE<75){
-      var<-2
-    }else if(SE<65){
-      var<-3  
+    
+    # SQ1<-1
+    # SQ3<-2
+    # SQ4<-NA
+    # if(!is.na(SQ1) && !is.na(SQ3) && !is.na(SQ4)){
+    #   print("entro")
+    # }
+    # var<-2133
+    # if(SQ3==SQ1){
+    #   print(paste(SQ1,SQ3,SQ4,sep = ",") )  
+    # }
+    if(!is.na(SQ1) && !is.na(SQ3) && !is.na(SQ4) && (SQ3!=SQ1)){
+      if(SQ1>SQ3){SQ1<-SQ1-12.00}
+      SE<-abs(SQ3-SQ1)
+      SE= as.double(SQ4/SE*100)
+      var<-0
+      if(SE>=75 && SE<85){
+        var<-1
+      }else if(SE>=65 && SE<75){
+        var<-2
+      }else if(SE<65){
+        var<-3  
+      }
+    }else{
+      var<-NA
     }
     return(var)
   }
@@ -182,7 +223,6 @@ baremo_PSQI=function(dtQS,clases){
   dtQS<-cbind.data.frame(dtQS,SQSQ)
   # Minimum Score = 0 (better); Maximum Score = 3 (worse)
   # 
-  
   
   
   # PSQIMEDS 		NEED MEDS TO SLEEP
@@ -209,40 +249,62 @@ baremo_PSQI=function(dtQS,clases){
   # Interpretation:  	TOTAL < 5 associated with good sleep quality
   # TOTAL > 5 associated with poor sleep quality
   f_SQCL_4=function(SQTOTAL){
-    var<-'Excelente'
-    if(SQTOTAL>=2 && SQTOTAL<=5){
-      var<-'Buena'
-    }else if(SQTOTAL>5 && SQTOTAL<=8){
-      var<-'Regular'
-    }else if(SQTOTAL>8){
-      var<-'Pobre'
+    
+    if(!is.na(SQTOTAL)){
+      var<-'Excelente'
+      if(SQTOTAL>=2 && SQTOTAL<=5){
+        var<-'Buena'
+      }else if(SQTOTAL>5 && SQTOTAL<=8){
+        var<-'Regular'
+      }else if(SQTOTAL>8){
+        var<-'Pobre'
+      }
+    }else{
+      var<-NA
     }
+    
+    
     return(var)
   }
   #Tres clasificaciones
   # Interpretation:  	TOTAL < 5 associated with good sleep quality
   # TOTAL > 5 associated with poor sleep quality
   f_SQCL_3=function(SQTOTAL){
-    var<-'Excelente'
-    if(SQTOTAL>=2 && SQTOTAL<=5){
-      var<-'Buena'
-    }else if(SQTOTAL>5){
-      var<-'Pobre'
+    
+    
+    if(!is.na(SQTOTAL)){
+      var<-'Excelente'
+      if(SQTOTAL>=2 && SQTOTAL<=5){
+        var<-'Buena'
+      }else if(SQTOTAL>5){
+        var<-'Pobre'
+      }
+    }else{
+      var<-NA
     }
+    
+    
+    
     return(var)
   }
   # Dos clasificaciones
   # Interpretation:  	TOTAL < 5 associated with good sleep quality
   # TOTAL > 5 associated with poor sleep quality
   f_SQCL_2=function(SQTOTAL){
-    var<-'Excelente'
-    if(SQTOTAL>=0 && SQTOTAL<=5){
-      var<-'Buena'
-    }else if(SQTOTAL>5 && SQTOTAL<=40){
-      var<-'Pobre'
-    }else if(SQTOTAL>8){
-      var<-'Pobre'  
+    
+    if(!is.na(SQTOTAL)){
+      var<-'Excelente'
+      if(SQTOTAL>=0 && SQTOTAL<=5){
+        var<-'Buena'
+      }else if(SQTOTAL>5 && SQTOTAL<=40){
+        var<-'Pobre'
+      }else if(SQTOTAL>8){
+        var<-'Pobre'  
+      }
+    }else{
+      var<-NA
     }
+    
     return(var)
   }
   #SQCL<-sapply(SQTT, f_SQCL)

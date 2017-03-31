@@ -6,8 +6,6 @@ corrige_tiempo=function(columnaDataSet){
      var[i]<-valida_tiempo(valorqs[i])
    }
   
-  
-  
   return(var)
 
 }

@@ -1,12 +1,26 @@
 preproceso=function(datos_crudos,numero_clases){
   
   
-  
+
+    
 #datos<-read.csv(file=archivoCSV)
 
-#quita timespam, pone anónimo al campo de correo que no esté identificado
+#  datos_crudos<-d_crudos#para prueba
+# 
+# #elimina el id timestamp
+# #asigna NA a los campos vacíos excepto en el primer campo que es el email.
+# #este campo es opcional por lo tanto en muchos registros no estará.
+# d_crudos<-datos_crudos[-1]
+# d_crudos[,1]<-as.character(d_crudos[,1])
+# d_crudos[d_crudos[,1]=='',1]<-'anonimo'
+# d_crudos[d_crudos=='']<-NA
+# 
+# 
+# datos_crudos<-d_crudos
+
+  
 #quita faltantes
-datos_crudos<-elimina_faltantes(datos_crudos)
+#datos_crudos<-elimina_faltantes(datos_crudos)
 
 #codifica valores capturados
 #asigna nombres de columna a los datos
