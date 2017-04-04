@@ -17,6 +17,11 @@ eval(parse(text = script),envir=.GlobalEnv)
 script <- getURL("https://raw.githubusercontent.com/arturo-laflor/util-R-codes/master/QOfContinuousF.R", ssl.verifypeer = FALSE)
 eval(parse(text = script),envir=.GlobalEnv)
 
+script <- getURL("https://raw.githubusercontent.com/arturo-laflor/util-R-codes/master/multiplot.R", ssl.verifypeer = FALSE)
+eval(parse(text = script),envir=.GlobalEnv)
+
+
+
 
 #Es necesario poner encoding=utf8 para que los acentossean tratados como acentos
 
@@ -200,8 +205,6 @@ SQ3 &  316  &  0  & 39 & 3.00 & 5.08 &   6.00 & 7.00 & 11.00  & 6.19  & 1.28 \\
 SQ4 &  316  &  0  & 101 & -0.05 & 6.17  & 6.88 & 7.75 & 10.75 & 6.94  & 1.31 \\ \hline
 \end{tabular}
 \end{table}
-
-
 
 It is possible to observe in this table that there are some irregularities in the data, as we can see, a negative value is the minimum value in the SQ4 variable; this variable represents the *time to wake up*, thus no negative value must be enter in this field, likewise, it appear a $0.0$ value as the minimun value in the SQ1 variable, which is wrong because this is the time that respondents said go to bed, and, in this case, the appropriate answer should be $12:00$. All other data in the table indicate that the variables have good quality to participate in the analysis, so, after refining the procedure of filtering and transforming numeric data, these variables can be used when required. The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and the potential strategies to attend them. The cardinality, one relevant metrics of quality/no quality, will be analyzed in the next section taken into account all involved variables.  
 

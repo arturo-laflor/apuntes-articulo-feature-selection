@@ -3,7 +3,141 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+
+```{r setup}
+knitr::opts_chunk$set(echo = FALSE)
+
+setwd("C:/Master/apuntes-articulo-feature-selection")
+```
+
+
+# Estructuration and validation data process
+
+Before to generate the quality report of the data, the data are loaded and passed for a process of validation and restructuration. This process includes the renaming of the columns and data validation for columns as time and age. Additionally, the values for the responses of SHI and PSQI questionnaires was recodified from original responses ('Nunca','Casi nunca','Algunas veces','Frecuentemente','Siempre') to data that can be used to numerical and algorithmical analysis ('0','1','2','3','4').
+
+```{r lee_data_set_original, echo=FALSE}
+ruta<-paste("C:/Users/",user,"/Google Drive/Doctorado/Tesis/Data/",sep = "") 
+  d_crudos<-read.csv(file=paste(ruta,"responses.csv",sep = ""),header = T,sep = ",")
+
+QS_data<-preproceso_1(d_crudos,2)
+  
+```
+
+The resulting dataset has `r dim(QS_data)[2]` columns, distributet as the following table shows:
+
+| Type        | Quantity | Columns in the dataset |
+|-------------|----------|------------------------|
+| CharID      | 1        | 1                      |
+| Categorical | 41       | [3-9] and [14-48]      |
+| Continuous  | 6        | 2 and [10-13]          |
+
+
+Exploring the data, allow to identify three records that contains no data for any feature in the dataset, this three records was deleted from the dataset to avoid noisy in following analysis.
+
+
+# Data quality analysis 
+
+A report of data quality was performed at this time, showing the main metrics for the continuous and categorical variables respectively.
+
+## Continuous features
+The dataset contains five continuous features, one for demographic data (DD1=AGE) and four features that measure the sleep duration (SQ1="Time to go to bed", SQ2="Latency of sleep", SQ3="Time to wake up", SQ4="Period of time between going to bed and waking up").
+
+
+```{r report-of-quality-contfeat}
+dfCONTFEAT<-cbind.data.frame(DD1=QS_data[,2],QS_data[,10:13])
+DRCONT<-QOfContinuousF(dfCONTFEAT)
+DRCONT
+
+```
+
+### Generals
+
+It is possible to observe in this table that there are some irregularities in the data, as we can see, a negative value is the minimum value in the SQ4 variable; this variable represents the *Period of time between going to bed and waking up*, thus no negative value must be enter in this field, likewise, it appear a $0.0$ value as the minimun value in the SQ1 variable, which is wrong because this is the time that respondents said go to bed, and, in this case, $0.00$ is not a valid answer, in any case, an appropriate answer would be $12.00$, referring to midnight. All other data in the table indicate that the variables have good quality to participate in the analysis, so, after refining the procedure of filtering and transforming numeric data, these variables can be used when required. The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and the potential strategies to attend them. 
+
+| Feature | Data quality issue                                                                        | Strategie                                                                                                  |
+|---------|-------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| SQ1     | Data contain 0.0, the correct value should be 12.00                                       | Refine the process of convert data for this field                                                          |
+| SQ9     | Data contain negative values, it is wrong because the data represents the time to wake up | Refine the process validating the data, to correct the problem, or, eliminate the records with this issue. |
+
+### Missing values
+No one of these features have a great quantity of missing values, DD1 is the variable with most of them, however the missing values represents only the `r round(max(DRCONT$Miss)/dim(QS_data)[1],digits=3)`% of the data, whis is not significant. If we assume that each record that contains a missing value is a different row, we have `r sum(DRCONT$Miss)` records, which represents the 
+`r round(sum(DRCONT$Miss)/dim(QS_data)[1],digits=3)`%. As this percentaje is small, and there are not in our hands, previous works describing the tendency of the data, these records with missing values could be deleted. 
+
+### Cardinality
+
+These continuos variables shows good cardinality, even though the ratio between the cardinality and number of records is not close to one. The nature of the data justifies this fact, because although the features are continuous and in theory they could take a large number of values, they take a small range of values, for instance, the variable SQ1 take an small range of values because the people answer commonly to this kind of question with onclock time, it means, people ask that they go to bed at 9:00, 10:30, 10:45 or 11:00, even when they really go to bed at 9:03, or 10:33 referring to the first to examples. The other variables have similar nature, thus the conclusion that cardinality is good for this variables, where the smallest cardinality was 15.
+
+### Outliers
+
+Histograms and boxplot were generated to observe the behaviour of the data. 
+```{r histograms-bocplots}
+library(ggplot2)
+
+histDD1<-ggplot(data=QS_data,aes(DD1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ1<-ggplot(data=QS_data,aes(SQ1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ2<-ggplot(data=QS_data,aes(SQ2))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ3<-ggplot(data=QS_data,aes(SQ3))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ4<-ggplot(data=QS_data,aes(SQ4))+geom_histogram(bins = 30)+labs(y="Count")
+
+boxplotDD1<-ggplot(data=QS_data, aes(as.factor(DD2),DD1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ1<-ggplot(data=QS_data, aes(as.factor(DD2),SQ1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ2<-ggplot(data=QS_data, aes(as.factor(DD2),SQ2))+geom_boxplot()+labs(x="Gender")
+boxplotSQ3<-ggplot(data=QS_data, aes(as.factor(DD2),SQ3))+geom_boxplot()+labs(x="Gender")
+boxplotSQ4<-ggplot(data=QS_data, aes(as.factor(DD2),SQ4))+geom_boxplot()+labs(x="Gender")
+
+
+multiplot(histDD1,histSQ1,histSQ2,histSQ3,histSQ4,boxplotDD1,boxplotSQ1,boxplotSQ2,boxplotSQ3,boxplotSQ4,cols=2)
+```
+
+The plots show that there exist outliers in the data, so an analytics procedure was performed to obtain the records containing the outliers. Values out of the three standard deviation were considered as outliers for each variables.
+
+```{r scoring-outliers}
+library(magrittr)
+ic<-0.955
+
+outDD1<-scores(QS_data$DD1,type = "z",prob = ic)%>%which(.)
+outSQ1<-scores(QS_data$SQ1,type = "z",prob = ic)%>%which(.)
+outSQ2<-scores(QS_data$SQ2,type = "z",prob = ic)%>%which(.)
+outSQ3<-scores(QS_data$SQ3,type = "z",prob = ic)%>%which(.)
+outSQ4<-scores(QS_data$SQ4,type = "z",prob = ic)%>%which(.)
+```
+
+
+
+In the other hand, there are missing values in this dataset, in order to procede to next step, it is important to solve 
+
+```{r report-of-quality-catfeat}
+dfCATFEAT<-cbind.data.frame(QS_data[,3:9],QS_data[,14:48])
+DRCAT<-QOfCategoricalF(dfCATFEAT)
+DRCAT
+
+
+which(is.na(QS_data$DD1)) 
+```
+
+<!--  17 151 154 203 206 239 -->
+
+```{r}
+# library(yaImpute)
+# library(randomForest)
+# x<-QS_data[,3:9]
+# y<-QS_data$DD1
+# mal<-yai(x=x,y=y,method = "randomForest")
+# impute(mal)
+# malImp=impute(mal,ancillaryData=QS_data)
+# plot(malImp)
+
+```
+
+
 # Analysis of quality on ABT
+
+The dataset for this work is generated in two stages, the first one obtains the data through the answers of the respondents, while in the second new columns are generated by the computation of the scales of the PSQI and SHI questionnaires. At the end of the first stage, a report of data quality was generated with exploratory purposes. Some relevant decisions will be taken as result of this observation, for instance, if all columns should be part of the final dataset, depending of the quantity of missing values are on them.
+
+
+
+The dataset obtained by the answers of the respondents is a `r dim(d_crudos)[1]`  x `r dim(d_crudos)[2]` dataset, it contains  
+
 
 
 As first step, the ABT will be grouped as Table \@ref(tab-columns-distribution) shows the distribution of variables. ABT contains five groups of variables and each group will be divided in categorical and continuous variables to perform the analysis. At the end, eight tables of analysis of quality will be generated since there are two groups that contains only one type of variables (the SHI group have only  categorical variables, while the Scale SHI contains only continuous variables).
@@ -41,7 +175,12 @@ CONTFEAT<-QOfContinuousF(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON))
 CONTFEAT
 
 #Arreglar las funciones en github 
-Qrt1<-apply(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON),2,FUN = function(x) round(quantile(as.numeric(x),.25,na.rm = T),digits = 2))
+#Qrt1<-apply(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON),2,FUN = function(x) round(quantile(as.numeric(x),.25,na.rm = T),digits = 2))
+
+
+Miss<- apply(responses,2,FUN = function(x)  sum(is.na(x)))
+
+
 ```
 
 

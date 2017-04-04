@@ -1,6 +1,6 @@
 codifica_respuestas=function(dataSet){
   
-  dataSet<-responses #para prueba
+  #dataSet<-responses #para prueba
   
   dataSet[dataSet=='Nunca']<-0
   dataSet[dataSet=='Casi nunca']<-1

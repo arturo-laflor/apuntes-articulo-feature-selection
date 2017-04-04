@@ -12,6 +12,8 @@ cambia_tipo_ci=function(dataSet){
   # ifelse(is.na(dataSet$DD7),dataSet$DD7<-NA,dataSet$DD7<-as.factor(dataSet$DD7))
   # ifelse(is.na(dataSet$DD8),dataSet$DD8<-NA,dataSet$DD8<-as.factor(dataSet$DD8))
   
+  dataSet$DD1<-as.integer(dataSet$DD1)
+  
   dataSet$DD2<-as.factor(dataSet$DD2)
   dataSet$DD3<-as.factor(dataSet$DD3)
   dataSet$DD4<-as.factor(dataSet$DD4)
