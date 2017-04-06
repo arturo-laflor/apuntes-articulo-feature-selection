@@ -7,7 +7,7 @@ calc_tiempo_sueno=function(dtsleep){
     HL<-as.numeric(SQ134[3])
     minutos<-as.numeric(SQ134[2])
     if(!is.na(HD) && !is.na(HL) && !is.na(minutos)){
-      if(HD>HL){HD<-HD-12.00}
+      if(HD>=HL){HD<-HD-12.00}
       SE<-abs(HL-HD)
       SE<-SE-round(minutos/60,digits = 2)
     }else{return(NA)}

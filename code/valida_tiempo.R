@@ -47,6 +47,8 @@ valida_tiempo=function(strQs1){
   }else{
     s3<-NA
   }
+  if(s3<0){s3<-NA}
+  if(!is.na(s3) && s3<1){s3=12+s3}
   
-    return(s3)
+  return(s3)
 }

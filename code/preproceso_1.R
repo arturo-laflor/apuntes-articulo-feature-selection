@@ -4,15 +4,15 @@
 #quita timespam y correo electronico
 preproceso_1<-function(tablaDatos,numero_clases){
   
-  setwd("C:/Master/apuntes-articulo-feature-selection")
-  source(file="./code/asigna_nombres.R",encoding = "UTF8") 
-  source(file="./code/cambia_tipo_fc.R",encoding = "UTF8")
-  source(file="./code/codifica_respuestas.R",encoding = "UTF8")
-  source(file="./code/cambia_tipo_ci.R",encoding = "UTF8")
-  source(file="./code/valida_tiempo.R",encoding = "UTF8")
-  source(file="./code/valida_edad.R",encoding = "UTF8")
-  source(file="./code/valida_minutos.R",encoding = "UTF8")
-  source(file="./code/calc_tiempo_sueno.R",encoding = "UTF8")
+  
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/asigna_nombres.R",encoding = "UTF8") 
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/cambia_tipo_fc.R",encoding = "UTF8")
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/codifica_respuestas.R",encoding = "UTF8")
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/cambia_tipo_ci.R",encoding = "UTF8")
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/valida_tiempo.R",encoding = "UTF8")
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/valida_edad.R",encoding = "UTF8")
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/valida_minutos.R",encoding = "UTF8")
+  source(file="C:/Master/apuntes-articulo-feature-selection/code/calc_tiempo_sueno.R",encoding = "UTF8")
   
   
   # #elimina el id timestamp

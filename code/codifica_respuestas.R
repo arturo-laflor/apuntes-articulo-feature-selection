@@ -48,7 +48,7 @@ codifica_respuestas=function(dataSet){
   # dataSet[dataSet=='Divorciada(o)']<-3
   # dataSet[dataSet=='Unión Libre']<-4
   
-  ifelse(is.na(dataSet$DD6),dataSet$DD6<-NA,dataSet$DD6<-"Unión Libre")
+  ifelse(is.na(dataSet$DD6),dataSet$DD6<-NA,dataSet[dataSet$DD6=='Unión libre',7]<-"Unión Libre")
   #dataSet[dataSet$DD6=='Unión libre',7]<-"Unión Libre"
   
   # dataSet[dataSet=='Otro']<-5

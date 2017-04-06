@@ -32,12 +32,13 @@ user<-user[[1]]
 #loading private functions
 
 source(file="./code/preproceso.R",encoding = "UTF8")
-source(file="./code/selecciona_muestra.R",encoding = "UTF8")
-source(file="./code/elimina_faltantes.R",encoding = "UTF8")
-source(file="./code/convierte_binaria.R",encoding = "UTF8")
 source(file="./code/preproceso_1.R",encoding = "UTF8")
 source(file="./code/baremo_PSQI.R",encoding = "UTF8")
 source(file="./code/baremo_SHI.R",encoding = "UTF8")
+
+source(file="./code/selecciona_muestra.R",encoding = "UTF8")
+source(file="./code/elimina_faltantes.R",encoding = "UTF8")
+source(file="./code/convierte_binaria.R",encoding = "UTF8")
 source(file="./code/graba_recupera_archivo.R",encoding = "UTF8")
 source(file="./code/preproceso.R",encoding = "UTF8")
 source(file="./code/elige_sanos.R",encoding = "UTF8")

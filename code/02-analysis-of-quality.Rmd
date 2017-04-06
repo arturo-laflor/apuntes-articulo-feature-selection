@@ -8,7 +8,14 @@ output: html_notebook
 library(ggplot2)
 library(bitops)
 library(RCurl)
+
+
+#Funciones locales
 source(file="C:/Master/apuntes-articulo-feature-selection/code/preproceso_1.R",encoding = "UTF8")
+source(file="C:/Master/apuntes-articulo-feature-selection/code/baremo_PSQI.R",encoding = "UTF8")
+source(file="C:/Master/apuntes-articulo-feature-selection/code/baremo_SHI.R",encoding = "UTF8")
+
+
 #funciones online
 script <- getURL("https://raw.githubusercontent.com/arturo-laflor/util-R-codes/master/QOfCategoricalF.R", ssl.verifypeer = FALSE)
 eval(parse(text = script),envir=.GlobalEnv)
@@ -19,9 +26,9 @@ eval(parse(text = script),envir=.GlobalEnv)
 script <- getURL("https://raw.githubusercontent.com/arturo-laflor/util-R-codes/master/multiplot.R", ssl.verifypeer = FALSE)
 eval(parse(text = script),envir=.GlobalEnv)
 
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE,root.dir="C:/Master/apuntes-articulo-feature-selection/")
 
-setwd("C:/Master/apuntes-articulo-feature-selection")
+#setwd("C:/Master/apuntes-articulo-feature-selection/")
 ```
 
 
@@ -37,6 +44,9 @@ ruta<-paste("C:/Users/",user,"/Google Drive/Doctorado/Tesis/Data/",sep = "")
 
 QS_data<-preproceso_1(d_crudos,2)
   
+write.csv(file=paste(ruta,"responses_after_preproc_1.1.csv",sep = ""),QS_data)
+
+
 ```
 
 The resulting dataset has `r dim(QS_data)[2]` columns, distributet as the following table shows:
@@ -77,7 +87,33 @@ $`r round(sum(DRCONT[,2])/dim(QS_data)[1],digits=3)`\%$. As this percentage is s
 ### Cardinality
 These continuos variables shows good cardinality, even though the ratio between the cardinality and number of records is not close to one. The nature of the data justifies this fact, because although the features are continuous and in theory they could take a large number of values, they take a small range of values, for instance, the variable SQ1 take an small range of values because the people answer commonly to this kind of question with onclock time, it means, people ask that they go to bed at $9:00$, $10:30$, $10:45$ or $11:00$, even when they, actually were to bed at $9:03$, or $10:33$ referring to the first to examples. The other variables have similar nature, thus the conclusion that cardinality is good for this variables, where the smallest cardinality was 15.
 
-The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and the potential strategies to attend them.
+
+### Histograms and boxplot
+
+Histograms and boxplot were generated to observe the behaviour of the data. 
+```{r histograms-bocplots}
+library(ggplot2)
+
+histDD1<-ggplot(data=QS_data,aes(DD1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ1<-ggplot(data=QS_data,aes(SQ1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ2<-ggplot(data=QS_data,aes(SQ2))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ3<-ggplot(data=QS_data,aes(SQ3))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ4<-ggplot(data=QS_data,aes(SQ4))+geom_histogram(bins = 30)+labs(y="Count")
+
+boxplotDD1<-ggplot(data=QS_data, aes(as.factor(DD2),DD1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ1<-ggplot(data=QS_data, aes(as.factor(DD2),SQ1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ2<-ggplot(data=QS_data, aes(as.factor(DD2),SQ2))+geom_boxplot()+labs(x="Gender")
+boxplotSQ3<-ggplot(data=QS_data, aes(as.factor(DD2),SQ3))+geom_boxplot()+labs(x="Gender")
+boxplotSQ4<-ggplot(data=QS_data, aes(as.factor(DD2),SQ4))+geom_boxplot()+labs(x="Gender")
+
+
+multiplot(histDD1,histSQ1,histSQ2,histSQ3,histSQ4,boxplotDD1,boxplotSQ1,boxplotSQ2,boxplotSQ3,boxplotSQ4,cols=2)
+```
+
+These plots show that the continuous features have outliers which should be analyzed to include/exclude from de dataset before of the training of the model to obtain better results. These variables do not intervene directly in the generation of the model, the model is generated from the SH features, however, these outliers could be indicators of some disorder of sleep in the respondent, thus the analysis must b performed.
+
+
+The Table \@ref(tab-data-quality-plan-continuous) summarizes the data quality issues in continuous features and the potential strategies to attend them.
 
 
 | Feature | Data quality issue                                                                        | Strategie                                                                                                                                                                                                               |
@@ -87,11 +123,12 @@ The Table \@ref(tab-data-quality-plan) summarizes the data quality issues and th
 | SQ2     | Standar deviation too large                                                               | Finding outliers visually and analytically. Excluding outliers from the modeling may improve the predictions. These analysis of outliers includes all continuous variables.                                             |
 | All     | Missing values                                                                            | The percentage of missing values is low, it allows to eliminate records with missing values. The decision of impute data is a few probable, since no reports are in our bibliography to know the tendency of the data.  |
 
+Table:Data quality plan for continuous features
 
-<!-- \begin{table}[] -->
+<!-- \begin{table}[ht] -->
 <!-- \centering -->
-<!-- \caption{My caption} -->
-<!-- \label{my-label} -->
+<!-- \caption{Data quality plan for continuous features} -->
+<!-- \label{tab-data-quality-plan-continuous} -->
 <!-- \begin{tabular}{|l|l|l|} -->
 <!-- \hline -->
 <!-- Feature & Data quality issue                                                                        & Strategie                                                                                                                                                                                                              \\ \hline -->
@@ -123,10 +160,12 @@ The table \@ref(Report-of-quality-of-the-categorical-demographic-features) shows
 | DD6     | The mode represents the 100% of the data.  | Observation of the raw data and analysis of the process of the data restructuring to identify a possible bug.                                 |
 | All     | Missing values                             | The percentage of missing values is very small, it allows to eliminate records with missing values. No imputation is pertinent for this data. |
 
-<!-- \begin{table}[] -->
+Table:Data quality plan for categorical demographic features
+
+<!-- \begin{table}[ht] -->
 <!-- \centering -->
-<!-- \caption{My caption} -->
-<!-- \label{my-label} -->
+<!-- \caption{Data quality plan for categorical demographic features} -->
+<!-- \label{tab-data-quality-plan-categorical-demographic} -->
 <!-- \begin{tabular}{lll} -->
 <!-- \hline -->
 <!-- \multicolumn{1}{|l|}{Feature} & \multicolumn{1}{l|}{Data quality issue}                         & \multicolumn{1}{l|}{Strategie}                                                                                                                \\ \hline -->
@@ -147,7 +186,6 @@ Table: Report of quality of the sleep hygiene features
 
 In Table \@ref(Report-of-quality-of-the-sleep-hygiene-features), the cardinality shows that all possible value $[0-5]$ for each answer is represented in the data, except by the SH9 variable where one of the options was not selected as answer of the respondents. It is good for the quality of data, however, there are two variables with high mode. The 81.66 % of the respondents, answered *never ($0$)*  to the question SH9 *"I use alcohol within 4 hours of going to bed or after going to bed."*, while the 94.38% answered *never ($0$)*  to the question SH8 *"I use tobacco within 4 hours of going to bed or after going to bed."*, which means that there are few variability in the data in these two variables. It is possible to dispense with these data for the analysis, since they do not contribute much information to the studied phenomenon for this population. The other 19 categorical variables for SHI, have a cardinality of 5, and the higher mode is placed in SH10  *"I use cafeine within 4 hours of going to bed or after going to bed."* were a $66.98\%$ of the respondents answered *never ($0$)* for this question. This means that the answers have a good range of variability to be analized, and to participate as candidate of be selected as feature to training the model.
 
-### Missing values
 This set of data has small number of missing values, however, in this case it is possible to impute data due to the features together represents a behavior of the person. The KNN algorithm performs data imputation using similarity, thus, in this case a good approximation to the true data could be computed taken as reference the 20 remaining features of the neighbors to determine the missing value.
 
 
@@ -160,7 +198,55 @@ This set of data has small number of missing values, however, in this case it is
 Table: Potential-strategies-to-attend-SH-features
 
 
-```{r recordwithNA}
+
+# Following the quality plan to attend issues
+
+The first step in order to attend the issues was the analysis of the code that validates the raw data, to avoid the suspicious of bugs that could be generate wrong data. After the code is validated, the errors in data can be adjudicate to human capture.
+
+After the analysis of scripts, tree bugs were fixed. The first bug is related with the reason that the civil status have a mode equivalent to the number of records in the dataset. The bug was generated by omittining a condition in the evaluation of a missing value in the field in the same line of code that attempt to standardize the results so that all the sentences were in the same style of case. In the case of status civil feature, some answers are wroten as *'Unión libre'*, while other was wroten as *'Unión Libre'*. 
+
+The line with the bug: 
+
+`ifelse(is.na(dataSet$DD6),dataSet$DD6<-NA,dataSet$DD6<-"Unión Libre")`
+
+The line after being fixed
+`ifelse(is.na(dataSet$DD6),dataSet$DD6<-NA,dataSet[dataSet$DD6=='Unión libre',7]<-"Unión Libre")`
+
+
+The second bug was identified in the script that calculates the time of sleep depending of the three variables, *'Time to go the bed'*, *'Time to wake up'*, *'Time to fall asleep'*, in this case, the condition for the calculation does not contemplate that a person could say that he went to bed and got up twelve hours apart. The problem was solved by modifying the conditional operator of $>$ to $\geq$.
+
+Code with bug:
+```
+  if(HD>HL){
+    HD<-HD-12.00
+  }
+  SE<-abs(HL-HD)
+  SE<-SE-round(minutos/60,digits = 2)
+```
+
+Code after being fixed:
+```
+  if(HD>=HL){
+    HD<-HD-12.00
+  }
+  SE<-abs(HL-HD)
+  SE<-SE-round(minutos/60,digits = 2)
+```
+
+The third bug was corrected by adding two condition per values before ignored. Values in the range of $(-\infty,0)$ must be taken a NA value, and values in the range of $[0,1)$ must be transformed by adding 12.00.
+
+The lines that were added are:
+
+```
+  if(s3<0){s3<-NA}
+  if(!is.na(s3) && s3<1){s3=12+s3}
+```
+
+The second step was to work with the missing values in the continouos features and missing values in the categorical demographic features. Records containing missing values were eliminated as proposed in the data qulaity plan described in Table \@ref(tab-data-quality-plan) and \@ref(tab-data-quality-plan-categorical-demographic) respectively.
+
+
+
+```{r recordwithNA-continuous}
 #identifica el índice del registro donde existe un valor faltante
 recNA<-c(which(is.na(QS_data$DD1)),which(is.na(QS_data$SQ1)),which(is.na(QS_data$SQ2)), which(is.na(QS_data$SQ3)),which(is.na(QS_data$SQ4)))
 #elimina los índices repetidos
@@ -173,29 +259,28 @@ rownames(QS_data)<-1:nrow(QS_data)
 #duplicated(recNA) #función que encuentra los duplicados en un vector
 ```
 
+```{r recordwithNA-categorical-demographics}
+#identifica el índice del registro donde existe un valor faltante
 
+#recNA<-c(which(is.na(QS_data$DD2)),which(is.na(QS_data$DD3)),which(is.na(QS_data$DD4)), which(is.na(QS_data$DD5)),which(is.na(QS_data$DD6)))
 
-### Outliers
+#esta línea de código identifica valores faltantes en las columnas de la 3 a la 9, como la
+#fucnion which regresa los indices de la celda donde se encuetra el faltante tomando cada celda con un valor consecutivo, del resultado debe extraerse el residuo de la división entre el número de celda y la cantidad de registros en el dataset. "Esta es la forma de llegar al registro correcto donde está
+#el valor faltante"
 
-Histograms and boxplot were generated to observe the behaviour of the data. 
-```{r histograms-bocplots}
-library(ggplot2)
+recNA<-c(which(is.na(QS_data[,3:9])))%%dim(QS_data)[1]
 
-histDD1<-ggplot(data=QS_data,aes(DD1))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ1<-ggplot(data=QS_data,aes(SQ1))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ2<-ggplot(data=QS_data,aes(SQ2))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ3<-ggplot(data=QS_data,aes(SQ3))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ4<-ggplot(data=QS_data,aes(SQ4))+geom_histogram(bins = 30)+labs(y="Count")
+#elimina los índices repetidos
+recNA<-unique(recNA)
+#elimina los registros donde hay faltantes
+QS_data<-QS_data[-recNA,]
+#reestructura los índices del dataset
+rownames(QS_data)<-1:nrow(QS_data)
 
-boxplotDD1<-ggplot(data=QS_data, aes(as.factor(DD2),DD1))+geom_boxplot()+labs(x="Gender")
-boxplotSQ1<-ggplot(data=QS_data, aes(as.factor(DD2),SQ1))+geom_boxplot()+labs(x="Gender")
-boxplotSQ2<-ggplot(data=QS_data, aes(as.factor(DD2),SQ2))+geom_boxplot()+labs(x="Gender")
-boxplotSQ3<-ggplot(data=QS_data, aes(as.factor(DD2),SQ3))+geom_boxplot()+labs(x="Gender")
-boxplotSQ4<-ggplot(data=QS_data, aes(as.factor(DD2),SQ4))+geom_boxplot()+labs(x="Gender")
-
-
-multiplot(histDD1,histSQ1,histSQ2,histSQ3,histSQ4,boxplotDD1,boxplotSQ1,boxplotSQ2,boxplotSQ3,boxplotSQ4,cols=2)
+#duplicated(recNA) #función que encuentra los duplicados en un vector
 ```
+
+
 
 The plots show that there exist outliers in the data, so an analytics procedure was performed to obtain the records containing the outliers. Values out of the three standard deviation were considered as outliers for each variable.
 
