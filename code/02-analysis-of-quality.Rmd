@@ -265,7 +265,7 @@ rownames(QS_data)<-1:nrow(QS_data)
 #recNA<-c(which(is.na(QS_data$DD2)),which(is.na(QS_data$DD3)),which(is.na(QS_data$DD4)), which(is.na(QS_data$DD5)),which(is.na(QS_data$DD6)))
 
 #esta línea de código identifica valores faltantes en las columnas de la 3 a la 9, como la
-#fucnion which regresa los indices de la celda donde se encuetra el faltante tomando cada celda con un valor consecutivo, del resultado debe extraerse el residuo de la división entre el número de celda y la cantidad de registros en el dataset. "Esta es la forma de llegar al registro correcto donde está
+#funcion which regresa los indices de la celda donde se encuetra el faltante tomando cada celda con un valor consecutivo, del resultado debe extraerse el residuo de la división entre el número de celda y la cantidad de registros en el dataset. "Esta es la forma de llegar al registro correcto donde está
 #el valor faltante"
 
 recNA<-c(which(is.na(QS_data[,3:9])))%%dim(QS_data)[1]
