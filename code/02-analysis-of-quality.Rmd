@@ -36,15 +36,15 @@ knitr::opts_chunk$set(echo = FALSE,root.dir="C:/Master/apuntes-articulo-feature-
 
 Before to generate the quality report of the data, the data are loaded and passed for a process of validation and restructuration. This process includes the renaming of the columns and data validation for columns as time and age. Additionally, the values for the responses of SHI and PSQI questionnaires was recodified from original responses ('Nunca','Casi nunca','Algunas veces','Frecuentemente','Siempre') to data that can be used to numerical and algorithmical analysis ('0','1','2','3','4').
 
-```{r lee_data_set_original, echo=FALSE}
+```{r lee_dataset__con_scripts_originales, echo=FALSE}
 user<-Sys.info()[7]
 user<-user[[1]]
 ruta<-paste("C:/Users/",user,"/Google Drive/Doctorado/Tesis/Data/",sep = "") 
-  d_crudos<-read.csv(file=paste(ruta,"responses.csv",sep = ""),header = T,sep = ",")
+  d_resp_Bad_script<-read.csv(file=paste(ruta,"responses_after_preproc_1.1.csv",sep = ""),header = T,sep = ",")
 
-QS_data<-preproceso_1(d_crudos,2)
+d_resp_Bad_script<-d_resp_Bad_script[-1]
   
-write.csv(file=paste(ruta,"responses_after_preproc_1.1.csv",sep = ""),QS_data)
+#write.csv(file=paste(ruta,"responses_after_preproc_1.1.csv",sep = ""),QS_data)
 
 
 ```
@@ -69,8 +69,8 @@ A report of data quality was performed at this time, showing the main metrics fo
 The dataset contains five continuous features, one for demographic data (DD1=AGE) and four features that measure the sleep duration (SQ1="Time to go to bed", SQ2="Latency of sleep", SQ3="Time to wake up", SQ4="Period of time between going to bed and waking up").
 
 
-```{r report-of-quality-contfeat}
-dfCONTFEAT<-cbind.data.frame(DD1=QS_data[,2],QS_data[,10:13])
+```{r report-of-quality-contfeat-bad-script}
+dfCONTFEAT<-cbind.data.frame(DD1=d_resp_Bad_script[,2],d_resp_Bad_script[,10:13])
 DRCONT<-QOfContinuousF(dfCONTFEAT)
 DRCONT
 
@@ -94,17 +94,17 @@ Histograms and boxplot were generated to observe the behaviour of the data.
 ```{r histograms-bocplots}
 library(ggplot2)
 
-histDD1<-ggplot(data=QS_data,aes(DD1))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ1<-ggplot(data=QS_data,aes(SQ1))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ2<-ggplot(data=QS_data,aes(SQ2))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ3<-ggplot(data=QS_data,aes(SQ3))+geom_histogram(bins = 30)+labs(y="Count")
-histSQ4<-ggplot(data=QS_data,aes(SQ4))+geom_histogram(bins = 30)+labs(y="Count")
+histDD1<-ggplot(data=d_resp_Bad_script,aes(DD1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ1<-ggplot(data=d_resp_Bad_script,aes(SQ1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ2<-ggplot(data=d_resp_Bad_script,aes(SQ2))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ3<-ggplot(data=d_resp_Bad_script,aes(SQ3))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ4<-ggplot(data=d_resp_Bad_script,aes(SQ4))+geom_histogram(bins = 30)+labs(y="Count")
 
-boxplotDD1<-ggplot(data=QS_data, aes(as.factor(DD2),DD1))+geom_boxplot()+labs(x="Gender")
-boxplotSQ1<-ggplot(data=QS_data, aes(as.factor(DD2),SQ1))+geom_boxplot()+labs(x="Gender")
-boxplotSQ2<-ggplot(data=QS_data, aes(as.factor(DD2),SQ2))+geom_boxplot()+labs(x="Gender")
-boxplotSQ3<-ggplot(data=QS_data, aes(as.factor(DD2),SQ3))+geom_boxplot()+labs(x="Gender")
-boxplotSQ4<-ggplot(data=QS_data, aes(as.factor(DD2),SQ4))+geom_boxplot()+labs(x="Gender")
+boxplotDD1<-ggplot(data=d_resp_Bad_script, aes(as.factor(DD2),DD1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ1<-ggplot(data=d_resp_Bad_script, aes(as.factor(DD2),SQ1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ2<-ggplot(data=d_resp_Bad_script, aes(as.factor(DD2),SQ2))+geom_boxplot()+labs(x="Gender")
+boxplotSQ3<-ggplot(data=d_resp_Bad_script, aes(as.factor(DD2),SQ3))+geom_boxplot()+labs(x="Gender")
+boxplotSQ4<-ggplot(data=d_resp_Bad_script, aes(as.factor(DD2),SQ4))+geom_boxplot()+labs(x="Gender")
 
 
 multiplot(histDD1,histSQ1,histSQ2,histSQ3,histSQ4,boxplotDD1,boxplotSQ1,boxplotSQ2,boxplotSQ3,boxplotSQ4,cols=2)
@@ -143,8 +143,8 @@ Table:Data quality plan for continuous features
 The categorical features were divided in two groups, the demographic features are in the first group and the features containing all the information over the sleep hygiene are in other group.
 
 ### Demographics
-```{r report-of-quality-catdemofeat}
-DRCATDEMO<-QOfCategoricalF( cbind.data.frame(QS_data[,3:9]))
+```{r report-of-quality-catdemofeat-bad-script}
+DRCATDEMO<-QOfCategoricalF(cbind.data.frame(d_resp_Bad_script[,3:9]))
 
 DRCATDEMO
 
@@ -152,7 +152,7 @@ DRCATDEMO
 Table: Report-of-quality-of-the-categorical-demographic-features
 
 
-The table \@ref(Report-of-quality-of-the-categorical-demographic-features) shows only one irregularity in this set of variables, the variable DD6 has the hihest mode posible ($100%$), if data are right, all respondents are living in free union status  which is very doubtful taken in account the population were the questionnaire was applied. There are less missing values than in the continuous features, so, it is possible to think in eliminate the records. The cardinality is not a problem in this set of features (except for the variable DD6 as commented above), since all posibilities have representation. In the two cases (features DD7 and DD8) where the mode capture a high percentage of the data, the information is good for this research. DD7 refers to people who suffer some chronic disease, the best answer to this work is "Any" because the intention is to work with healthy people, likewise in the DD8 variable that ask to the people if they are in some crisis that disrups their sleep, the best answer to this work is "No", fortunatelly, this is the mode.
+The table \@ref(Report-of-quality-of-the-categorical-demographic-features) shows only one irregularity in this set of variables, the variable DD6 has the hihest mode posible ($100\%$), if data are right, all respondents are living in free union status  which is very doubtful taken in account the population were the questionnaire was applied. There are less missing values than in the continuous features, so, it is possible to think in eliminate the records. The cardinality is not a problem in this set of features (except for the variable DD6 as commented above), since all posibilities have representation. In the two cases (features DD7 and DD8) where the mode capture a high percentage of the data, the information is good for this research. DD7 refers to people who suffer some chronic disease, the best answer to this work is "Any" because the intention is to work with healthy people, likewise in the DD8 variable that ask to the people if they are in some crisis that disrups their sleep, the best answer to this work is "No", fortunatelly, this is the mode.
 
 
 | Feature | Data quality issue                         | Strategie                                                                                                                                     |
@@ -177,7 +177,7 @@ Table:Data quality plan for categorical demographic features
 ### Slepp hygiene
 
 ```{r report-of-quality-catshfeat}
-DRCATSH<-QOfCategoricalF(cbind.data.frame(QS_data[,28:48]))
+DRCATSH<-QOfCategoricalF(cbind.data.frame(d_resp_Bad_script[,28:48]))
 
 DRCATSH
 ```
@@ -189,13 +189,27 @@ In Table \@ref(Report-of-quality-of-the-sleep-hygiene-features), the cardinality
 This set of data has small number of missing values, however, in this case it is possible to impute data due to the features together represents a behavior of the person. The KNN algorithm performs data imputation using similarity, thus, in this case a good approximation to the true data could be computed taken as reference the 20 remaining features of the neighbors to determine the missing value.
 
 
-| Feature | Data quality issue           | Strategie                                                                                                                                                                                                                                            |
-|---------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SH8     | The mode is very high (>94%) | Analyze the relevance of include this variable to the analysis due the few variability                                                                                                                                                               |
-| SH9     | The mode is high (>81%)      | Analyze the relevance of include this variable to the analysis due the few variability                                                                                                                                                               |
-| All     | Missing values               | The percentage of missing values is small, however imputation will be performed for those records with missing values after the deletion of records with missing values in the others set of data (continuous and demographic-categorical features)  |
+| Feature | Data quality issue                         | Strategie                                                                                                                                     |
+|---------|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| SH8     | The mode is very high (>94%)                        | Analyze the relevance of include this variable to the analysis due the few variability                                                                                                                                                                                                 |
+| SH9     | The mode is high (>81%)                             | Analyze the relevance of include this variable to the analysis due the few variability                                                                                                                                                                                                 |
+| All     | Missing values                             | The percentage of missing values is small, however imputation will be performed for those records with missing values after the deletion of records with missing values in the others set of data (continuous and demographic categorical features) |
 
 Table: Potential-strategies-to-attend-SH-features
+
+
+<!-- \begin{table}[ht] -->
+<!-- \centering -->
+<!-- \caption{Potential strategies to attend SH features} -->
+<!-- \label{Table: Potential-strategies-to-attend-SH-features} -->
+<!-- \begin{tabular}{|l|l|l|} -->
+<!-- \hline -->
+<!-- Feature & Data quality issue                       & Strategie                                                                                                                                                                                                                                           \\ \hline -->
+<!-- SH8     & The mode is very high (\textgreater94\%) & Analyze the relevance of include this variable to the analysis due the few variability                                                                                                                                                              \\ \hline -->
+<!-- SH9     & The mode is high (\textgreater81\%)      & Analyze the relevance of include this variable to the analysis due the few variability                                                                                                                                                              \\ \hline -->
+<!-- All     & Missing values                           & The percentage of missing values is small, however imputation will be performed for those records with missing values after the deletion of records with missing values in the others set of data (continuous and demographic-categorical features) \\ \hline -->
+<!-- \end{tabular} -->
+<!-- \end{table} -->
 
 
 
@@ -238,12 +252,45 @@ The third bug was corrected by adding two condition per values before ignored. V
 The lines that were added are:
 
 ```
-  if(s3<0){s3<-NA}
-  if(!is.na(s3) && s3<1){s3=12+s3}
+  if(!is.na(s3)){
+    if(as.numeric(s3)<0){
+      s3<-NA
+    }else if(as.numeric(s3)<1){
+      s3=as.numeric(s3)+12
+    }else{
+      s3<-as.numeric(s3)
+    }
+  }
 ```
 
-The second step was to work with the missing values in the continouos features and missing values in the categorical demographic features. Records containing missing values were eliminated as proposed in the data qulaity plan described in Table \@ref(tab-data-quality-plan) and \@ref(tab-data-quality-plan-categorical-demographic) respectively.
 
+```{r}
+user<-Sys.info()[7]
+user<-user[[1]]
+ruta<-paste("C:/Users/",user,"/Google Drive/Doctorado/Tesis/Data/",sep = "") 
+  d_crudos<-read.csv(file=paste(ruta,"responses.csv",sep = ""),header = T,sep = ",")
+
+QS_data<-preproceso_1(d_crudos,2)
+```
+
+The quality reports generated after apply this corrections, show a difference in the identified features with possible issues due to a wrong treatment.
+
+```{r data-quality-report-contfeat}
+dfCONTFEAT<-cbind.data.frame(DD1=QS_data[,2],QS_data[,10:13])
+DRCONT<-QOfContinuousF(dfCONTFEAT)
+DRCONT
+
+```
+
+```{r data-quality-report-catdemofeat}
+DRCATDEMO<-QOfCategoricalF(cbind.data.frame(QS_data[,3:9]))
+DRCATDEMO
+```
+
+The minimum value in SQ1 is not zero as before, now it is one, which is reasonable; the variable SQ4 do not have a negative value as minimum value. The present also is very small ($0.12$) and was verified in the raw data, the conclusion is that it was a wrong user capture, the respondent said that he/she go to bed at 12:30 and wakes up at 12:42 every day. On the other hand, the civil status (DD6) has a congruent value for the sample of study, the $53.55\%$ of the respondents said be married and $35.21\%$ be single, in contrast with previous data where it was reported that $100\%$ of the people had a 'Free union' civil status.  
+
+
+The second step was to work with the missing values in the continuous features and missing values in the categorical demographic features. Records containing missing values were eliminated as proposed in the data qulaity plan described in Table \@ref(tab-data-quality-plan) and \@ref(tab-data-quality-plan-categorical-demographic) respectively.
 
 
 ```{r recordwithNA-continuous}
@@ -281,35 +328,66 @@ rownames(QS_data)<-1:nrow(QS_data)
 ```
 
 
+After applying the process to delete records with missing values in continuous and categorical demographics features the dataset reducts its dimentionality from `r dim(d_crudos)[1]` to `r dim(QS_data)[1]`, which represents a reduction of `r round((dim(d_crudos)[1] - dim(QS_data)[1])/dim(d_crudos)[1],digits=3)`% of the original data.
 
-The plots show that there exist outliers in the data, so an analytics procedure was performed to obtain the records containing the outliers. Values out of the three standard deviation were considered as outliers for each variable.
+
+
+In the third step of this stage the atypical values are identified to exclude them from the dataset that will serve as a source of the training of the model. The process excludes records that exceed three standard deviations in the variable SQ4 ('time the person spent asleep'). This variable is of high impact on the quality of sleep and is not considered within the factors of sleep hygiene. Another indicator of a possible sleep disorder is the latency, latency is the time between a person go to bed and he/she fall asleep. The records where this feature has outliers, also were deleted. 
+
 
 ```{r scoring-outliers}
 library(outliers)
 library(magrittr)
 ic<-0.99
 
-outDD1<-scores(QS_data$DD1,type = "z",prob = ic)%>%which(.)
-outSQ1<-scores(QS_data$SQ1,type = "z",prob = ic)%>%which(.)
-outSQ2<-scores(QS_data$SQ2,type = "z",prob = ic)%>%which(.)
-outSQ3<-scores(QS_data$SQ3,type = "z",prob = ic)%>%which(.)
 outSQ4<-scores(QS_data$SQ4,type = "z",prob = ic)%>%which(.)
+outSQ4<-unique(outSQ4)
+#elimina los registros donde hay valores atípicos
+QS_data<-QS_data[-outSQ4,]
+#reestructura los índices del dataset
+rownames(QS_data)<-1:nrow(QS_data)
+
+outSQ2<-scores(QS_data$SQ2,type = "z",prob = ic)%>%which(.)
+outSQ2<-unique(outSQ2)
+#elimina los registros donde hay valores atípicos
+QS_data<-QS_data[-outSQ2,]
+#reestructura los índices del dataset
+rownames(QS_data)<-1:nrow(QS_data)
+
+
+
+```
+
+After delete records with outliers n continuous variables the dataset reducts its dimentionality from `r dim(d_crudos)[1]` to `r dim(QS_data)[1]`, which represents a reduction of `r round((dim(d_crudos)[1] - dim(QS_data)[1])/dim(d_crudos)[1],digits=3)`% of the original data.
+
+The following figure, shows the histograms and boxplots after eliminated records with outliers in SQ2 and SQ4, boxplots in these two variables make it clear that do not outliers were found for these features. DD1 has no outliers too even though maintaining the original records.
+
+```{r histograms-boxplots}
+library(ggplot2)
+
+histDD1<-ggplot(data=QS_data,aes(DD1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ1<-ggplot(data=QS_data,aes(SQ1))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ2<-ggplot(data=QS_data,aes(SQ2))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ3<-ggplot(data=QS_data,aes(SQ3))+geom_histogram(bins = 30)+labs(y="Count")
+histSQ4<-ggplot(data=QS_data,aes(SQ4))+geom_histogram(bins = 30)+labs(y="Count")
+
+boxplotDD1<-ggplot(data=QS_data, aes(as.factor(DD2),DD1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ1<-ggplot(data=QS_data, aes(as.factor(DD2),SQ1))+geom_boxplot()+labs(x="Gender")
+boxplotSQ2<-ggplot(data=QS_data, aes(as.factor(DD2),SQ2))+geom_boxplot()+labs(x="Gender")
+boxplotSQ3<-ggplot(data=QS_data, aes(as.factor(DD2),SQ3))+geom_boxplot()+labs(x="Gender")
+boxplotSQ4<-ggplot(data=QS_data, aes(as.factor(DD2),SQ4))+geom_boxplot()+labs(x="Gender")
+
+
+multiplot(histDD1,histSQ1,histSQ2,histSQ3,histSQ4,boxplotDD1,boxplotSQ1,boxplotSQ2,boxplotSQ3,boxplotSQ4,cols=2)
+```
+
+```{r}
+
+recNA<-c(which(is.na(QS_data[,14:48])))%%dim(QS_data)[1]
+
 ```
 
 
-
-In the other hand, there are missing values in this dataset, in order to procede to next step, it is important to solve 
-
-```{r report-of-quality-catfeat}
-dfCATFEAT<-cbind.data.frame(QS_data[,3:9],QS_data[,14:48])
-DRCAT<-QOfCategoricalF(dfCATFEAT)
-DRCAT
-
-
-which(is.na(QS_data$DD1)) 
-```
-
-<!--  17 151 154 203 206 239 -->
 
 ```{r}
 # library(yaImpute)
@@ -322,15 +400,6 @@ which(is.na(QS_data$DD1))
 # plot(malImp)
 
 ```
-
-
-# Analysis of quality on ABT
-
-The dataset for this work is generated in two stages, the first one obtains the data through the answers of the respondents, while in the second new columns are generated by the computation of the scales of the PSQI and SHI questionnaires. At the end of the first stage, a report of data quality was generated with exploratory purposes. Some relevant decisions will be taken as result of this observation, for instance, if all columns should be part of the final dataset, depending of the quantity of missing values are on them.
-
-
-
-The dataset obtained by the answers of the respondents is a `r dim(d_crudos)[1]`  x `r dim(d_crudos)[2]` dataset, it contains  
 
 
 

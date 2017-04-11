@@ -47,8 +47,28 @@ valida_tiempo=function(strQs1){
   }else{
     s3<-NA
   }
-  if(s3<0){s3<-NA}
-  if(!is.na(s3) && s3<1){s3=12+s3}
+  
+  tryCatch(
+    {
+      if(!is.na(s3)){
+        if(as.numeric(s3)<0){
+          s3<-NA
+        }else if(as.numeric(s3)<1){
+          s3=as.numeric(s3)+12
+        }else{
+          s3<-as.numeric(s3)
+        }
+      }
+      
+    },
+    error=function(e) {
+      message(paste(e,", s3=",s3,sep = "") )
+    },
+    finally = {
+      
+    }
+  )
+  
   
   return(s3)
 }
