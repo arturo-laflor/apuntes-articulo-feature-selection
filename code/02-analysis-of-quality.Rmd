@@ -388,18 +388,91 @@ recNA<-c(which(is.na(QS_data[,14:48])))%%dim(QS_data)[1]
 ```
 
 
+The following tables show the report of qulaity in the dataset after apply deletion of missing values, exclusion of records containing outliers and imputation of missing values in variables that are closely related with the training of the model.
+
 
 ```{r}
-# library(yaImpute)
-# library(randomForest)
-# x<-QS_data[,3:9]
-# y<-QS_data$DD1
-# mal<-yai(x=x,y=y,method = "randomForest")
-# impute(mal)
-# malImp=impute(mal,ancillaryData=QS_data)
-# plot(malImp)
+QSREADY<-read.csv(file=paste(ruta,"responses_clean_and_imputed.csv",sep = ""),header = T,sep = ",")
+QSREADY<-QSREADY[-1]
+
+QofDSH<-QOfCategoricalF(QSREADY[,28:48])
+
+write.csv(QofDSH,file = paste(ruta,"qofdsh.csv",sep = ""))
+```
+
+| Feature | Count | Miss | Card | Mode | ModeFrec | ModePerc | Mode2 | Mode2Frec | Mode2Perc |
+|---------|-------|------|------|------|----------|----------|-------|-----------|-----------|
+| SH1     | 306   | 0    | 5    | 1    | 109      | 35.62%   | 0     | 97        | 31.70%    |
+| SH2     | 306   | 0    | 5    | 1    | 109      | 35.62%   | 2     | 107       | 34.97%    |
+| SH3     | 306   | 0    | 5    | 1    | 147      | 48.04%   | 2     | 70        | 22.88%    |
+| SH4     | 306   | 0    | 5    | 0    | 186      | 60.78%   | 1     | 63        | 20.59%    |
+| SH5     | 306   | 0    | 5    | 0    | 159      | 51.96%   | 2     | 56        | 18.30%    |
+| SH6     | 306   | 0    | 5    | 0    | 135      | 44.12%   | 1     | 69        | 22.55%    |
+| SH7     | 306   | 0    | 5    | 0    | 128      | 41.83%   | 1     | 99        | 32.35%    |
+| SH8     | 306   | 0    | 5    | 0    | 292      | 95.42%   | 3     | 5         | 1.63%     |
+| SH9     | 306   | 0    | 4    | 0    | 254      | 83.01%   | 1     | 30        | 9.80%     |
+| SH10    | 306   | 0    | 5    | 0    | 201      | 65.69%   | 1     | 53        | 17.32%    |
+| SH11    | 306   | 0    | 5    | 0    | 95       | 31.05%   | 2     | 69        | 22.55%    |
+| SH12    | 306   | 0    | 5    | 1    | 122      | 39.87%   | 2     | 99        | 32.35%    |
+| SH13    | 306   | 0    | 5    | 2    | 85       | 27.78%   | 1     | 69        | 22.55%    |
+| SH14    | 306   | 0    | 5    | 0    | 188      | 61.44%   | 1     | 54        | 17.65%    |
+| SH15    | 306   | 0    | 5    | 0    | 94       | 30.72%   | 1     | 80        | 26.14%    |
+| SH16    | 306   | 0    | 5    | 0    | 150      | 49.02%   | 1     | 76        | 24.84%    |
+| SH17    | 306   | 0    | 5    | 0    | 200      | 65.36%   | 1     | 78        | 25.49%    |
+| SH18    | 306   | 0    | 5    | 0    | 158      | 51.63%   | 1     | 73        | 23.86%    |
+| SH19    | 306   | 0    | 5    | 0    | 112      | 36.60%   | 1     | 78        | 25.49%    |
+| SH20    | 306   | 0    | 5    | 2    | 107      | 34.97%   | 1     | 85        | 27.78%    |
+| SH21    | 306   | 0    | 5    | 1    | 122      | 39.87%   | 2     | 88        | 28.76%    |
+
+<!-- \begin{table}[ht] -->
+<!-- \centering -->
+<!-- \caption{Report of Quality of SH features after cleaning and imputation} -->
+<!-- \label{tab-report-of-quality-of-sh-features} -->
+<!-- \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|} -->
+<!-- \hline -->
+<!-- Feature & Count & Miss & Card & Mode & ModeFrec & ModePerc & Mode2 & Mode2Frec & Mode2Perc \\ \hline -->
+<!-- SH1     & 306   & 0    & 5    & 1    & 109      & 35.62\%  & 0     & 97        & 31.70\%   \\ \hline -->
+<!-- SH2     & 306   & 0    & 5    & 1    & 109      & 35.62\%  & 2     & 107       & 34.97\%   \\ \hline -->
+<!-- SH3     & 306   & 0    & 5    & 1    & 147      & 48.04\%  & 2     & 70        & 22.88\%   \\ \hline -->
+<!-- SH4     & 306   & 0    & 5    & 0    & 186      & 60.78\%  & 1     & 63        & 20.59\%   \\ \hline -->
+<!-- SH5     & 306   & 0    & 5    & 0    & 159      & 51.96\%  & 2     & 56        & 18.30\%   \\ \hline -->
+<!-- SH6     & 306   & 0    & 5    & 0    & 135      & 44.12\%  & 1     & 69        & 22.55\%   \\ \hline -->
+<!-- SH7     & 306   & 0    & 5    & 0    & 128      & 41.83\%  & 1     & 99        & 32.35\%   \\ \hline -->
+<!-- SH8     & 306   & 0    & 5    & 0    & 292      & 95.42\%  & 3     & 5         & 1.63\%    \\ \hline -->
+<!-- SH9     & 306   & 0    & 4    & 0    & 254      & 83.01\%  & 1     & 30        & 9.80\%    \\ \hline -->
+<!-- SH10    & 306   & 0    & 5    & 0    & 201      & 65.69\%  & 1     & 53        & 17.32\%   \\ \hline -->
+<!-- SH11    & 306   & 0    & 5    & 0    & 95       & 31.05\%  & 2     & 69        & 22.55\%   \\ \hline -->
+<!-- SH12    & 306   & 0    & 5    & 1    & 122      & 39.87\%  & 2     & 99        & 32.35\%   \\ \hline -->
+<!-- SH13    & 306   & 0    & 5    & 2    & 85       & 27.78\%  & 1     & 69        & 22.55\%   \\ \hline -->
+<!-- SH14    & 306   & 0    & 5    & 0    & 188      & 61.44\%  & 1     & 54        & 17.65\%   \\ \hline -->
+<!-- SH15    & 306   & 0    & 5    & 0    & 94       & 30.72\%  & 1     & 80        & 26.14\%   \\ \hline -->
+<!-- SH16    & 306   & 0    & 5    & 0    & 150      & 49.02\%  & 1     & 76        & 24.84\%   \\ \hline -->
+<!-- SH17    & 306   & 0    & 5    & 0    & 200      & 65.36\%  & 1     & 78        & 25.49\%   \\ \hline -->
+<!-- SH18    & 306   & 0    & 5    & 0    & 158      & 51.63\%  & 1     & 73        & 23.86\%   \\ \hline -->
+<!-- SH19    & 306   & 0    & 5    & 0    & 112      & 36.60\%  & 1     & 78        & 25.49\%   \\ \hline -->
+<!-- SH20    & 306   & 0    & 5    & 2    & 107      & 34.97\%  & 1     & 85        & 27.78\%   \\ \hline -->
+<!-- SH21    & 306   & 0    & 5    & 1    & 122      & 39.87\%  & 2     & 88        & 28.76\%   \\ \hline -->
+<!-- \end{tabular} -->
+<!-- \end{table} -->
+
+With exception of high percentages in mode of the SH8 and SH9, all other features present a good behavior in the dataset. The issue of SH8 and SH9 will be attended in a future stage of the work, the process of feature selection will take care of this.
+
+
+The last process to be carried out in this stage is the calculation of SHI and PSQI scores through the scales provided by the respective questionnaires.
+
+```{r}
+QSSHICOMPLETE<-baremo_PSQI(QSREADY,2)
+QSSHICOMPLETE<-baremo_SHI(QSSHICOMPLETE)
+
+write.csv(QSSHICOMPLETE,file = paste(ruta,"QSSHICOMPLETE.csv",sep = ""))
+
+str(QSSHICOMPLETE)
 
 ```
+
+The final dataset to be used in the process of feature selection is a `r dim(QSSHICOMPLETE)[1] x dim(QSSHICOMPLETE)[2]` dataset containing 10 continuous features, 51 categorical features and one ID feature. The following table shows an outline of the dataset.
+
+
 
 
 

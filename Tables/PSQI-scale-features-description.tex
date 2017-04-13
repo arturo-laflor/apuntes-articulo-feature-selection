@@ -1,0 +1,29 @@
+\documentclass[10pt,letterpaper,oneside]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{multicol}
+\begin{document}
+	% Please add the following required packages to your document preamble:
+	% \usepackage{multirow}
+	\begin{table}[]
+		\centering
+		\caption{My caption}
+		\label{my-label}
+		\begin{tabular}{lllll}
+			\multicolumn{1}{c}{\textbf{Group}} & \multicolumn{1}{c}{\textbf{Feature}} & \multicolumn{1}{c}{\textbf{Type}} & \multicolumn{1}{c}{\textbf{Value}}                     & \multicolumn{1}{c}{\textbf{Role}} \\
+			\multirow{9}{*}{PSQI Scale} & SQDUR & \multirow{7}{*}{Categorical} & \multirow{7}{*}{A level variable. $ 0 < SQ*\leq 3 $.} & Results of SQ duration. A 0 value is the best for sleep quality and 3 is the worst.                                           \\
+			& SQDIS &                              &                                                       & Results of SQ disturbances. A 0 value is the best for sleep quality and 3 is the worst.                                       \\
+			& SQLAT &                              &                                                       & Results of SQ latency. A 0 value is the best for sleep quality and 3 is the worst.                                            \\
+			& SQDD  &                              &                                                       & Results of SQ day dysfunction. A 0 value is the best for sleep quality and 3 is the worst.                                    \\
+			& SQSE  &                              &                                                       & Results of SQ sleep efficiency. A 0 value is the best for sleep quality and 3 is the worst.                                   \\
+			& SQSQ  &                              &                                                       & Results of SQ sleep quality general perception of the respondent. A 0 value is the best for sleep quality and 3 is the worst. \\
+			& SQMS  &                              &                                                       & Results of SQ, needs meds. A 0 value is the best for sleep quality and 3 is the worst.                                        \\
+			& SQTT  & Continuous                   & An integer value. $ 0 < SQ*\leq 21 $.                 & Total of PSQI                                                                                                                 \\
+			& SQCL  & Categorical                  & A level value.                                        & {[}Good|Poor{]}                                                                                                              
+		\end{tabular}
+	\end{table}
+\end{document}
