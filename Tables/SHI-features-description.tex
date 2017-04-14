@@ -7,35 +7,36 @@
 \usepackage{multirow}
 \usepackage{multicol}
 \begin{document}
-	% Please add the following required packages to your document preamble:
-	% \usepackage{multirow}
-	\begin{table}[]
-		\centering
-		\caption{My caption}
-		\label{my-label}
-		\begin{tabular}{lllll}
-			\multicolumn{1}{c}{\textbf{Group}} & \multicolumn{1}{c}{\textbf{Feature}} & \multicolumn{1}{c}{\textbf{Type}} & \multicolumn{1}{c}{\textbf{Values}}                    & \multicolumn{1}{c}{\textbf{Role}}                                                                                                       \\
-			\multirow{21}{*}{SHI}              & SHI                                  & \multirow{21}{*}{Categorical}     & \multirow{21}{*}{A level variable. $ 0 < SH*\leq 4 $.} & \multirow{21}{*}{Predictive Features,+ (Provide information for SHI scale). A 0 value is the best for sleep hygiene and 4 is the worst} \\
-			& SH2                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH3                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH4                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH5                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH6                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH7                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH8                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH9                                  &                                   &                                                        &                                                                                                                                         \\
-			& SH10                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH11                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH12                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH13                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH14                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH15                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH16                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH17                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH18                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH19                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH20                                 &                                   &                                                        &                                                                                                                                         \\
-			& SH21                                 &                                   &                                                        &                                                                                                                                        
-		\end{tabular}
-	\end{table}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Group}} & \multicolumn{1}{c|}{\textbf{Feature}} & \multicolumn{1}{c|}{\textbf{Type}} & \multicolumn{1}{c|}{\textbf{Values}} & \multicolumn{1}{c|}{\textbf{Role}}   \\ \hline
+		\multirow{21}{*}{SHI}  & SHI  & \multirow{21}{*}{Categorical} & \multirow{21}{3cm}{A level variable. $ 0 < SH*\leq 4 $.} & \multirow{21}{5cm}{Predictive Features (Provide information for SHI scale). A 0 value is the best for sleep hygiene and 4 is the worst} \\ \cline{2-2}
+		& SH2                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH3                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH4                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH5                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH6                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH7                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH8                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH9                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH10                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH11                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH12                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH13                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH14                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH15                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH16                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH17                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH18                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH19                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH20                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH21                                  &                                    &                                                        &                                                                                                                                         \\ \hline
+	\end{tabular}
+\end{table}
 \end{document}
