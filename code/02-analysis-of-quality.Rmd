@@ -470,57 +470,121 @@ str(QSSHICOMPLETE)
 
 ```
 
-The final dataset to be used in the process of feature selection is a `r dim(QSSHICOMPLETE)[1] x dim(QSSHICOMPLETE)[2]` dataset containing 10 continuous features, 51 categorical features and one ID feature. The following table shows an outline of the dataset.
+The final dataset to be used in the process of feature selection is a `r dim(QSSHICOMPLETE)[1]` x `r dim(QSSHICOMPLETE)[2]` dataset containing 10 continuous features, 51 categorical features and one ID feature. The following table shows an outline of the dataset.
 
 
+| Grupo       | Feature | Type        | Values                                                                                   | Role                                                                                                                          |
+|-------------|---------|-------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| ID          | EMAIL   | Text        | inf                                                                                      | identificator                                                                                                                 |
+| DEMOGRAPHIC | DD1     | Continuous  | An integer number. 17 ≤ DD1 ≤ 100                                                        | Demographic data for statistical purposes only                                                                                |
+|             | DD2     | Categorical | Female, Male                                                                             |                                                                                                                               |
+|             | DD3     |             | Student, Employer, Teacher, Independent professional, Other                              |                                                                                                                               |
+|             | DD4     |             | Intellectual, Physical, More intellectual than physical, More physical than intellectual |                                                                                                                               |
+|             | DD5     |             | SDA, Catholic, Jehovah’s withess, Evangelic, Other                                       |                                                                                                                               |
+|             | DD6     |             | Married, Single, Divorced, Free Union, Other                                             |                                                                                                                               |
+|             | DD7     |             | No, Hypertension, Diabetes, Depression, Other                                            | Demographic information with filtering purposes                                                                               |
+|             | DD8     |             | No, Financial, Divorce process,                                                          |                                                                                                                               |
+|             |         |             | Loss of Family, Other                                                                    |                                                                                                                               |
+| PSQI        | SQ1     | Continuous  | A real numer. 0 ≤ SQ1 ≤ 12                                                               | Provide information to PSQI Scale. A 0 value is the best for sleep quality and 3 is the worst                                 |
+|             | SQ2     |             | An integer number. 0 ≤ SQ2 ≤ 60                                                          |                                                                                                                               |
+|             | SQ3     |             | A real number. 0 ≤ SQ3 ≤ 12                                                              |                                                                                                                               |
+|             | SQ4     |             | A real number. 0 ≤ SQ4 ≤ 12                                                              |                                                                                                                               |
+|             | SQ5a    | Categorical |                                                                                          |                                                                                                                               |
+|             | SQ5b    |             |                                                                                          |                                                                                                                               |
+|             | SQ5c    |             |                                                                                          |                                                                                                                               |
+|             | SQ5d    |             |                                                                                          |                                                                                                                               |
+|             | SQ5e    |             |                                                                                          |                                                                                                                               |
+|             | SQ5f    |             |                                                                                          |                                                                                                                               |
+|             | SQ5g    |             | A level variable. 0 ≤ SQ∗ ≤ 3.                                                           |                                                                                                                               |
+|             | SQ5h    |             |                                                                                          |                                                                                                                               |
+|             | SQ5i    |             |                                                                                          |                                                                                                                               |
+|             | SQ5j    |             |                                                                                          |                                                                                                                               |
+|             | SQ6     |             |                                                                                          |                                                                                                                               |
+|             | SQ7     |             |                                                                                          |                                                                                                                               |
+|             | SQ8     |             |                                                                                          |                                                                                                                               |
+|             | SQ9     |             |                                                                                          |                                                                                                                               |
+| PSQI SCALE  | SQDUR   | Categorical | A level variable. 0 < SQ∗ ≤ 3.                                                           | Results of SQ duration. A 0 value is the best for sleep quality and 3 is the worst.                                           |
+|             | SQDIS   |             |                                                                                          | Results of SQ disturbances. A 0 value is the best for sleep quality and 3 is the worst.                                       |
+|             | SQLAT   |             |                                                                                          | Results of SQ latency. A 0 value is the best for sleep quality and 3 is the worst.                                            |
+|             | SQDD    |             |                                                                                          | Results of SQ day dysfunction. A 0 value is the best for sleep quality and 3 is the worst.                                    |
+|             | SQSE    |             |                                                                                          | Results of SQ sleep efficiency. A 0 value is the best for sleep quality and 3 is the worst.                                   |
+|             | SQSQ    |             |                                                                                          | Results of SQ sleep quality general perception of the respondent. A 0 value is the best for sleep quality and 3 is the worst. |
+|             | SQMS    |             |                                                                                          | Results of SQ, needs meds. A 0 value is the best for sleep quality and 3 is the worst.                                        |
+|             | SQTT    | Continuous  | An integer value. 0 < SQTT ≤ 21.                                                         | Total of PSQI                                                                                                                 |
+|             | SQCL    | Categorical | A level value.                                                                           | Good/ Poor                                                                                                                    |
+| SHI         | SHI     | Categorical | A level variable. 0 < SH∗ ≤ 4.                                                           | Predictive Features (Provide information for SHI scale). A 0 value is the best for sleep hygiene and 4 is the worst           |
+|             | SH2     |             |                                                                                          |                                                                                                                               |
+|             | SH3     |             |                                                                                          |                                                                                                                               |
+|             | SH4     |             |                                                                                          |                                                                                                                               |
+|             | SH5     |             |                                                                                          |                                                                                                                               |
+|             | SH6     |             |                                                                                          |                                                                                                                               |
+|             | SH7     |             |                                                                                          |                                                                                                                               |
+|             | SH8     |             |                                                                                          |                                                                                                                               |
+|             | SH9     |             |                                                                                          |                                                                                                                               |
+|             | SH10    |             |                                                                                          |                                                                                                                               |
+|             | SH11    |             |                                                                                          |                                                                                                                               |
+|             | SH12    |             |                                                                                          |                                                                                                                               |
+|             | SH13    |             |                                                                                          |                                                                                                                               |
+|             | SH14    |             |                                                                                          |                                                                                                                               |
+|             | SH15    |             |                                                                                          |                                                                                                                               |
+|             | SH16    |             |                                                                                          |                                                                                                                               |
+|             | SH17    |             |                                                                                          |                                                                                                                               |
+|             | SH18    |             |                                                                                          |                                                                                                                               |
+|             | SH19    |             |                                                                                          |                                                                                                                               |
+|             | SH20    |             |                                                                                          |                                                                                                                               |
+|             | SH21    |             |                                                                                          |                                                                                                                               |
+| SHI SCALE   | SHSTR   | Continuous  | Sum of five SH features. 0 < SQ∗ ≤ 20.                                                   | Group of stress features                                                                                                      |
+|             | SHDIS   |             | Sum of five SH features. 0 < SQ∗ ≤ 20.                                                   | Group of disruptors features                                                                                                  |
+|             | SHCH    |             | Sum of six SH features. 0 < SQ∗ ≤ 24.                                                    | Group of circadian features                                                                                                   |
+|             | SHDG    |             | Sum of three SH features. 0 < SQ∗ ≤ 12.                                                  | Group of drugs features                                                                                                       |
+|             | SHTT    |             | Sum of SHSTR,SHDIS, SHCH and SHDG. 0 < SQ*≤ 76.                                          | Total of SHI                                                                                                                  |
 
 
+<!-- As first step, the ABT will be grouped as Table \@ref(tab-columns-distribution) shows the distribution of variables. ABT contains five groups of variables and each group will be divided in categorical and continuous variables to perform the analysis. At the end, eight tables of analysis of quality will be generated since there are two groups that contains only one type of variables (the SHI group have only  categorical variables, while the Scale SHI contains only continuous variables). -->
 
-As first step, the ABT will be grouped as Table \@ref(tab-columns-distribution) shows the distribution of variables. ABT contains five groups of variables and each group will be divided in categorical and continuous variables to perform the analysis. At the end, eight tables of analysis of quality will be generated since there are two groups that contains only one type of variables (the SHI group have only  categorical variables, while the Scale SHI contains only continuous variables).
+<!-- ## Meaning of the groups names -->
 
-## Meaning of the groups names
-
-  * DDCON:    Demografic data for contiuous variables
-  * DDCAT:    Demografic data for categorical variables
-  * PSQICON:  Continuous variables of the PSQI questionnaire
-  * PSQICAT:  Categorical variables of the PSQI questionnaire
-  * SHICAT:   Categorical variables of the SHI questionnaire
-  * SPSQICON: Continuous variables of the *scale* for PSQI questionnaire
-  * SPSQICAT: Categorical variables of the *scale* for PSQI questionnaire
-  * SSHICON:  Continuous variables of the *scale* for SHI questionnaire
-  * SSHICAT:  Categorical variables of the *scale* for SHI questionnaire
-
-
-```{r, grouping_variables, echo=FALSE}
-
-DDCON<-data.frame(DD1=d_preproc[,2]) #data.frame(NM=d_preproc[,1],DD1=as.factor(d_preproc[,2]))
-DDCAT<-d_preproc[,3:8]
-PSQICON<-d_preproc[,10:13] 
-PSQICAT<-d_preproc[,14:27] 
-SHICAT<- d_preproc[,28:48]   
-SPSQICON<-data.frame(SQTT=d_preproc[,56])
-SPSQICAT<-cbind.data.frame(d_preproc[,49:55],SQCL=d_preproc[,57])
-SSHICON<- d_preproc[,58:62]   
-```
+<!--   * DDCON:    Demografic data for contiuous variables -->
+<!--   * DDCAT:    Demografic data for categorical variables -->
+<!--   * PSQICON:  Continuous variables of the PSQI questionnaire -->
+<!--   * PSQICAT:  Categorical variables of the PSQI questionnaire -->
+<!--   * SHICAT:   Categorical variables of the SHI questionnaire -->
+<!--   * SPSQICON: Continuous variables of the *scale* for PSQI questionnaire -->
+<!--   * SPSQICAT: Categorical variables of the *scale* for PSQI questionnaire -->
+<!--   * SSHICON:  Continuous variables of the *scale* for SHI questionnaire -->
+<!--   * SSHICAT:  Categorical variables of the *scale* for SHI questionnaire -->
 
 
-## Tables containing data for analysis of the continuous variables 
+<!-- ```{r, grouping_variables, echo=FALSE} -->
 
-```{r QofCD_execution}
-CONTFEAT<-QOfContinuousF(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON))
-CONTFEAT
-
-#Arreglar las funciones en github 
-#Qrt1<-apply(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON),2,FUN = function(x) round(quantile(as.numeric(x),.25,na.rm = T),digits = 2))
-
-
-Miss<- apply(responses,2,FUN = function(x)  sum(is.na(x)))
-
-
-```
+<!-- DDCON<-data.frame(DD1=d_preproc[,2]) #data.frame(NM=d_preproc[,1],DD1=as.factor(d_preproc[,2])) -->
+<!-- DDCAT<-d_preproc[,3:8] -->
+<!-- PSQICON<-d_preproc[,10:13]  -->
+<!-- PSQICAT<-d_preproc[,14:27]  -->
+<!-- SHICAT<- d_preproc[,28:48]    -->
+<!-- SPSQICON<-data.frame(SQTT=d_preproc[,56]) -->
+<!-- SPSQICAT<-cbind.data.frame(d_preproc[,49:55],SQCL=d_preproc[,57]) -->
+<!-- SSHICON<- d_preproc[,58:62]    -->
+<!-- ``` -->
 
 
-## Tables containing data for analysis of the categorical variables 
+<!-- ## Tables containing data for analysis of the continuous variables  -->
+
+<!-- ```{r QofCD_execution} -->
+<!-- CONTFEAT<-QOfContinuousF(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON)) -->
+<!-- CONTFEAT -->
+
+<!-- #Arreglar las funciones en github  -->
+<!-- #Qrt1<-apply(cbind.data.frame(DDCON,PSQICON,SPSQICON,SSHICON),2,FUN = function(x) round(quantile(as.numeric(x),.25,na.rm = T),digits = 2)) -->
+
+
+<!-- Miss<- apply(responses,2,FUN = function(x)  sum(is.na(x))) -->
+
+
+<!-- ``` -->
+
+
+<!-- ## Tables containing data for analysis of the categorical variables  -->
 
 
 

@@ -55,5 +55,137 @@ For the purposes of this study and based on what the literature reports regardin
 After the instrument was completed, it was validated by five experts that qualify each item on a escale of 1 to 5 for two metrics, clarity and pertinence. All items were qualified as clear and relevant. with the mean of 4.5 and 4.7 respectively. A sample of 30 people was randomly selected to perform the pilot test and obtain the internal validity of the instrument. Cronbach's alpha for the instrument after pilot test was $\alpha=0.68$. This $\alpha$ value is acceptable and consistent with that reported by [@mastin2006] for the SHI scale, with this we proceeded to apply the questionnaire to a wider population to collect the dataset with which the analyzes were made for the selection of Variables that will be taken into account for the construction of the model.
 
 ## Dataset
-As a result of apply the questionnaire, a raw dataset $(m=342, n=47)$ was obtained, this dataset, have missing data, some columns are no significant in terms of variance, there exist data in a wrong format to analyze, among other data quality issues. To obtain the dataset to the feature selection analysis, it was neccesary a pre-process of data, what included, put the data in right format, a cardinality analysis, a decision of delete incomplete rows vs the use of an algorithm of data imputation, and, the use of an algorithm applying the scale provided by the PSQI questionnaire to obtain the quality of sleep in a dicotomic variable.  
-After this pre-process of data, the final dataset left conformed by 21 columns of predictive variables, one column for the target variable, and four columns containing data for sleep duration that remains in final dataset with statistical propouses only. The predictive variables are the factors of sleep hygiene provided by the SHI scale and the target variable is that resulting from the process of run the algorithm to compute the PSQI scale and evaluate it  through a simple if-else rule.  At the end, the dataset contains 21 ordinal-discrete variables in a 0-4 scale, where 0 is good and 4 is bad; one nominal variable that summarizes the quality of sleep in two ways, good qulaity of sleep and poor quality of sleep; and four continuous variables measuring sleep duration as PSQI indicates. 
+As a result of apply the questionnaire, a raw dataset $(m=342, n=47)$ was obtained, this dataset, have missing data, some columns are no significant in terms of variance, there exist data in a wrong format to analyze, among other data quality issues. To obtain the dataset to the feature selection analysis, it was neccesary a pre-process of data, what included: The data quality analysis, the data quality plan to attend the issues and the implementation of the data quality plan. After this pre-process of data, the final dataset is conformed by one ID, 51 continuous and 10 categorical features grouped as shows the table \@ref(tab:dataset-columns-distribution). 
+
+\begin{table}[ht]
+\centering
+\caption{Columns distribution by its nature}
+\label{tab:dataset-columns-distribution}
+\begin{tabular}{lrrr}
+\hline
+Group             & Categorical & Continuous & Total \\ \hline
+ID                & 0           & 1          & 1     \\
+Demographics data & 7           & 1          & 8     \\
+PSQI              & 14          & 4          & 18    \\
+SHI               & 21          & 0          & 21    \\
+Scale PSQI        & 8           & 1          & 9     \\
+Scale SHI         & 0           & 5          & 5     \\ \hline
+Total             & 50          & 12         & 62    \\ \hline
+\end{tabular}
+\end{table}
+
+
+The complete description of the dataset is in the tables \@ref(tab:demographic-feature-description), \@ref(tab:psqi-features-description),  \@ref(tab:PSQI-Scale-features-description), \@ref(tab:SHI-feature-description) and \@ref(tab:SHI-scale-feature-description). At the end, the dataset contains 21 columns of main predictive variables (SHI), one column for continuous target variable (SQTT), and, one column for categorical target variable (SQCL). The other features in the dataset have diverse purposes as the last column of each table describes.
+
+\begin{table}[ht]
+	\centering
+	\caption{Demographic features description}
+	\label{tab:demographic-feature-description}
+	\begin{tabular}{|l|l|l|p{5cm}|p{4cm}|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Grupo}} & \multicolumn{1}{c|}{\textbf{Feature}} & \multicolumn{1}{c|}{\textbf{Type}} & \multicolumn{1}{c|}{\textbf{Values}}                                                     & \multicolumn{1}{c|}{\textbf{Purpose}}                              \\ \hline
+		ID                                   & EMAIL                                 & Text                               & inf                                                                                      & identificator                                                   \\ \hline
+		\multirow{8}{*}{}         & DD1                                   & Continuous                         & {[}1-100{]}                                                                              & \multirow{6}{4cm}{Demographic data for statistical purposes only} \\ \cline{2-4}
+		& DD2                                   &        & Female, Male                                                                             &                                                                 \\ \cline{2-2} \cline{4-4} 
+		& DD3                                   &                                    & Student, Employer, Teacher, Independent professional, Other                              &                                                                 \\ \cline{2-2} \cline{4-4}
+		& DD4                                   & \multirow{6}{*}{Categorical}                                  & Intellectual, Physical, More intellectual than physical, More physical than intellectual &                                                                 \\ \cline{2-2} \cline{4-4} {Demographic}
+		& DD5                                   &                                    & SDA, Catholic, Jehovah's withess, Evangelic, Other                                       &                                       \\ \cline{2-2} \cline{4-4} 
+		& DD6                                   &                                    & Married, Single, Divorced, Free Union, Other                                             &                                                                 \\ \cline{2-2} \cline{4-5} 
+		& DD7                                   &                                    & No, Hypertension, Diabetes, Depression, Other                                            & Demographic information with filtering purposes                 \\ \cline{2-5} 
+		& DD8                                   &                                    & No,Financial, Divorce process, Loss of Family, Other                                     & Financial,                                                      \\ \hline
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[ht]
+	\centering
+	\caption{PSQI features description}
+	\label{tab:psqi-features-description}
+	\begin{tabular}{|l|l|l|p{3cm}|p{5cm}|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Group}} & \multicolumn{1}{c|}{\textbf{Feature}} & \multicolumn{1}{c|}{\textbf{Type}} & \multicolumn{1}{c|}{\textbf{Values}}                    & \multicolumn{1}{c|}{\textbf{Purpose}}                                                                              \\ \hline
+		\multirow{18}{*}{PSQI}               & SQ1                                   & \multirow{4}{*}{Continuous}        & A real numer.   $ 0 \leq  SQ1 \leq 12 $                    & \multirow{18}{5cm}{Provide information to PSQI Scale. A 0 value is the best for sleep quality and 3 is the worst} \\ \cline{2-2} \cline{4-4}
+		& SQ2                                   &                                    & An integer number. $ 0 \leq SQ2 \leq 60 $               &                                                                                                                 \\ \cline{2-2} \cline{4-4}
+		& SQ3                                   &                                    & A real number. $ 0 \leq SQ3 \leq 12 $                      &                                                                                                                 \\ \cline{2-2} \cline{4-4}
+		& SQ4                                   &                                    & A real number. $ 0 \leq SQ4 \leq 12 $                      &                                                                                                                 \\ \cline{2-4}
+		& SQ5a                                  & \multirow{14}{*}{Categorical}      & \multirow{14}{3cm}{A level variable. $ 0 \leq SQ* \leq 3 $.} &                                                                                                                 \\ \cline{2-2}
+		& SQ5b                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5c                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5d                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5e                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5f                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5g                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5h                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5i                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ5j                                  &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ6                                   &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ7                                   &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ8                                   &                                    &                                                         &                                                                                                                 \\ \cline{2-2}
+		& SQ9                                   &                                    &                                                         &                                                                                                                 \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{PSQI Scale features description}
+	\label{tab:PSQI-Scale-features-description}
+	\begin{tabular}{|l|l|l|p{3cm}|p{5cm}|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Group}} & \multicolumn{1}{c|}{\textbf{Feature}} & \multicolumn{1}{c|}{\textbf{Type}} & \multicolumn{1}{c|}{\textbf{Value}}   & \multicolumn{1}{c|}{\textbf{Purpose}}    \\ \hline
+        & SQDUR  &   &   & Results of SQ duration. A 0 value is the best for sleep quality and 3 is the worst.                                           \\ \cline{2-2} \cline{5-5} 
+		& SQDIS    &      &    & Results of SQ disturbances. A 0 value is the best for sleep quality and 3 is the worst. \\ \cline{2-2} \cline{5-5} 
+    	\multirow{9}{*}{PSQI Scale} & SQLAT  & \multirow{7}{*}{Categorical}  &  \multirow{7}{3cm}{A level variable. $ 0 < SQ*\leq 3 $.}  & Results of SQ latency. A 0 value is the best for sleep quality and 3 is the worst.    \\ \cline{2-2} \cline{5-5} 
+		& SQDD   &    &   & Results of SQ day dysfunction. A 0 value is the best for sleep quality and 3 is the worst. \\ \cline{2-2} \cline{5-5} 
+ & SQSE                                  &                                    &                                                       & Results of SQ sleep efficiency. A 0 value is the best for sleep quality and 3 is the worst.                                   \\ \cline{2-2} \cline{5-5} 
+		& SQSQ                                  &                                    &                                                       & Results of SQ sleep quality general perception of the respondent. A 0 value is the best for sleep quality and 3 is the worst. \\ \cline{2-2} \cline{5-5} 
+		& SQMS                                  &                                    &                                                       & Results of SQ, needs meds. A 0 value is the best for sleep quality and 3 is the worst.                                        \\ \cline{2-5} 
+		& SQTT                                  & Continuous                         & An integer value. $ 0 < SQTT\leq 21 $.                 & Total of PSQI                                                                                                                 \\ \cline{2-5} 
+		& SQCL                                  & Categorical                        & A level value.                                        & Good/ Poor                                                                                                       \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{SHI features description}
+	\label{tab:SHI-feature-description}
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Group}} & \multicolumn{1}{c|}{\textbf{Feature}} & \multicolumn{1}{c|}{\textbf{Type}} & \multicolumn{1}{c|}{\textbf{Values}} & \multicolumn{1}{c|}{\textbf{Purpose}}   \\ \hline
+		\multirow{21}{*}{SHI}  & SHI  & \multirow{21}{*}{Categorical} & \multirow{21}{3cm}{A level variable. $ 0 < SH*\leq 4 $.} & \multirow{21}{5cm}{Predictive Features (Provide information for SHI scale). A 0 value is the best for sleep hygiene and 4 is the worst} \\ \cline{2-2}
+		& SH2                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH3                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH4                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH5                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH6                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH7                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH8                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH9                                   &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH10                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH11                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH12                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH13                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH14                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH15                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH16                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH17                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH18                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH19                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH20                                  &                                    &                                                        &                                                                                                                                         \\ \cline{2-2}
+		& SH21                                  &                                    &                                                        &                                                                                                                                         \\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+	\centering
+	\caption{SHI scale feature description}
+	\label{tab:SHI-scale-feature-description}
+	\begin{tabular}{|l|l|l|p{4cm}|p{4cm}|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Group}} & \multicolumn{1}{c|}{\textbf{Feature}} & \multicolumn{1}{c|}{\textbf{Type}} & \multicolumn{1}{c|}{\textbf{Value}}                    & \multicolumn{1}{c|}{\textbf{Purpose}} \\ \hline
+		          & SHSTR                                 &         & Sum of five SH features. $ 0 < SQ*\leq 20 $.           & Group of stress features           \\ \cline{2-2} \cline{4-5} 
+		& SHDIS                                 &                                    & Sum of five SH features. $ 0 < SQ*\leq 20 $.           & Group of disruptors features       \\ \cline{2-2} \cline{4-5} 
+		\multirow{5}{*}{SHI SCALE} & SHCH          &       \multirow{5}{*}{Continuous}                             & Sum of six SH features. $ 0 < SQ*\leq 24 $.            & Group of circadian features        \\ \cline{2-2} \cline{4-5} 
+		& SHDG                                  &                                    & Sum of three SH features. $ 0 < SQ*\leq 12 $.          & Group of drugs features            \\ \cline{2-2} \cline{4-5} 
+		& SHTT                                  &                                    & Sum of SHSTR,SHDIS, SHCH and SHDG. $ 0 < SQ*\leq 76 $. & Total of SHI                       \\ \hline
+	\end{tabular}
+\end{table}
