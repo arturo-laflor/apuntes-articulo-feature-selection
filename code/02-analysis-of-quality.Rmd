@@ -179,7 +179,8 @@ Table:Data quality plan for categorical demographic features
 ```{r report-of-quality-catshfeat}
 DRCATSH<-QOfCategoricalF(cbind.data.frame(d_resp_Bad_script[,28:48]))
 
-DRCATSH
+write.csv(DRCATSH,file = paste(ruta,"quality-reposrt-raw-SH.csv",sep = ""))
+
 ```
 Table: Report of quality of the sleep hygiene features
 
@@ -388,7 +389,7 @@ recNA<-c(which(is.na(QS_data[,14:48])))%%dim(QS_data)[1]
 ```
 
 
-The following tables show the report of qulaity in the dataset after apply deletion of missing values, exclusion of records containing outliers and imputation of missing values in variables that are closely related with the training of the model.
+The following tables show the report of quality in the dataset after apply deletion of missing values, exclusion of records containing outliers and imputation of missing values in variables that are closely related with the training of the model.
 
 
 ```{r}

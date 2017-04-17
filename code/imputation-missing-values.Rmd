@@ -81,7 +81,7 @@ A summary of the missing values its presented in the table \@ref(summary-of-miss
 <!-- \end{tabular} -->
 <!-- \end{table} -->
 
-The figure \@ref(patter-of-missing-data) shows in the left side, an histogram of the features with missing data depicting the influence of missing values in the dataset. The right side shows the pattern of missing values in the dataset, it concentrates all complete cases in the botton of the graph, which reach a 97.06% of the dataset. The remaining of the figure shows the features with missing data, placing in the right side the percentages corresponding per variable.  
+The figure \@ref(pattern-of-missing-data) shows in the left side, an histogram of the features with missing data depicting the influence of missing values in the dataset. The right side shows the pattern of missing values in the dataset, it concentrates all complete cases in the botton of the graph, which reach a 97.06% of the dataset. The remaining of the figure shows the features with missing data, placing in the right side the corresponding percentages per variable.  
 
 ```{r}
 dsplotmissingvalues<-data.frame(QS_data[,14:20],QS_data[,30:44]) 
