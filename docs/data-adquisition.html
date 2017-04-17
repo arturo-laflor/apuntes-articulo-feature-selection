@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sleep quality analysis</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Sleep quality analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sleep quality analysis" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Arturo Laflor">
+
+
+<meta name="date" content="2017-04-17">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="data-pre-process.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notes of feature selection</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="data-adquisition.html"><a href="data-adquisition.html"><i class="fa fa-check"></i><b>3</b> Data adquisition</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-adquisition.html"><a href="data-adquisition.html#questionnaire"><i class="fa fa-check"></i><b>3.1</b> Questionnaire</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-adquisition.html"><a href="data-adquisition.html#demographic-emotional-and-health-data"><i class="fa fa-check"></i><b>3.1.1</b> Demographic emotional and health data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-adquisition.html"><a href="data-adquisition.html#quality-of-sleep"><i class="fa fa-check"></i><b>3.1.2</b> Quality of Sleep</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-adquisition.html"><a href="data-adquisition.html#sleep-hygiene-index"><i class="fa fa-check"></i><b>3.1.3</b> Sleep Hygiene Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-adquisition.html"><a href="data-adquisition.html#validity-and-reliability"><i class="fa fa-check"></i><b>3.2</b> Validity and reliability</a></li>
+<li class="chapter" data-level="3.3" data-path="data-adquisition.html"><a href="data-adquisition.html#dataset"><i class="fa fa-check"></i><b>3.3</b> Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-pre-process.html"><a href="data-pre-process.html"><i class="fa fa-check"></i><b>4</b> Data pre-process</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-pre-process.html"><a href="data-pre-process.html#estructuration-and-validation-data-process"><i class="fa fa-check"></i><b>4.1</b> Estructuration and validation data process</a></li>
+<li class="chapter" data-level="4.2" data-path="data-pre-process.html"><a href="data-pre-process.html#data-quality-report"><i class="fa fa-check"></i><b>4.2</b> Data quality report</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-pre-process.html"><a href="data-pre-process.html#continuous-features"><i class="fa fa-check"></i><b>4.2.1</b> Continuous features</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-pre-process.html"><a href="data-pre-process.html#categorical-features-for-demographics-data"><i class="fa fa-check"></i><b>4.3</b> Categorical Features for demographics data</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-pre-process.html"><a href="data-pre-process.html#categorical-features-for-slepp-hygiene"><i class="fa fa-check"></i><b>4.3.1</b> Categorical features for Slepp hygiene</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-pre-process.html"><a href="data-pre-process.html#following-the-quality-plan-to-attend-issues"><i class="fa fa-check"></i><b>4.4</b> Following the quality plan to attend issues</a></li>
+<li class="chapter" data-level="4.5" data-path="data-pre-process.html"><a href="data-pre-process.html#imputation-of-missing-values-in-sh-and-sq-features"><i class="fa fa-check"></i><b>4.5</b> Imputation of missing values in SH and SQ features</a></li>
+<li class="chapter" data-level="4.6" data-path="data-pre-process.html"><a href="data-pre-process.html#final-results"><i class="fa fa-check"></i><b>4.6</b> Final results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a><ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sleep quality analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-adquisition" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Data adquisition</h1>
+<div id="questionnaire" class="section level2">
+<h2><span class="header-section-number">3.1</span> Questionnaire</h2>
+<p>In order to obtain data that contribute with evidence, regarding of relations between Sleep Hygiene Factors (FSH) and the Quality of Sleep (QS), we selected two questionnaires clinically used. The Sleep Hygiene Index (SHI) and the Pitsburgh Sleep Quality Index (PSQI). As the population where the new questionnaire would be applied is Spanish-speaking and original questionnaires are in English language, we proceed to do the process of translation. The valid process to obtain a reliable translation consist of following stages: A person <code>A</code> translate the questionnaires from English to Spanish, a person <code>B</code> getback the spanish translation to the English language, and, a person <code>C</code>, compare the questionnaire obtained by the translation of the <code>B</code> person agains the original questionnaire. The <code>C</code> person, writes comments regarding of those itemes that do not match in meaning, corrections are done, and the process iterate until reach a satisfactory result (see Fig. <a href="data-adquisition.html#fig:double-tr">3.1</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:double-tr"></span>
+<img src="images/double-translation.png" alt="Double translation" width="80%" />
+<p class="caption">
+Figure 3.1: Double translation
+</p>
+</div>
+<p>After this translation, the two questionnaires where joined in a single questionnaire, adding a section in order to obtain demographic, emoptional and health data of relevance to this study. The new questionnaire was comformed by three sections. The first section has six demographic items, one emotional and one health item, the second section is the PSQI questionnaire that consists of 20 items, and, the third section is the SHI whit a total of 21 items. In the end, the SHI survey was left with 21 items, unlike the original that has 13, this has been, only for data granularity reasons, however, the changes do not alter the SHI objective. For example, item six of the original questionnaire that asked about the use of tobacco, alcohol, or caffeine, became three items to ask separately about the use of these three substances.</p>
+<p>In the end, the questionnaire consisted of 47 items, divided into three sections that are described later. The purpose of the questionnaire is to collect data to be analyzed using automated learning techniques (specifically the techniques of feature selection) to determine those sleep hygiene factors that have a greater impact on the quality of sleep from the respondent’s perception. One of the specific objectives of this research is to delimit the domain of input data to a subset of factors that explain an appropriate percentage of the variance of the phenomenon. The resulting factors will be used as the predictive variables in the first stage of training of the inference model to estimate the quality of sleep.</p>
+<div id="demographic-emotional-and-health-data" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Demographic emotional and health data</h3>
+<div id="demographic" class="section level4">
+<h4><span class="header-section-number">3.1.1.1</span> Demographic</h4>
+<p>In this section we ask about six relevant data that allow to understand the context of respondent. The six variables are age, gender, ocupation, kind of work, religion and civil status. Of this six variables, <strong>kind of work</strong> provide relevant information to the study, since the literature says that phisical activity improve the sleep quality [cita] . The options for this question are: <em>intellectual</em>, <em>phisical</em>, <em>more intellectual than phisical</em> and, <em>more phisical than intellectual</em>. The other variables in this section are for exploration purposes regarding of sleep quality and sleep hygiene.</p>
+</div>
+<div id="emotional" class="section level4">
+<h4><span class="header-section-number">3.1.1.2</span> Emotional</h4>
+<p>This variable asks to the respondent if he/she are in a crisis time. The crisis can be financial, mourning, divorce, or other that can significantly alter the quality of sleep. This answer is a target population filter for this study. Data from people in this circumstances are noisy to the study and should not be part of the data that will be used for the analysis.</p>
+</div>
+<div id="health" class="section level4">
+<h4><span class="header-section-number">3.1.1.3</span> Health</h4>
+<p>Similar than <em>Emotional</em> variable, the health variable asks if the respondent suffers from a chronic degenerative disease such as diabetes, hypertension, depression or another that can directly or indirectly alter the quality of sleep. Data from people suffering some disease are removed before the analysis.</p>
+</div>
+</div>
+<div id="quality-of-sleep" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Quality of Sleep</h3>
+<p>The PSQI is considered the gold standard questionnaire to evaluate subjective sleep quality <span class="citation">(Brick, Seely, and Palermo <a href="#ref-Cameron2010">2010</a>)</span>, and has been used to estimate the quality of sleep in clinical and nonclinical population <span class="citation">(Mastin, Bryson, and Corwyn <a href="#ref-mastin2006">2006</a>)</span>, and has been referred by numerous researchs in diverse sleep assessments <span class="citation">(Bai et al. <a href="#ref-bai2012">2012</a>)</span>. This questionnaire evaluates the quality of sleep using nineteen items grouped in seven components: subjective sleep quality, sleep duration, sleep latency, sleep disturbances, use of sleep medication, day time disfunction and sleep latency. The questionnaire provide a baremo to score each component and sumarize the final score resulting in a dicotomic varaible; <em>-good quality of sleep-</em> or <em>-poor quality of sleep-</em> <span class="citation">(Buysse et al. <a href="#ref-psqi1989">1989</a>)</span>. For the purposes of this study, eighteen of the nineteen items was used in the second section, it fact does not affect the score results, since that latter item is not taken into account for the computation of the scale in the original questionnaire. On the other hand, the last item has to do with specific sleep disorders, for example, <em>-sleep apnea-</em>, while this study seeks to understand sleep habits in healthy people.</p>
+</div>
+<div id="sleep-hygiene-index" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Sleep Hygiene Index</h3>
+<p>It is an instrument designed to measure the sleep hygiene behavior in a nonclinical population. Its theoretical basis is in the criteria that International Classification of Sleep Disorders (ICSD) uses to diagnose an inadequate sleep hygiene. The scale has thirteen items and has reported an internal validity of <span class="math inline">\(\alpha=0.71\)</span>, as well a high reliability in test-retest evaluation<span class="citation">(Mastin, Bryson, and Corwyn <a href="#ref-mastin2006">2006</a>)</span>.</p>
+<p>For the purposes of this study and based on what the literature reports regarding sleep hygiene factors, the following adjustments were made to the instrument, without interfering with its essence:</p>
+<ul>
+<li><p>Following the structure and the meaning of the item four <em>- I exercise to the point of sweating within 1 h of going to bed-</em>, two items were added: <em>- I exercise to the point of sweating during the morning-</em> and <em>-I exercise to the point of sweating during the afternoon.- </em>. The main purpose was to know whether the exercise in the morning or in the afternoon is directly correlated with sleep quality.[cita]</p></li>
+<li><p>Item six of the original questionnaire that asked about the use of tobacco, alcohol, or caffeine, became three items to ask separately about the use of these three substances.</p></li>
+<li><p>Item 11 in the original questionnaire asks about an uncomfortable bedroom, due to four environment factors. In the questionnaire for this study, four items was generated from this one.</p></li>
+<li><p>Based on what the literature says about dinner type and schedule, and its negative impact on sleep quality, an item was added to the questionnaire <span class="citation">(Posner and Gehrman <a href="#ref-Posner2011">2011</a>,Stefano2014,<span class="citation">Irish et al. (<a href="#ref-Irish2015">2015</a>)</span>,<span class="citation">D. Wentz and Wentz (<a href="#ref-Wentz2011">2011</a>)</span>)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div id="validity-and-reliability" class="section level2">
+<h2><span class="header-section-number">3.2</span> Validity and reliability</h2>
+<p>After the instrument was completed, it was validated by five experts that qualify each item on a escale of 1 to 5 for two metrics, clarity and pertinence. All items were qualified as clear and relevant. with the mean of 4.5 and 4.7 respectively. A sample of 30 people was randomly selected to perform the pilot test and obtain the internal validity of the instrument. Cronbach’s alpha for the instrument after pilot test was <span class="math inline">\(\alpha=0.68\)</span>. This <span class="math inline">\(\alpha\)</span> value is acceptable and consistent with that reported by <span class="citation">(Mastin, Bryson, and Corwyn <a href="#ref-mastin2006">2006</a>)</span> for the SHI scale, with this we proceeded to apply the questionnaire to a wider population to collect the dataset with which the analyzes were made for the selection of Variables that will be taken into account for the construction of the model.</p>
+</div>
+<div id="dataset" class="section level2">
+<h2><span class="header-section-number">3.3</span> Dataset</h2>
+<p>As a result of apply the questionnaire, a raw dataset <span class="math inline">\((m=342, n=47)\)</span> was obtained, this dataset, have missing data, some columns are no significant in terms of variance, there exist data in a wrong format to analyze, among other data quality issues. To obtain the dataset to the feature selection analysis, it was neccesary a pre-process of data, what included: The data quality analysis, the data quality plan to attend the issues and the implementation of the data quality plan. After this pre-process of data, the final dataset is conformed by one ID, 51 continuous and 10 categorical features grouped as shows the table <a href="#tab:dataset-columns-distribution"><strong>??</strong></a>.</p>
+
+<p>The complete description of the dataset is in the tables <a href="#tab:demographic-feature-description"><strong>??</strong></a>, <a href="#tab:psqi-features-description"><strong>??</strong></a>, <a href="#tab:PSQI-Scale-features-description"><strong>??</strong></a>, <a href="#tab:SHI-feature-description"><strong>??</strong></a> and <a href="#tab:SHI-scale-feature-description"><strong>??</strong></a>. At the end, the dataset contains 21 columns of main predictive variables (SHI), one column for continuous target variable (SQTT), and, one column for categorical target variable (SQCL). The other features in the dataset have diverse purposes as the last column of each table describes.</p>
+
+
+
+
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Cameron2010">
+<p>Brick, Cameron A., Darbi L. Seely, and Tonya M. Palermo. 2010. “Association Between Sleep Hygiene and Sleep Quality in Medical Students.” <em>Behavioral Sleep Medicine</em> 8 (2): 113–21. doi:<a href="https://doi.org/10.1080/15402001003622925">10.1080/15402001003622925</a>.</p>
+</div>
+<div id="ref-mastin2006">
+<p>Mastin, David F, Jeff Bryson, and Robert Corwyn. 2006. “Assessment of Sleep Hygiene Using the Sleep Hygiene Index.” <em>Journal of Behavioral Medicine</em> 29 (3). Springer: 223–27.</p>
+</div>
+<div id="ref-bai2012">
+<p>Bai, Yin, Bin Xu, Yuanchao Ma, Guodong Sun, and Yu Zhao. 2012. “Will You Have a Good Sleep Tonight?: Sleep Quality Prediction with Mobile Phone.” In <em>Proceedings of the 7th International Conference on Body Area Networks</em>, 124–30. ICST (Institute for Computer Sciences, Social-Informatics; Telecommunications Engineering).</p>
+</div>
+<div id="ref-psqi1989">
+<p>Buysse, Daniel J, Charles F Reynolds, Timothy H Monk, Susan R Berman, and David J Kupfer. 1989. “The Pittsburgh Sleep Quality Index: A New Instrument for Psychiatric Practice and Research.” <em>Psychiatry Research</em> 28 (2). Elsevier: 193–213.</p>
+</div>
+<div id="ref-Posner2011">
+<p>Posner, Donn, and Philip R. Gehrman. 2011. “Chapter 3 - Sleep Hygiene.” In <em>Behavioral Treatments for Sleep Disorders</em>, edited by Michael Perlis, Mark Aloia, and Brett Kuhn, 31–43. Practical Resources for the Mental Health Professional. San Diego: Academic Press. doi:<a href="https://doi.org/http://dx.doi.org/10.1016/B978-0-12-381522-4.00003-1">http://dx.doi.org/10.1016/B978-0-12-381522-4.00003-1</a>.</p>
+</div>
+<div id="ref-Irish2015">
+<p>Irish, Leah A, Christopher E Kline, Heather E Gunn, Daniel J Buysse, and Martica H Hall. 2015. “The role of sleep hygiene in promoting public health: A review of empirical evidence.” <em>Sleep Medicine Reviews</em> 22. Elsevier Ltd: 23–36. doi:<a href="https://doi.org/10.1016/j.smrv.2014.10.001">10.1016/j.smrv.2014.10.001</a>.</p>
+</div>
+<div id="ref-Wentz2011">
+<p>Wentz, Dave, and Myron Wentz. 2011. <em>The Healthy Home: Simple Truths to Protect Your Family from Hidden Household Dangers</em>. Vanguard.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-pre-process.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-data-adquisition.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
