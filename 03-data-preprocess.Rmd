@@ -621,7 +621,7 @@ With exception of high percentages in mode of the SH8 and SH9, all other feature
 The last process to be carried out in this stage is the calculation of SHI and PSQI scores through the scales provided by the respective questionnaires.
 
 ```{r}
-QSSHICOMPLETE<-baremo_PSQI(QSREADY,2)
+QSSHICOMPLETE<-baremo_PSQI(QSREADY,"2_clases")
 QSSHICOMPLETE<-baremo_SHI(QSSHICOMPLETE)
 
 write.csv(QSSHICOMPLETE,file = paste(ruta,"QSSHICOMPLETE.csv",sep = ""))
