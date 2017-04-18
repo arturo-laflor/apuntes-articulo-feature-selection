@@ -19,3 +19,25 @@ knitr::kable(
 ```
 
 You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+
+This is an other form of reference a markdown table in R book down>
+
+| Feature | Count | Miss | Card |          Mode         |  MF |   MP   |    Mode2   | M2F |  M2P   |
+|:-------:|:-----:|:----:|:----:|:---------------------:|:---:|:------:|:----------:|:---:|:------:|
+|         | 338   | 0    | 2    | Femenino              | 188 | 55.62% | Masculino  | 150 | 44.38% |
+|         | 338   | 1    | 5    | Docente               | 143 | 42.31% | Empleado   | 70  | 20.71% |
+|         | 338   | 0    | 4    | Más mental            | 156 | 46.15% | Mental     | 143 | 42.31% |
+|         |       |      |      | que físico            |     |        |            |     |        |
+|  DD4    | 338   | 2    | 5    | ASD                   | 150 | 44.38% | Católica   | 129 | 38.17% |
+|         | 338   | 0    | 5    | Casada(o)             | 181 | 53.55% | Soltera(o) | 119 | 35.21% |
+|         | 338   | 0    | 5    | Ninguno               | 284 | 84.02% | Otro       | 26  | 7.69%  |
+|         | 338   | 1    | 5    | No                    | 272 | 80.47% | Otra       | 34  | 10.06% |
+
+Table: (\#tab:demographic-features) Demographic features in dataset
+
+
+The table \@ref(tab:demographic-features) shows the demographic features for the dataset that will be analyzed
+
+
+
