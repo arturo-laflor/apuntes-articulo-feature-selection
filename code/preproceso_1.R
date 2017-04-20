@@ -2,7 +2,7 @@
 #codifica valores capturados
 #asigna nombres de columna a los datos
 #quita timespam y correo electronico
-preproceso_1<-function(tablaDatos,numero_clases){
+preproceso_1<-function(tablaDatos){
   
   
   source(file="C:/Master/apuntes-articulo-feature-selection/code/asigna_nombres.R",encoding = "UTF8") 
@@ -121,11 +121,7 @@ preproceso_1<-function(tablaDatos,numero_clases){
   #convierte a double las respuestas de tiempo
   
   
-  # write.csv(responses,file = "csvSQ.csv")
-  # 
-  # dsq<-read.csv(file="csvSQ.csv",header = TRUE,sep = ",")
-  
-  #dsq<-graba_recupera_archivo(responses,numero_clases)
+ 
   return(responses)
   
 }
