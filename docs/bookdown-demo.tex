@@ -31,46 +31,6 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\ImportTok}[1]{{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
-\newcommand{\BuiltInTok}[1]{{#1}}
-\newcommand{\ExtensionTok}[1]{{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
-\newcommand{\RegionMarkerTok}[1]{{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
-\newcommand{\NormalTok}[1]{{#1}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -124,13 +84,14 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-04-17}
+  \date{2017-04-27}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{float}
+\usepackage{tabularx}
 \makeatletter
 \def\thm@space@setup{%
   \thm@preskip=8pt plus 2pt minus 4pt
@@ -149,130 +110,206 @@
 
 \chapter{Introduction}\label{intro}
 
-You can label chapter and section titles using \texttt{\{\#label\}}
-after them, e.g., we can reference Chapter \ref{intro}. If you do not
-manually label them, there will be automatic labels anyway, e.g.,
-Chapter \ref{methods}.
+\hypertarget{data-adquisition}{\chapter{\texorpdfstring{\protect\hyperlink{data-adquisition}{Data
+adquisition}}{Data adquisition}}\label{data-adquisition}}
 
-Figures and tables with captions will be placed in \texttt{figure} and
-\texttt{table} environments, respectively.
+\chapter{\texorpdfstring{\protect\hyperlink{data-preprocess}{Data
+pre-process}}{Data pre-process}}\label{data-pre-process}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{feature-selection}{\chapter{\texorpdfstring{\protect\hyperlink{feature-selection}{Feature
+selection}}{Feature selection}}\label{feature-selection}}
 
-\begin{figure}
+This section describes the process that we perform to reduce the
+dimension of the sleep hygiene data set that contains the features to
+model the quality of sleep for respondents of the survey described in
+chapter \ref{data-adquisition}. There exist two ways to addressed
+dimensionality reduction, feature extraction and feature selection.
+Feature extraction, consists in generate a new and small feature space.
+The application of a technique of feature extraction produce new
+features based in original ones. The new dataset is not understandable
+in terms of the original dataset, rather, it is an abstraction of this
+and its visualization have no practical meaning. On the other hand,
+feature selection choose a small subset of the relevant features from
+the original dataset according to certain relevance evaluation
+criterion, which usually leads to better learning performance, lower
+computational cost, and better model interpretability \citep{Tang2014}.
 
-{\centering \includegraphics[width=0.8\linewidth]{bookdown-demo_files/figure-latex/nice-fig-1} 
+For the purposes of this study, the technique of selection of
+characteristics is the most appropriate. Our interest in reducing
+dimensionality is not related to the decrease in computational cost,
+rather, the purpose is to decrease the number of predictive variables
+due to the high cost of design and infrastructure that means capturing
+21 different signals through sensors. If it is possible to characterize
+a high percentage of the phenomenon, through a reduced number of factors
+of sleep hygiene, the design of the system will be more feasible and
+less expensive.
+
+The model accuracy for prediction of the sleep quality with the subset
+of features must be better than the training model using the total of
+sleep hygiene features.
+
+\section{\texorpdfstring{\protect\hyperlink{feature-selection-model}{Feature
+selection
+models}}{Feature selection models}}\label{feature-selection-models}
+
+In 1996, \citep{Liu1998} proposes two models to achieve the reduction of
+features, that have been used as basis of diverse algorithms still in
+force. The filter model (see Figure \ref{fig:filter-model}) that uses as
+criterion of feature selection, some attributes concerning only to the
+data domain. Especifiacally in this model, Liu et. al. proposes that it
+is posible to analyze and make decisions over irrelevance or relevance
+of features based in measure information gain, dependence, distance and
+consistency.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth]{images/filter-model} 
 
 }
 
-\caption{Here is a nice figure!}\label{fig:nice-fig}
+\caption{Filter model proposed by Liu et. al.}\label{fig:filter-model}
 \end{figure}
 
-Reference a figure by its code chunk label with the \texttt{fig:}
-prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can
-reference tables generated from \texttt{knitr::kable()}, e.g., see Table
-\ref{tab:nice-tab}.
+The second model showed in Fig. \ref{fig:wrapper-model} proposed is the
+wrapper model that uses the accuracy of prediction as selection
+criterion, it means that this techniques are committed with a particular
+classifier in this stage of the learning process.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr::}\KeywordTok{kable}\NormalTok{(}
-  \KeywordTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\DataTypeTok{caption =} \StringTok{'Here is a nice table!'}\NormalTok{,}
-  \DataTypeTok{booktabs =} \OtherTok{TRUE}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{figure}[H]
 
-\begin{table}
+{\centering \includegraphics[width=0.6\linewidth]{images/wrapper-model} 
 
-\caption{\label{tab:nice-tab}Here is a nice table!}
+}
+
+\caption{Wrapper model proposed by Liu et. al.}\label{fig:wrapper-model}
+\end{figure}
+
+Both models have advanteges and disadvantages, techniques based in
+filter model, performs better than others based in wrapper model,
+however, researchers have no idea over prediction accuracy during the
+feature selection process. Some practitioners don't preffer to use these
+techniques because if accuracy prediction is not achieved in the
+proposed level, the first steep can be regarded as a waste of time. On
+the other hand, some researchers argued that select features based in
+determinated classifier, reduces the possibility to use other classifier
+to generate the prediction model, in this sense, the classifier to
+generate the final model should be choosed at the begining, and it is
+not convenient for all problems. In these order of thinks,
+\citep{Kelleher2015} comment that wrapper models are more
+computationally expensive than filters models and that the argument of
+they are uncertain models respect to the accuracy, is not at all valid
+since filters model often generate models with good accuracy.
+
+Additionaly, \citep{Liu1998} highlight \emph{Search}, \emph{Scheme} and
+\emph{measure} as three important concepts that help to decide what
+technique is the most appropriate for an specific problem of
+dimentionality reduction by feature selection (see Fig.
+\ref{fig:main-dimensions-dr}). Search refers to the activity of choose
+features in non deterministic, heuristic or complete form, Scheme must
+be determine if the search will be forward, backward or in random mode,
+and, measure has to do with tree ways to establish the threshold for
+stopping the feature search, the criterion used are accuracy,
+consistency, and, classic criterion involving distance, information gain
+and dependence.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.6\linewidth]{images/main-dimensions-in-feature-selection} 
+
+}
+
+\caption{Main dimensions in feature selection, Liu et. al.}\label{fig:main-dimensions-dr}
+\end{figure}
+
+A third type of model has been proposed in last years, these models are
+called \textbf{embedded models}, since they allow practitoners select
+features while the prediction model is built. Embedded models have the
+advantage of filters model in terms of low computational cost, and take
+the advantage of wrapper model, because the prediction accuracy and
+classification model are involved in the process. \citep{Tang2014}
+describe three type of embedded methods as we shows in the Table
+\ref{tab:table-embedded-methods}.
+
+\begin{table}[h]
 \centering
-\begin{tabular}[t]{rrrrl}
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\midrule
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\addlinespace
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-4.6 & 3.4 & 1.4 & 0.3 & setosa\\
-5.0 & 3.4 & 1.5 & 0.2 & setosa\\
-4.4 & 2.9 & 1.4 & 0.2 & setosa\\
-4.9 & 3.1 & 1.5 & 0.1 & setosa\\
-\addlinespace
-5.4 & 3.7 & 1.5 & 0.2 & setosa\\
-4.8 & 3.4 & 1.6 & 0.2 & setosa\\
-4.8 & 3.0 & 1.4 & 0.1 & setosa\\
-4.3 & 3.0 & 1.1 & 0.1 & setosa\\
-5.8 & 4.0 & 1.2 & 0.2 & setosa\\
-\addlinespace
-5.7 & 4.4 & 1.5 & 0.4 & setosa\\
-5.4 & 3.9 & 1.3 & 0.4 & setosa\\
-5.1 & 3.5 & 1.4 & 0.3 & setosa\\
-5.7 & 3.8 & 1.7 & 0.3 & setosa\\
-5.1 & 3.8 & 1.5 & 0.3 & setosa\\
-\bottomrule
-\end{tabular}
+\caption{Embedded methods as \cite{Tang2014} describes and quoted verbatim in his paper.}
+\label{tab:table-embedded-methods}
+\begin{tabular}{|>{\centering\arraybackslash}p{3cm}|>{\arraybackslash}p{10cm}|>{\centering\arraybackslash}p{2cm}|}
+\hline Method & Description & Cite \\ 
+\hline Pruning & Utilizing all features to train a model and then attemp to eliminate some features by setting the corresponding coefficients to 0, while maintaining model performance such as recursive feature elimination using support vector machines (SVM) & \cite{Guyon2002} \\ 
+\hline Build-in & Mechanism for feature selection as ID3 and C4.5 & \cite{Quinlan1986,Quinlan1993} \\ 
+\hline Regularization & Utilices objective functions that minimize fitting errors and in the mean time force the coefficients to be small or ti be exact zero. & \cite{Ma2008} \\ 
+\hline 
+\end{tabular} 
 \end{table}
 
-You can write citations, too. For example, we are using the
-\textbf{bookdown} package \citep{R-bookdown} in this sample book, which
-was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
+These models are representative of the theoretical basis where a lot of
+algorithms for selection features in last twenty years have been fueled.
+Likewise four concepts are the most important and have been used for the
+generation of different feature selection algorithms in last two
+decades: distance, accuracy, inconsistency and information gain.
 
-This is an other form of reference a markdown table in R book
-down\textgreater{}
+\begin{itemize}
+\tightlist
+\item
+  Distance: The main goal to use distance, is to find similarity among
+  instances in a dataset. The Equation proposed by Minkowski (see
+  \eqref{eq:Minkowsky}) is a generalization of the distances that are used
+  in MLA. The most common distances are the particular cases where
+  \(p=1\) called Manhatan distance (see Eq. \eqref{eq:Manhattan}) and
+  where \(p=2\), the well known Euclidian distance (see Eq.
+  \eqref{eq:Euclidean}). (All three equations were taken from
+  \citep{Kelleher})
+\end{itemize}
 
-\begin{longtable}[]{@{}cccccccccc@{}}
-\caption{\label{tab:demographic-features} Demographic features in
-dataset}\tabularnewline
-\toprule
-Feature & Count & Miss & Card & Mode & MF & MP & Mode2 & M2F &
-M2P\tabularnewline
-\midrule
-\endfirsthead
-\toprule
-Feature & Count & Miss & Card & Mode & MF & MP & Mode2 & M2F &
-M2P\tabularnewline
-\midrule
-\endhead
-& 338 & 0 & 2 & Femenino & 188 & 55.62\% & Masculino & 150 &
-44.38\%\tabularnewline
-& 338 & 1 & 5 & Docente & 143 & 42.31\% & Empleado & 70 &
-20.71\%\tabularnewline
-& 338 & 0 & 4 & Más mental & 156 & 46.15\% & Mental & 143 &
-42.31\%\tabularnewline
-& & & & que físico & & & & &\tabularnewline
-DD4 & 338 & 2 & 5 & ASD & 150 & 44.38\% & Católica & 129 &
-38.17\%\tabularnewline
-& 338 & 0 & 5 & Casada(o) & 181 & 53.55\% & Soltera(o) & 119 &
-35.21\%\tabularnewline
-& 338 & 0 & 5 & Ninguno & 284 & 84.02\% & Otro & 26 &
-7.69\%\tabularnewline
-& 338 & 1 & 5 & No & 272 & 80.47\% & Otra & 34 & 10.06\%\tabularnewline
-\bottomrule
-\end{longtable}
+\begin{equation}
+      Euclidean(A,B)=\sqrt{(a_1-b_1)^2+(a_2-b_1)^2+\dots+(a_n-b_n)^2}
+      \label{eq:Euclidean}
+\end{equation}
 
-The table \ref{tab:demographic-features} shows the demographic features
-for the dataset that will be analyzed
+\begin{equation}
+      Manhattan(a,b)=\sum_{i=1}^{m}abs(a[i]-b[i])
+      \label{eq:Manhattan}
+\end{equation}
 
-\chapter{Data adquisition}\label{data-adquisition}
+\begin{equation}
+    Minkowski(a,b)=\left({\sum_{i=1}^{m}abs(a[i]-b[i])^p}\right)^{\frac{1}{p}}
+    \label{eq:Minkowski}
+\end{equation}
 
-\chapter{Data pre-process}\label{data-pre-process}
+The implication of use different values of \(p\) will be noted in the
+difference between two values of any feature in the final distance, it
+is directly proportional to the value of \(p\). It means that large
+differences between two features in an instance, impact stronger in the
+final result when \(p\) grows.
+
+\begin{itemize}
+\tightlist
+\item
+  Accuracy: Accuracy refers to the successes that a model had to predict
+  each instance of a dataset, it is opposed to the miscalssification
+  error as \citep{Kelleher2015} defines in
+  \eqref{eq:math-misclassification-rate} and \eqref{eq:math-accuracy}
+  equations.
+\end{itemize}
+
+\begin{equation}
+  misclassification\ rate=\frac{(FP+FN)}{(TP+TN+FP+FN)}
+  \label{eq:math-misclassification-rate}
+\end{equation}
+
+\begin{equation}
+  accuracy=\frac{(TP+TN)}{(TP+TN+FP+FN)}
+  \label{eq:math-accuracy}
+\end{equation}
 
 \chapter{Methods}\label{methods}
 
 \chapter{Applications}\label{applications}
 
-\chapter{Final Words}\label{final-words}
-
 \chapter{Placeholder}\label{placeholder}
+
+\chapter{Final Words}\label{final-words}
 
 \bibliography{packages,book}
 

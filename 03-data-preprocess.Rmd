@@ -5,7 +5,7 @@ output:
   word_document: default
 ---
 
-# Data pre-process
+# [Data pre-process](#data-preprocess)
 
 ```{r setup,, echo=FALSE}
 library(ggplot2)
@@ -188,7 +188,7 @@ The table \@ref(Report-of-quality-of-the-categorical-demographic-features) shows
 ```{r report-of-quality-catshfeat}
 DRCATSH<-QOfCategoricalF(cbind.data.frame(d_resp_Bad_script[,28:48]))
 
-write.csv(DRCATSH,file = paste(ruta,"quality-reposrt-raw-SH.csv",sep = ""))
+#write.csv(DRCATSH,file = paste(ruta,"quality-reposrt-raw-SH.csv",sep = ""))
 ```
 
 \begin{table}[ht]
@@ -299,7 +299,7 @@ user<-user[[1]]
 ruta<-paste("C:/Users/",user,"/Google Drive/Doctorado/Tesis/Data/",sep = "") 
   d_crudos<-read.csv(file=paste(ruta,"responses.csv",sep = ""),header = T,sep = ",")
 
-QS_data<-preproceso_1(d_crudos,2)
+QS_data<-preproceso_1(d_crudos)
 ```
 
 The quality reports generated after apply this corrections, show a difference in the identified features with possible issues due to a wrong treatment.
@@ -582,7 +582,7 @@ QSREADY<-QSREADY[-1]
 
 QofDSH<-QOfCategoricalF(QSREADY[,28:48])
 
-write.csv(QofDSH,file = paste(ruta,"qofdsh.csv",sep = ""))
+#write.csv(QofDSH,file = paste(ruta,"qofdsh.csv",sep = ""))
 ```
 
 \begin{table}[ht]
@@ -624,7 +624,7 @@ The last process to be carried out in this stage is the calculation of SHI and P
 QSSHICOMPLETE<-baremo_PSQI(QSREADY,"2_clases")
 QSSHICOMPLETE<-baremo_SHI(QSSHICOMPLETE)
 
-write.csv(QSSHICOMPLETE,file = paste(ruta,"QSSHICOMPLETE.csv",sep = ""))
+#write.csv(QSSHICOMPLETE,file = paste(ruta,"QSSHICOMPLETE.csv",sep = ""))
 
 
 
