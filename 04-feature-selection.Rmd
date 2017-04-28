@@ -9,7 +9,13 @@ knitr::opts_chunk$set(echo = FALSE,root.dir="C:/Master/apuntes-articulo-feature-
 
 # [Feature selection](#feature-selection)
 
-This section describes the process that we perform to reduce the dimension of the sleep hygiene data set  that contains the features to model the quality of sleep for respondents of the survey described in chapter \@ref(data-adquisition). There exist two ways to addressed dimensionality reduction, feature extraction and feature selection. Feature extraction, consists in generate a new and small feature space. The application of a technique of feature extraction produce new features based in original ones. The new dataset is not understandable in terms of the original dataset, rather, it is an abstraction of this and its visualization have no practical meaning. On the other hand, feature selection choose a small subset of the relevant features from the original dataset according to certain relevance evaluation criterion, which usually leads to better learning performance, lower computational cost, and better model interpretability [@Tang2014]. 
+This section describes the process that we perform to reduce the dimension of the sleep hygiene data set  that contains the features to model the quality of sleep for respondents of the survey described in chapter \@ref(data-adquisition). There exist two ways to addressed dimensionality reduction, feature extraction and feature selection. Feature extraction, consists in generate a new and small feature space. The application of a technique of feature extraction produce new features based in original ones. The new dataset is not understandable in terms of the original dataset, rather, it is an abstraction of this and its visualization have no practical meaning. On the other hand, feature selection as ilustrate the Fig. \@ref(fig:feature-selection-process) choose a small subset of the relevant features from the original dataset according to certain relevance evaluation criterion, which usually leads to better learning performance, lower computational cost, and better model interpretability [@Tang2014]. 
+
+```{r feature-selection-process, fig.cap='Feature selection Process', out.width='80%', fig.asp=.75, fig.align='center', echo=FALSE}
+knitr::include_graphics("images/feature-selection-process.png")
+
+```
+
 
 For the purposes of this study, the technique of selection of characteristics is the most appropriate. Our interest in reducing dimensionality is not related to the decrease in computational cost, rather, the purpose is to decrease the number of predictive variables due to the high cost of design and infrastructure that means capturing 21 different signals through sensors. If it is possible to characterize a high percentage of the phenomenon, through a reduced number of factors of sleep hygiene, the design of the system will be more feasible and less expensive.
 
@@ -57,7 +63,7 @@ A third type of model has been proposed in last years, these models are called *
 
 These models are representative of the theoretical basis where a lot of algorithms for selection features in last twenty years have been fueled. Likewise four concepts are the most important and have been used for the generation of different feature selection algorithms in last two decades: distance, accuracy, inconsistency and information gain.
 
-- Distance: The main goal to use distance, is to find similarity among instances in a dataset. The Equation proposed by Minkowski (see \@ref(eq:Minkowsky)) is a generalization of the distances that are used in MLA. The most common distances are the particular cases where $p=1$ called Manhatan distance (see Eq. \@ref(eq:Manhattan)) and where $p=2$, the well known Euclidian distance (see Eq. \@ref(eq:Euclidean)). (All three equations were taken from [@Kelleher])
+- Distance: The main goal to use distance, is to find similarity among instances in a dataset. The Equation proposed by Minkowski (see eq. \@ref(eq:Minkowski)) is a generalization of the distances that are used in MLA. The most common distances are the particular cases where $p=1$ called Manhatan distance (see Eq. \@ref(eq:Manhattan)) and where $p=2$, the well known Euclidian distance (see Eq. \@ref(eq:Euclidean)). (All three equations were taken from [@Kelleher2015]). The implication of use different values of $p$ will be noted in the difference between two values of any feature in the final distance, it is directly proportional to the value of $p$. It means that large differences between two features in an instance, impact stronger in the final result when $p$ grows.
 
 
 \begin{equation}
@@ -76,10 +82,10 @@ These models are representative of the theoretical basis where a lot of algorith
     (\#eq:Minkowski)
 \end{equation}
 
-The implication of use different values of $p$ will be noted in the difference between two values of any feature in the final distance, it is directly proportional to the value of $p$. It means that large differences between two features in an instance, impact stronger in the final result when $p$ grows.
 
 
-- Accuracy: Accuracy refers to the successes that a model had to predict each instance of a dataset, it is opposed to the miscalssification error as [@Kelleher2015] defines in \@ref(eq:math-misclassification-rate) and \@ref(eq:math-accuracy) equations.
+
+- Accuracy: Accuracy refers to the successes that a model had to predict each instance of a dataset, it is opposed to the miscalssification error as [@Kelleher2015] defines in \@ref(eq:math-misclassification-rate) and \@ref(eq:math-accuracy) equations. These two equation take relevance when accuracy is analized in the context of confusion matrix, a tool widely used to report the outcomes of the prediction thorugh a model. The confusion matrix together with the Receiver Operating Characteristics (ROC) curve, provides understanding and visualization of the specificity and sensibility, the most important metrics for evaluations of the models, especially in the health context.
 
 
 \begin{equation}
@@ -92,3 +98,34 @@ The implication of use different values of $p$ will be noted in the difference b
   (\#eq:math-accuracy)
 \end{equation}
 
+  
+
+- Inconsistency: An inconsistency refers that two instances have the same value in all descriptive features, but they belong to a different class. We can compute two values to measure the inconsistency for a subset of features in a dataset. The first value, which is called the inconsistency count ($IC$), can be defined as $IC=nM-LCI$, where $nM$ is the number of instances that coincide in all descriptive features, and, $LCI$ is the largest class of the clases that are involved in this particular group of instances. The second value, is the inconsistency rate defined as $IR=\frac{\sum_{i=0}^{m}IC_i}{N}$, where $m$ is the total of groups of matching instances in the dataset.
+
+ - Information Gain: Is a measure of the relevance that a predictive variable offers in relation to the target variable. To understand the concept of information gain, it is necessary to first understand the concept of information entropy as was raised by Shannon in 1948. In a dataset, an entropy value represents the heterogenity/homogenity of the target variable, in others words, if we have large probability of success to predict an outcome in the target feature, we have a set with small entropy and viceversa. 
+ 
+The process to calculate the information gain of one feature can be sumarized as follows: 
+ 
+
+1. Compute the total entropy.
+2. Split the target feature in the levels of the predictive feature.
+3. Compute the entropy of the target variable in each subset generate, and multiply the result by its weight. The weight is computed by dividing the number of instances in the subset, among the total number of instances in the dataset.
+4. Subtrac form the total entropy, the entropy computed in the steps $2$ y $3$.
+5. Sort the results in descending order to identify which are the best and the worst features in terms of provide information to characterize the phenomenon.
+
+ <!--To calculate the information gain of one variable, it is necessary to split the target feature in sub sets by each level of the predictive variable, compute the entropy of each split and multiply the result per the weight of the level. Finally, the products will be summed and the total will be substracted from the total entropy of the  -->
+
+## Feature selection process
+
+Five methods for feature selection were selected to make the process of selection the relevant sleep hygiene factors. Each method works with the complete set of features and the total of the data, after the process, the features were ordered by relevance in descending order in each method. A merge process was performed to choose those features that were ranked in the first places in each method. This process ensure that features choosen are relevant features because the theory and math behind the methods are different in each one. The Fig. \@ref(fig:four-methods-of-feature-selection) shows four of the six methods (for space reasons), and the corresponding features (Factor) and weights (Pesos) in descending order. The Fig. \@ref(fig:selected-factors) shows the outcomes of selected factors by the merge process. The left side, is the table with features and the corresponding weights in the best algorithms, in these case Random Forest (RF), Logistic Regression (LR) and Logistic Regression with Cross Validation (LR_CV). The right side ilustrate in a line-graph, the comparisson of the data in the table of the left side. Both figures are screens capture of the application developed on Shiny R-Studio for this specific purpose.
+
+
+```{r four-methods-of-feature-selection, fig.cap='Results of four methods after performs Feature Selection', out.width='80%', fig.asp=.75, fig.align='center', echo=FALSE}
+knitr::include_graphics("images/four-methods-of-feature-selection.png")
+
+```
+
+```{r selected-factors, fig.cap='Outcomes for selected factors after the merge process', out.width='80%', fig.asp=.75, fig.align='center', echo=FALSE}
+knitr::include_graphics("images/selected-factors.png")
+
+```

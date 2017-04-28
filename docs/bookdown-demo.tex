@@ -129,10 +129,21 @@ The application of a technique of feature extraction produce new
 features based in original ones. The new dataset is not understandable
 in terms of the original dataset, rather, it is an abstraction of this
 and its visualization have no practical meaning. On the other hand,
-feature selection choose a small subset of the relevant features from
-the original dataset according to certain relevance evaluation
-criterion, which usually leads to better learning performance, lower
-computational cost, and better model interpretability \citep{Tang2014}.
+feature selection as ilustrate the Fig.
+\ref{fig:feature-selection-process} choose a small subset of the
+relevant features from the original dataset according to certain
+relevance evaluation criterion, which usually leads to better learning
+performance, lower computational cost, and better model interpretability
+\citep{Tang2014}.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth]{images/feature-selection-process} 
+
+}
+
+\caption{Feature selection Process}\label{fig:feature-selection-process}
+\end{figure}
 
 For the purposes of this study, the technique of selection of
 characteristics is the most appropriate. Our interest in reducing
@@ -253,13 +264,17 @@ decades: distance, accuracy, inconsistency and information gain.
 \tightlist
 \item
   Distance: The main goal to use distance, is to find similarity among
-  instances in a dataset. The Equation proposed by Minkowski (see
-  \eqref{eq:Minkowsky}) is a generalization of the distances that are used
+  instances in a dataset. The Equation proposed by Minkowski (see eq.
+  \eqref{eq:Minkowski}) is a generalization of the distances that are used
   in MLA. The most common distances are the particular cases where
   \(p=1\) called Manhatan distance (see Eq. \eqref{eq:Manhattan}) and
   where \(p=2\), the well known Euclidian distance (see Eq.
   \eqref{eq:Euclidean}). (All three equations were taken from
-  \citep{Kelleher})
+  \citep{Kelleher2015}). The implication of use different values of
+  \(p\) will be noted in the difference between two values of any
+  feature in the final distance, it is directly proportional to the
+  value of \(p\). It means that large differences between two features
+  in an instance, impact stronger in the final result when \(p\) grows.
 \end{itemize}
 
 \begin{equation}
@@ -277,12 +292,6 @@ decades: distance, accuracy, inconsistency and information gain.
     \label{eq:Minkowski}
 \end{equation}
 
-The implication of use different values of \(p\) will be noted in the
-difference between two values of any feature in the final distance, it
-is directly proportional to the value of \(p\). It means that large
-differences between two features in an instance, impact stronger in the
-final result when \(p\) grows.
-
 \begin{itemize}
 \tightlist
 \item
@@ -290,7 +299,13 @@ final result when \(p\) grows.
   each instance of a dataset, it is opposed to the miscalssification
   error as \citep{Kelleher2015} defines in
   \eqref{eq:math-misclassification-rate} and \eqref{eq:math-accuracy}
-  equations.
+  equations. These two equation take relevance when accuracy is analized
+  in the context of confusion matrix, a tool widely used to report the
+  outcomes of the prediction thorugh a model. The confusion matrix
+  together with the Receiver Operating Characteristics (ROC) curve,
+  provides understanding and visualization of the specificity and
+  sensibility, the most important metrics for evaluations of the models,
+  especially in the health context.
 \end{itemize}
 
 \begin{equation}
@@ -302,6 +317,93 @@ final result when \(p\) grows.
   accuracy=\frac{(TP+TN)}{(TP+TN+FP+FN)}
   \label{eq:math-accuracy}
 \end{equation}
+
+\begin{itemize}
+\item
+  Inconsistency: An inconsistency refers that two instances have the
+  same value in all descriptive features, but they belong to a different
+  class. We can compute two values to measure the inconsistency for a
+  subset of features in a dataset. The first value, which is called the
+  inconsistency count (\(IC\)), can be defined as \(IC=nM-LCI\), where
+  \(nM\) is the number of instances that coincide in all descriptive
+  features, and, \(LCI\) is the largest class of the clases that are
+  involved in this particular group of instances. The second value, is
+  the inconsistency rate defined as \(IR=\frac{\sum_{i=0}^{m}IC_i}{N}\),
+  where \(m\) is the total of groups of matching instances in the
+  dataset.
+\item
+  Information Gain: Is a measure of the relevance that a predictive
+  variable offers in relation to the target variable. To understand the
+  concept of information gain, it is necessary to first understand the
+  concept of information entropy as was raised by Shannon in 1948. In a
+  dataset, an entropy value represents the heterogenity/homogenity of
+  the target variable, in others words, if we have large probability of
+  success to predict an outcome in the target feature, we have a set
+  with small entropy and viceversa.
+\end{itemize}
+
+The process to calculate the information gain of one feature can be
+sumarized as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compute the total entropy.
+\item
+  Split the target feature in the levels of the predictive feature.
+\item
+  Compute the entropy of the target variable in each subset generate,
+  and multiply the result by its weight. The weight is computed by
+  dividing the number of instances in the subset, among the total number
+  of instances in the dataset.
+\item
+  Subtrac form the total entropy, the entropy computed in the steps
+  \(2\) y \(3\).
+\item
+  Sort the results in descending order to identify which are the best
+  and the worst features in terms of provide information to characterize
+  the phenomenon.
+\end{enumerate}
+
+\section{Feature selection process}\label{feature-selection-process}
+
+Five methods for feature selection were selected to make the process of
+selection the relevant sleep hygiene factors. Each method works with the
+complete set of features and the total of the data, after the process,
+the features were ordered by relevance in descending order in each
+method. A merge process was performed to choose those features that were
+ranked in the first places in each method. This process ensure that
+features choosen are relevant features because the theory and math
+behind the methods are different in each one. The Fig.
+\ref{fig:four-methods-of-feature-selection} shows four of the six
+methods (for space reasons), and the corresponding features (Factor) and
+weights (Pesos) in descending order. The Fig. \ref{fig:selected-factors}
+shows the outcomes of selected factors by the merge process. The left
+side, is the table with features and the corresponding weights in the
+best algorithms, in these case Random Forest (RF), Logistic Regression
+(LR) and Logistic Regression with Cross Validation (LR\_CV). The right
+side ilustrate in a line-graph, the comparisson of the data in the table
+of the left side. Both figures are screens capture of the application
+developed on Shiny R-Studio for this specific purpose.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth]{images/four-methods-of-feature-selection} 
+
+}
+
+\caption{Results of four methods after performs Feature Selection}\label{fig:four-methods-of-feature-selection}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.8\linewidth]{images/selected-factors} 
+
+}
+
+\caption{Outcomes for selected factors after the merge process}\label{fig:selected-factors}
+\end{figure}
 
 \chapter{Methods}\label{methods}
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (MiKTeX 2.9.6210 64-bit) (preloaded format=xelatex 2017.2.20)  27 APR 2017 14:03
+This is XeTeX, Version 3.14159265-2.6-0.99996 (MiKTeX 2.9.6210 64-bit) (preloaded format=xelatex 2017.2.20)  27 APR 2017 23:10
 entering extended mode
 **./bookdown-demo.tex
 (bookdown-demo.tex
@@ -1021,65 +1021,53 @@ Chapter 4.
 
 ]
 Chapter 5.
-File: images/filter-model.png Graphic file (type QTm)
-<use  "images/filter-model.png" >
+File: images/feature-selection-process.png Graphic file (type QTm)
+<use  "images/feature-selection-process.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [13]
+File: images/filter-model.png Graphic file (type QTm)
+<use  "images/filter-model.png" >
 File: images/wrapper-model.png Graphic file (type QTm)
 <use  "images/wrapper-model.png" >
 File: images/main-dimensions-in-feature-selection.png Graphic file (type QTm)
-<use  "images/main-dimensions-in-feature-selection.png" >
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[14]
-
-LaTeX Warning: Reference `eq:Minkowsky' on page 15 undefined on input line 257.
-
-
-
-Package natbib Warning: Citation `Kelleher' on page 15 undefined on input line 
-262.
-
-[15] [16]
-Chapter 6.
-[17
-
-] [18
+<use  "images/main-dimensions-in-feature-selection.png" > [14] [15] [16]
+File: images/four-methods-of-feature-selection.png Graphic file (type QTm)
+<use  "images/four-methods-of-feature-selection.png" >
+File: images/selected-factors.png Graphic file (type QTm)
+<use  "images/selected-factors.png" > [17] [18
 
 ]
-Chapter 7.
+Chapter 6.
 [19] [20
 
 ]
-Chapter 8.
+Chapter 7.
 [21] [22
 
 ]
+Chapter 8.
+[23] [24
+
+]
 Chapter 9.
-(bookdown-demo.bbl [23] [24
+(bookdown-demo.bbl [25] [26
 
 ])
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
-[25]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 419.
+[27]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 419.
 (bookdown-demo.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 317.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 317.
-
-LaTeX Warning: There were undefined references.
-
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 419.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 419.
  ) 
 Here is how much of TeX's memory you used:
- 21504 strings out of 427899
- 385793 string characters out of 3153117
- 500608 words of memory out of 3000000
- 25178 multiletter control sequences out of 15000+200000
+ 21512 strings out of 427899
+ 386081 string characters out of 3153117
+ 504876 words of memory out of 3000000
+ 25183 multiletter control sequences out of 15000+200000
  16351 words of font info for 43 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
  41i,9n,68p,10413b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bookdown-demo.pdf (25 pages).
+Output written on bookdown-demo.pdf (27 pages).
