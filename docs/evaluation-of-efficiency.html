@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="intro.html">
+<link rel="prev" href="feature-selection.html">
+<link rel="next" href="applications.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -162,27 +162,73 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Sleep quality analysis</h1>
-<h4 class="author"><em>Arturo Laflor</em></h4>
-<h4 class="date"><em>2017-05-04</em></h4>
+<div id="evaluation-of-efficiency" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> <a href="#efficiency-evaluation">Evaluation of Efficiency</a></h1>
+<p>Before testing the selected factors, models were trained using the 21 sleep hygiene factors to know the predictive efficiency that these models from various techniques of machine learning could achieve. The result was that both, the support vector machines (SVM) with linear kernel and logistic regression, were the two techniques with the best results. The SVM algorithm had an efficiency of 67% and the logistic regression reached an efficiency of 70%. With this background, the tests described below were made, taking into account only the four selected factors. If any of the techniques reaches an efficiency equal to or higher than the previous results, the selection of variables can be considered a successful process and these factors will be used for the prediction model of the study hereafter.</p>
+<p>One of the steps in the development of the investigation project, includes the selection of a technique to train a predictive model on supervised automated learning. We did a review of the literature and we select three techniques under certain criterion based in the nature of the problem. The purpose is train the model with the available data and select the one given the best prediction. So, at the same time that the evaluation of efficience of the selected factors was performed, the selection of the technique that will be used for the final training was done. The three techniques that meet the inclusion criteria, were: artificial neural networks, vector supported machines And logistic regression with regularization. As in feature selection, a Shiny application was developed to process the data and compare the outcomes for these three algorithms, training a model with total of the records and only the four features selected in the feature selection process as was explained in Section <a href="feature-selection.html#feature-selection">5</a>.</p>
+<p>The evaluation was performed by the cross validation technique using an iteration process of training, validation, analysis and refinement as the figure <a href="evaluation-of-efficiency.html#fig:cross-validation-process">6.1</a> shows. In this process a sixty percent of the data was used to train the model, when training conclude, the cross validation is performed through the prediction of the target variable in the cross validation set, containing a twenty percent of the main dataset. The analysis is done at that time and depending on the results, the parameters are adjusted to make a new iteration or reach the stop point. If the stop point was reached, the model is proved in the test set to obtain the final efficience of the model.</p>
+<div class="figure" style="text-align: center"><span id="fig:cross-validation-process"></span>
+<img src="images/cross-validation-process.png" alt="Cross Validation Process" width="80%" />
+<p class="caption">
+Figure 6.1: Cross Validation Process
+</p>
 </div>
-<div id="prerequisites" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>For now, you have to install the development versions of <strong>bookdown</strong> from Github:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;rstudio/bookdown&quot;</span>)</code></pre></div>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need to install XeLaTeX.</p>
+<div id="neural-networks-results" class="section level2">
+<h2><span class="header-section-number">6.1</span> <a href="#NN-results">Neural Networks Results</a></h2>
+<p>Two neural networks were trained and validated by cross validation process, both estructures with a hidden layer. The first neural network had three neurons in the hidden layer and the second four neurons. The Fig. <a href="evaluation-of-efficiency.html#fig:nn-four-neurons">6.2</a> shows the structure of the neural network with four neurons in the input layer, one neuron for each factor selected in the feature selection process. The second layer is the hidden layer with four neurons and the last layer contains one neuron for the result (good sleep quality/bad sleep quality). Additionaly it is possible to observe the two activation neurons in the top of the figure.</p>
+<div class="figure" style="text-align: center"><span id="fig:nn-four-neurons"></span>
+<img src="images/nn-four-neurons.png" alt="Structure of neural network with four neurons in the hidden layer" width="80%" />
+<p class="caption">
+Figure 6.2: Structure of neural network with four neurons in the hidden layer
+</p>
+</div>
+<p>The results for the two neural networks and the appropriate comparison between them, are in the Fig. <a href="evaluation-of-efficiency.html#fig:results-of-the-3-4-nn">6.3</a>. The network with better efficiency of two networks is the network with four neurons. The table describes that in the three sets, the behavior was superior in terms of efficiency, while the plot represents the error per each set with three and four neurons. CClearly, the lines decrease in favor of the training and validation with four neurons, where the error of the prediction is smaller.</p>
+<div class="figure" style="text-align: center"><span id="fig:results-of-the-3-4-nn"></span>
+<img src="images/results-of-the-3-4-nn.png" alt="Comparison of the results for the two trained neural networks" width="80%" />
+<p class="caption">
+Figure 6.3: Comparison of the results for the two trained neural networks
+</p>
+</div>
+<p>The results of the neural network, satisfy the conditions sought, because although it is not greatly improved in efficiency when compared to what can be obtained by employing all the factors of sleep hygiene, we gain in the amount of factors that must be sensed to obtain input data. This fact has great relevance for the project because it greatly limits the design and infrastructure of the data acquisition module.</p>
+</div>
+<div id="logistic-regression-results" class="section level2">
+<h2><span class="header-section-number">6.2</span> <a href="#LR-results">Logistic Regression Results</a></h2>
+<p>We train the model through logistic regression (LR) with regularization parameter and polynomials of degree one, two and three, in order to look for the optimal point between over fit and bias. The regularization parameter based on the norm <span class="math inline">\(l_2\)</span> takes the form of the equation <a href="evaluation-of-efficiency.html#eq:regularization-parameter">(6.1)</a>, where <span class="math inline">\(\lambda\)</span> took values from 0.1 to 0.6 with intervals of 0.03 to choose the optimal value.</p>
+<span class="math display" id="eq:regularization-parameter">\[\begin{equation}
+  reg=\frac{\lambda}{2m}\sum_{j=2}^{n}\theta_j^2
+  \tag{6.1}
+\end{equation}\]</span>
+<p>The stop condition for the adjustment of the parameters of the regression is of the order of one hundred thousandths, that is to say, while the previous and the current cost function did not have a difference of 0.00003 between both, the regression continued to iterate.</p>
+<p>The results of LR’s are shown by the application in the format of the Fig. <a href="evaluation-of-efficiency.html#fig:lr-poly-1">6.4</a>. This figure shows the original results for the LR with the polynomial of degree one, we obtained five coeficients including the intercept coeficient, the right table have the data of prediction, <span class="math inline">\(70\%\)</span> of efficiency for the training set, <span class="math inline">\(76\%\)</span> for the cross validation set and <span class="math inline">\(69\%\)</span> in the test set. The plot in the top of figure, shows the behavior of the cost funtion through the iterations in the compute and refinement of the parameters.</p>
+<div class="figure" style="text-align: center"><span id="fig:lr-poly-1"></span>
+<img src="images/lr-poly-1.png" alt="Results of the LR and polynomial grade one" width="80%" />
+<p class="caption">
+Figure 6.4: Results of the LR and polynomial grade one
+</p>
+</div>
+<p>For polynomials of degree two and three we have a similar figure, the difference is the number of coeficients that in the case of the polynomial of degree two are 16 and, in the polynomial of grade three are 35, including in both cases <em>dummy factors</em>. In the case of polynomial of degree two the cost function iterated 150 times and the predictions were <span class="math inline">\(72\%\)</span> of efficiency for the training set, <span class="math inline">\(78\%\)</span> for the cross validation set and <span class="math inline">\(69\%\)</span> for the test set. The LR with the polynomial of degree three, did 446 iterations, having a precision in the prediction of <span class="math inline">\(75\%\)</span> for the training set, <span class="math inline">\(70\%\)</span> for the cross validation set, falling to <span class="math inline">\(62\%\)</span> for the test set.</p>
+<!-- table:tab: -->
+<!-- |                      | degree 1 | degree 2 | degree 3 | -->
+<!-- |----------------------|----------|----------|----------| -->
+<!-- | training set         | 70 %     | 72 %     | 75 %     | -->
+<!-- | cross validation set | 76 %     | 78 %     | 70 %     | -->
+<!-- | test set             | 69 %     | 69 %     | 62 %     | -->
 
+<p>Comparing the three results in the table <a href="#tab:results-of-efficiency-logistic-regression"><strong>??</strong></a>, we conclude that the polynomial of degree one is the best choice for this study, because, is the algorithm that consumes the lower resources of the processor and memory and have similar predictions than the other two models of degree two and three. Results, also are satisfactory if they are compared with the results using the 21 input data.</p>
+</div>
+<div id="supprot-vector-machine-results" class="section level2">
+<h2><span class="header-section-number">6.3</span> <a href="#SVM-results">Supprot Vector Machine Results</a></h2>
+<p>In the same</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="feature-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -210,7 +256,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-efficience-evaluation.Rmd",
 "text": "Edit"
 },
 "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],

@@ -1,4 +1,4 @@
-```{r setup,, echo=FALSE}
+```{r setup-efficiency, echo=FALSE}
 
 knitr::opts_chunk$set(echo = FALSE,root.dir="C:/Master/apuntes-articulo-feature-selection/",fig.pos = 'H')
 
@@ -19,7 +19,7 @@ knitr::include_graphics("images/cross-validation-process.png")
 
 ```
 
-## [Neural Networks Results](#neural-networks-results)
+## [Neural Networks Results](#NN-results)
 
 Two neural networks were trained and validated by cross validation process, both estructures with a hidden layer. The first neural network had three neurons in the hidden layer and the second four neurons. The Fig. \@ref(fig:nn-four-neurons) shows the structure of the neural network with four neurons in the input layer, one neuron for each factor selected in the feature selection process. The second layer is the hidden layer with four neurons and the last layer contains one neuron for the result (good sleep quality/bad sleep quality). Additionaly it is possible to observe the two activation neurons in the top of the figure.
 
@@ -28,12 +28,59 @@ knitr::include_graphics("images/nn-four-neurons.png")
 
 ```
 
-The results for the two neural networks and the appropriate comparison are presented in the Fig. \@ref(fig:results-of-the-3-4-nn). The network with better efficiency of two networks is the network with four neurons. The table describes that in the three sets, the behavior was superior in terms of efficiency, while the plot represents the error per each set with three and four neurons. CClearly, the lines decrease in favor of the training and validation with four neurons, where the error of the prediction is smaller. 
+The results for the two neural networks and the appropriate comparison between them, are in the Fig. \@ref(fig:results-of-the-3-4-nn). The network with better efficiency of two networks is the network with four neurons. The table describes that in the three sets, the behavior was superior in terms of efficiency, while the plot represents the error per each set with three and four neurons. CClearly, the lines decrease in favor of the training and validation with four neurons, where the error of the prediction is smaller. 
 
 ```{r results-of-the-3-4-nn, fig.cap='Comparison of the results for the two trained neural networks', out.width='80%', fig.asp=.75, fig.align='center', echo=FALSE}
 knitr::include_graphics("images/results-of-the-3-4-nn.png")
 
 ```
 
+The results of the neural network, satisfy the conditions sought, because although it is not greatly improved in efficiency when compared to what can be obtained by employing all the factors of sleep hygiene, we gain in the amount of factors that must be sensed to obtain input data. This fact has great relevance for the project because it greatly limits the design and infrastructure of the data acquisition module.
+
+## [Logistic Regression Results](#LR-results)
+
+We train the model through logistic regression (LR) with regularization parameter and polynomials of degree one, two and three, in order to look for the optimal point between over fit and bias. The regularization parameter based on the norm $l_2$ takes the form of the equation \@ref(eq:regularization-parameter), where $\lambda$ took values from 0.1 to 0.6 with intervals of 0.03 to choose the optimal value.
+
+\begin{equation}
+  reg=\frac{\lambda}{2m}\sum_{j=2}^{n}\theta_j^2
+  (\#eq:regularization-parameter)
+\end{equation}
+
+The stop condition for the adjustment of the parameters of the regression is of the order of one hundred thousandths, that is to say, while the previous and the current cost function did not have a difference of 0.00003 between both, the regression continued to iterate. 
+
+The results of LR's are shown by the application in the format of the Fig. \@ref(fig:lr-poly-1). This figure shows the original results for the LR with the polynomial of degree one, we obtained five coeficients including the intercept coeficient, the right table have the data of prediction, $70\%$ of efficiency for the training set, $76\%$ for the cross validation set and $69\%$ in the test set. The plot in the top of figure, shows the behavior of the cost funtion through the iterations in the compute and refinement of the parameters. 
 
 
+```{r lr-poly-1, fig.cap='Results of the LR and polynomial grade one', out.width='80%', fig.asp=.75, fig.align='center', echo=FALSE}
+knitr::include_graphics("images/lr-poly-1.png")
+
+```
+
+
+For polynomials of degree two and three we have a similar figure, the difference is the number of coeficients that in the case of the polynomial of degree two are 16 and, in the polynomial of grade three are 35, including in both cases *dummy factors*. In the case of polynomial of degree two the cost function iterated 150 times and the predictions were $72\%$ of efficiency for the training set, $78\%$ for the cross validation set and $69\%$ for the test set. The LR with the polynomial of degree three, did 446 iterations, having a precision in the prediction of $75\%$ for the training set, $70\%$ for the cross validation set, falling to $62\%$ for the test set. 
+
+<!-- table:tab: -->
+<!-- |                      | degree 1 | degree 2 | degree 3 | -->
+<!-- |----------------------|----------|----------|----------| -->
+<!-- | training set         | 70 %     | 72 %     | 75 %     | -->
+<!-- | cross validation set | 76 %     | 78 %     | 70 %     | -->
+<!-- | test set             | 69 %     | 69 %     | 62 %     | -->
+
+\begin{table}[ht]
+\centering
+\caption{Comparison of efficiency of LR with polynomials of degree one, two and three}
+\label{tab:results-of-efficiency-logistic-regression}
+\begin{tabular}{llll}
+\hline
+                     & degree 1 & degree 2 & degree 3 \\ \hline
+training set         & 70 \%    & 72 \%    & 75 \%    \\
+cross validation set & 76 \%    & 78 \%    & 70 \%    \\
+test set             & 69 \%    & 69 \%    & 62 \%    \\ \hline
+\end{tabular}
+\end{table}
+
+Comparing the three results in the table \@ref(tab:results-of-efficiency-logistic-regression), we conclude that the polynomial of degree one is the best choice for this study, because, is the algorithm that consumes the lower resources of the processor and memory and have similar predictions than the other two models of degree two and three. Results, also are satisfactory if they are compared with the results using the 21 input data.
+
+## [Supprot Vector Machine Results](#SVM-results)
+
+In the same  

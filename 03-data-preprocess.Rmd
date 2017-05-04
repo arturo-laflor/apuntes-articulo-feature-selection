@@ -7,7 +7,7 @@ output:
 
 # [Data pre-process](#data-preprocess)
 
-```{r setup,, echo=FALSE}
+```{r setup-data-process, echo=FALSE}
 library(ggplot2)
 library(bitops)
 library(RCurl)

@@ -1,4 +1,4 @@
-```{r setup,, echo=FALSE}
+```{r setup-feature, echo=FALSE}
 
 knitr::opts_chunk$set(echo = FALSE,root.dir="C:/Master/apuntes-articulo-feature-selection/",fig.pos = 'H')
 

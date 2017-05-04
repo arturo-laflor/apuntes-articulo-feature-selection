@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sleep quality analysis</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Sleep quality analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sleep quality analysis" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Arturo Laflor">
+
+
+<meta name="date" content="2017-05-04">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="data-pre-process.html">
+<link rel="next" href="evaluation-of-efficiency.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notes of feature selection</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="data-adquisition.html"><a href="data-adquisition.html"><i class="fa fa-check"></i><b>3</b> <a href="data-adquisition.html#data-adquisition">Data adquisition</a></a><ul>
+<li class="chapter" data-level="3.1" data-path="data-adquisition.html"><a href="data-adquisition.html#questionnaire"><i class="fa fa-check"></i><b>3.1</b> Questionnaire</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="data-adquisition.html"><a href="data-adquisition.html#demographic-emotional-and-health-data"><i class="fa fa-check"></i><b>3.1.1</b> Demographic emotional and health data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-adquisition.html"><a href="data-adquisition.html#quality-of-sleep"><i class="fa fa-check"></i><b>3.1.2</b> Quality of Sleep</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-adquisition.html"><a href="data-adquisition.html#sleep-hygiene-index"><i class="fa fa-check"></i><b>3.1.3</b> Sleep Hygiene Index</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-adquisition.html"><a href="data-adquisition.html#validity-and-reliability"><i class="fa fa-check"></i><b>3.2</b> Validity and reliability</a></li>
+<li class="chapter" data-level="3.3" data-path="data-adquisition.html"><a href="data-adquisition.html#dataset"><i class="fa fa-check"></i><b>3.3</b> Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-pre-process.html"><a href="data-pre-process.html"><i class="fa fa-check"></i><b>4</b> <a href="#data-preprocess">Data pre-process</a></a><ul>
+<li class="chapter" data-level="4.1" data-path="data-pre-process.html"><a href="data-pre-process.html#estructuration-and-validation-data-process"><i class="fa fa-check"></i><b>4.1</b> Estructuration and validation data process</a></li>
+<li class="chapter" data-level="4.2" data-path="data-pre-process.html"><a href="data-pre-process.html#data-quality-report"><i class="fa fa-check"></i><b>4.2</b> Data quality report</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-pre-process.html"><a href="data-pre-process.html#continuous-features"><i class="fa fa-check"></i><b>4.2.1</b> Continuous features</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="data-pre-process.html"><a href="data-pre-process.html#categorical-features-for-demographics-data"><i class="fa fa-check"></i><b>4.3</b> Categorical Features for demographics data</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-pre-process.html"><a href="data-pre-process.html#categorical-features-for-slepp-hygiene"><i class="fa fa-check"></i><b>4.3.1</b> Categorical features for Slepp hygiene</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="data-pre-process.html"><a href="data-pre-process.html#following-the-quality-plan-to-attend-issues"><i class="fa fa-check"></i><b>4.4</b> Following the quality plan to attend issues</a></li>
+<li class="chapter" data-level="4.5" data-path="data-pre-process.html"><a href="data-pre-process.html#imputation-of-missing-values-in-sh-and-sq-features"><i class="fa fa-check"></i><b>4.5</b> Imputation of missing values in SH and SQ features</a></li>
+<li class="chapter" data-level="4.6" data-path="data-pre-process.html"><a href="data-pre-process.html#final-results"><i class="fa fa-check"></i><b>4.6</b> Final results</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="feature-selection.html"><a href="feature-selection.html"><i class="fa fa-check"></i><b>5</b> <a href="feature-selection.html#feature-selection">Feature selection</a></a><ul>
+<li class="chapter" data-level="5.1" data-path="feature-selection.html"><a href="feature-selection.html#feature-selection-models"><i class="fa fa-check"></i><b>5.1</b> <a href="#feature-selection-model">Feature selection models</a></a></li>
+<li class="chapter" data-level="5.2" data-path="feature-selection.html"><a href="feature-selection.html#feature-selection-process"><i class="fa fa-check"></i><b>5.2</b> Feature selection process</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html"><i class="fa fa-check"></i><b>6</b> <a href="#efficiency-evaluation">Evaluation of Efficiency</a></a><ul>
+<li class="chapter" data-level="6.1" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#neural-networks-results"><i class="fa fa-check"></i><b>6.1</b> <a href="#NN-results">Neural Networks Results</a></a></li>
+<li class="chapter" data-level="6.2" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#logistic-regression-results"><i class="fa fa-check"></i><b>6.2</b> <a href="#LR-results">Logistic Regression Results</a></a></li>
+<li class="chapter" data-level="6.3" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#supprot-vector-machine-results"><i class="fa fa-check"></i><b>6.3</b> <a href="#SVM-results">Supprot Vector Machine Results</a></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>7</b> Applications</a><ul>
+<li class="chapter" data-level="7.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>7.1</b> Example one</a></li>
+<li class="chapter" data-level="7.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>7.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>8</b> Final Words</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Sleep quality analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="feature-selection" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> <a href="feature-selection.html#feature-selection">Feature selection</a></h1>
+<p>This section describes the process that we perform to reduce the dimension of the sleep hygiene data set that contains the features to model the quality of sleep for respondents of the survey described in chapter <a href="data-adquisition.html#data-adquisition">3</a>. There exist two ways to addressed dimensionality reduction, feature extraction and feature selection. Feature extraction, consists in generate a new and small feature space. The application of a technique of feature extraction produce new features based in original ones. The new dataset is not understandable in terms of the original dataset, rather, it is an abstraction of this and its visualization have no practical meaning. On the other hand, feature selection as ilustrate the Fig. <a href="feature-selection.html#fig:feature-selection-process">5.1</a> choose a small subset of the relevant features from the original dataset according to certain relevance evaluation criterion, which usually leads to better learning performance, lower computational cost, and better model interpretability <span class="citation">(Tang, Alelyani, and Liu <a href="#ref-Tang2014">2014</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:feature-selection-process"></span>
+<img src="images/feature-selection-process.png" alt="Feature selection Process" width="80%" />
+<p class="caption">
+Figure 5.1: Feature selection Process
+</p>
+</div>
+<p>For the purposes of this study, the technique of selection of characteristics is the most appropriate. Our interest in reducing dimensionality is not related to the decrease in computational cost, rather, the purpose is to decrease the number of predictive variables due to the high cost of design and infrastructure that means capturing 21 different signals through sensors. If it is possible to characterize a high percentage of the phenomenon, through a reduced number of factors of sleep hygiene, the design of the system will be more feasible and less expensive.</p>
+<p>The model accuracy for prediction of the sleep quality with the subset of features must be better than the training model using the total of sleep hygiene features.</p>
+<div id="feature-selection-models" class="section level2">
+<h2><span class="header-section-number">5.1</span> <a href="#feature-selection-model">Feature selection models</a></h2>
+<p>In 1996, <span class="citation">(Liu and Motoda <a href="#ref-Liu1998">1998</a>)</span> proposes two models to achieve the reduction of features, that have been used as basis of diverse algorithms still in force. The filter model (see Figure <a href="feature-selection.html#fig:filter-model">5.2</a>) that uses as criterion of feature selection, some attributes concerning only to the data domain. Especifiacally in this model, Liu et. al. proposes that it is posible to analyze and make decisions over irrelevance or relevance of features based in measure information gain, dependence, distance and consistency.</p>
+<div class="figure" style="text-align: center"><span id="fig:filter-model"></span>
+<img src="images/filter-model.png" alt="Filter model proposed by Liu et. al." width="60%" />
+<p class="caption">
+Figure 5.2: Filter model proposed by Liu et. al.
+</p>
+</div>
+<p>The second model showed in Fig. <a href="feature-selection.html#fig:wrapper-model">5.3</a> proposed is the wrapper model that uses the accuracy of prediction as selection criterion, it means that this techniques are committed with a particular classifier in this stage of the learning process.</p>
+<div class="figure" style="text-align: center"><span id="fig:wrapper-model"></span>
+<img src="images/wrapper-model.png" alt="Wrapper model proposed by Liu et. al." width="60%" />
+<p class="caption">
+Figure 5.3: Wrapper model proposed by Liu et. al.
+</p>
+</div>
+<p>Both models have advanteges and disadvantages, techniques based in filter model, performs better than others based in wrapper model, however, researchers have no idea over prediction accuracy during the feature selection process. Some practitioners don’t preffer to use these techniques because if accuracy prediction is not achieved in the proposed level, the first steep can be regarded as a waste of time. On the other hand, some researchers argued that select features based in determinated classifier, reduces the possibility to use other classifier to generate the prediction model, in this sense, the classifier to generate the final model should be choosed at the begining, and it is not convenient for all problems. In these order of thinks, <span class="citation">(Kelleher, Namee, and D’Arcy <a href="#ref-Kelleher2015">2015</a>)</span> comment that wrapper models are more computationally expensive than filters models and that the argument of they are uncertain models respect to the accuracy, is not at all valid since filters model often generate models with good accuracy.</p>
+<p>Additionaly, <span class="citation">(Liu and Motoda <a href="#ref-Liu1998">1998</a>)</span> highlight <em>Search</em>, <em>Scheme</em> and <em>measure</em> as three important concepts that help to decide what technique is the most appropriate for an specific problem of dimentionality reduction by feature selection (see Fig. <a href="feature-selection.html#fig:main-dimensions-dr">5.4</a>). Search refers to the activity of choose features in non deterministic, heuristic or complete form, Scheme must be determine if the search will be forward, backward or in random mode, and, measure has to do with tree ways to establish the threshold for stopping the feature search, the criterion used are accuracy, consistency, and, classic criterion involving distance, information gain and dependence.</p>
+<div class="figure" style="text-align: center"><span id="fig:main-dimensions-dr"></span>
+<img src="images/main-dimensions-in-feature-selection.png" alt="Main dimensions in feature selection, Liu et. al." width="60%" />
+<p class="caption">
+Figure 5.4: Main dimensions in feature selection, Liu et. al.
+</p>
+</div>
+<p>A third type of model has been proposed in last years, these models are called <strong>embedded models</strong>, since they allow practitoners select features while the prediction model is built. Embedded models have the advantage of filters model in terms of low computational cost, and take the advantage of wrapper model, because the prediction accuracy and classification model are involved in the process. <span class="citation">(Tang, Alelyani, and Liu <a href="#ref-Tang2014">2014</a>)</span> describe three type of embedded methods as we shows in the Table <a href="#tab:table-embedded-methods"><strong>??</strong></a>.</p>
+
+<p>These models are representative of the theoretical basis where a lot of algorithms for selection features in last twenty years have been fueled. Likewise four concepts are the most important and have been used for the generation of different feature selection algorithms in last two decades: distance, accuracy, inconsistency and information gain.</p>
+<ul>
+<li>Distance: The main goal to use distance, is to find similarity among instances in a dataset. The Equation proposed by Minkowski (see eq. <a href="feature-selection.html#eq:Minkowski">(5.3)</a>) is a generalization of the distances that are used in MLA. The most common distances are the particular cases where <span class="math inline">\(p=1\)</span> called Manhatan distance (see Eq. <a href="feature-selection.html#eq:Manhattan">(5.2)</a>) and where <span class="math inline">\(p=2\)</span>, the well known Euclidian distance (see Eq. <a href="feature-selection.html#eq:Euclidean">(5.1)</a>). (All three equations were taken from <span class="citation">(Kelleher, Namee, and D’Arcy <a href="#ref-Kelleher2015">2015</a>)</span>). The implication of use different values of <span class="math inline">\(p\)</span> will be noted in the difference between two values of any feature in the final distance, it is directly proportional to the value of <span class="math inline">\(p\)</span>. It means that large differences between two features in an instance, impact stronger in the final result when <span class="math inline">\(p\)</span> grows.</li>
+</ul>
+<span class="math display" id="eq:Euclidean">\[\begin{equation}
+      Euclidean(A,B)=\sqrt{(a_1-b_1)^2+(a_2-b_1)^2+\dots+(a_n-b_n)^2}
+      \tag{5.1}
+\end{equation}\]</span>
+<span class="math display" id="eq:Manhattan">\[\begin{equation}
+      Manhattan(a,b)=\sum_{i=1}^{m}abs(a[i]-b[i])
+      \tag{5.2}
+\end{equation}\]</span>
+<span class="math display" id="eq:Minkowski">\[\begin{equation}
+    Minkowski(a,b)=\left({\sum_{i=1}^{m}abs(a[i]-b[i])^p}\right)^{\frac{1}{p}}
+    \tag{5.3}
+\end{equation}\]</span>
+<ul>
+<li>Accuracy: Accuracy refers to the successes that a model had to predict each instance of a dataset, it is opposed to the miscalssification error as <span class="citation">(Kelleher, Namee, and D’Arcy <a href="#ref-Kelleher2015">2015</a>)</span> defines in <a href="feature-selection.html#eq:math-misclassification-rate">(5.4)</a> and <a href="feature-selection.html#eq:math-accuracy">(5.5)</a> equations. These two equation take relevance when accuracy is analized in the context of confusion matrix, a tool widely used to report the outcomes of the prediction thorugh a model. The confusion matrix together with the Receiver Operating Characteristics (ROC) curve, provides understanding and visualization of the specificity and sensibility, the most important metrics for evaluations of the models, especially in the health context.</li>
+</ul>
+<span class="math display" id="eq:math-misclassification-rate">\[\begin{equation}
+  misclassification\ rate=\frac{(FP+FN)}{(TP+TN+FP+FN)}
+  \tag{5.4}
+\end{equation}\]</span>
+<span class="math display" id="eq:math-accuracy">\[\begin{equation}
+  accuracy=\frac{(TP+TN)}{(TP+TN+FP+FN)}
+  \tag{5.5}
+\end{equation}\]</span>
+<ul>
+<li><p>Inconsistency: An inconsistency refers that two instances have the same value in all descriptive features, but they belong to a different class. We can compute two values to measure the inconsistency for a subset of features in a dataset. The first value, which is called the inconsistency count (<span class="math inline">\(IC\)</span>), can be defined as <span class="math inline">\(IC=nM-LCI\)</span>, where <span class="math inline">\(nM\)</span> is the number of instances that coincide in all descriptive features, and, <span class="math inline">\(LCI\)</span> is the largest class of the clases that are involved in this particular group of instances. The second value, is the inconsistency rate defined as <span class="math inline">\(IR=\frac{\sum_{i=0}^{m}IC_i}{N}\)</span>, where <span class="math inline">\(m\)</span> is the total of groups of matching instances in the dataset.</p></li>
+<li><p>Information Gain: Is a measure of the relevance that a predictive variable offers in relation to the target variable. To understand the concept of information gain, it is necessary to first understand the concept of information entropy as was raised by Shannon in 1948. In a dataset, an entropy value represents the heterogenity/homogenity of the target variable, in others words, if we have large probability of success to predict an outcome in the target feature, we have a set with small entropy and viceversa.</p></li>
+</ul>
+<p>The process to calculate the information gain of one feature can be sumarized as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Compute the total entropy.</li>
+<li>Split the target feature in the levels of the predictive feature.</li>
+<li>Compute the entropy of the target variable in each subset generate, and multiply the result by its weight. The weight is computed by dividing the number of instances in the subset, among the total number of instances in the dataset.</li>
+<li>Subtrac form the total entropy, the entropy computed in the steps <span class="math inline">\(2\)</span> y <span class="math inline">\(3\)</span>.</li>
+<li>Sort the results in descending order to identify which are the best and the worst features in terms of provide information to characterize the phenomenon.</li>
+</ol>
+<p><!--To calculate the information gain of one variable, it is necessary to split the target feature in sub sets by each level of the predictive variable, compute the entropy of each split and multiply the result per the weight of the level. Finally, the products will be summed and the total will be substracted from the total entropy of the  --></p>
+</div>
+<div id="feature-selection-process" class="section level2">
+<h2><span class="header-section-number">5.2</span> Feature selection process</h2>
+<p>Five methods for feature selection were selected to make the process of selection the relevant sleep hygiene factors. Each method works with the complete set of features and the total of the data, after the process, the features were ordered by relevance in descending order in each method. A merge process was performed to choose those features that were ranked in the first places in each method. This process ensure that features choosen are relevant features because the theory and math behind the methods are different in each one. The Fig. <a href="feature-selection.html#fig:four-methods-of-feature-selection">5.5</a> shows four of the six methods (for space reasons), and the corresponding features (Factor) and weights (Pesos) in descending order. The Fig. <a href="feature-selection.html#fig:selected-factors">5.6</a> shows the outcomes of selected factors by the merge process. The left side, is the table with features and the corresponding weights in the best algorithms, in these case Random Forest (RF), Logistic Regression (LR) and Logistic Regression with Cross Validation (LR_CV). The right side ilustrate in a line-graph, the comparisson of the data in the table of the left side. Both figures are screens capture of the application developed on Shiny R-Studio for this specific purpose.</p>
+<div class="figure" style="text-align: center"><span id="fig:four-methods-of-feature-selection"></span>
+<img src="images/four-methods-of-feature-selection.png" alt="Results of four methods after performs Feature Selection" width="80%" />
+<p class="caption">
+Figure 5.5: Results of four methods after performs Feature Selection
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:selected-factors"></span>
+<img src="images/selected-factors.png" alt="Outcomes for selected factors after the merge process" width="80%" />
+<p class="caption">
+Figure 5.6: Outcomes for selected factors after the merge process
+</p>
+</div>
+<p>From the original 21 hygiene factors that in theory are the predictive variables to characterize the sleep quality, the feature selection algorithms choose four features. It means that the remaining seventeen features, there are not relevant factors to characterize the phenomenon on this population. As additional information related with the studied phenomenon, it is possible to note that two features closely related with the state of mind, are present among features selected. Even, one of this two features, the stress before go to the bed (ESTRES_AD), is the most relevant feature of the four selected. If this selection provides the best model to characterize the phenomenon, a great challenge is perceived in the near future, due to how difficult it can be to measure a subjective variable, by means of an electronic device.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Tang2014">
+<p>Tang, Jiliang, Salem Alelyani, and Huan Liu. 2014. “Feature Selection for Classification: A Review.” <em>Data Classification: Algorithms and Applications</em>, 37–64. doi:<a href="https://doi.org/10.1.1.409.5195">10.1.1.409.5195</a>.</p>
+</div>
+<div id="ref-Liu1998">
+<p>Liu, Huan, and Hiroshi Motoda. 1998. <em>Feature selection for knowledge discovery and data mining</em>. doi:<a href="https://doi.org/10.1007/978-1-4615-5689-3">10.1007/978-1-4615-5689-3</a>.</p>
+</div>
+<div id="ref-Kelleher2015">
+<p>Kelleher, John D., Brian Mac Namee, and Aoife D’Arcy. 2015. <em>Fundamentals of Machine Learning for Predictive Data Analytics: algorithms, worked examples, and case studies</em>. 1. London: The MIT Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-pre-process.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="evaluation-of-efficiency.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-feature-selection.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
