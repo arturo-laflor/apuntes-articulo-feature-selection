@@ -83,4 +83,32 @@ Comparing the three results in the table \@ref(tab:results-of-efficiency-logisti
 
 ## [Supprot Vector Machine Results](#SVM-results)
 
-In the same  
+As in the previous algorithms, for support vector machines algorithm, a cross valitation test was performed. In this case, were used four kernels, two lineal kernels with polynomials of degree one and two, one radial kernel and one sigmoide kernel. The Fig. \@ref(fig:SVM-sigmoide-2-flecha) shows the results as they are presnted in the Shinny application, we can see in the left panel, the plot showing diferents values of C and Gamma parameters and how is the behavior of the error depending of these two parameters. In the right side we observe that the best values for C is 0.04 and the best value for Gamma is 0.5 to reach the best prediction for this kernel, 76\% of prediction in the test set.
+
+
+```{r SVM-sigmoide-2-flecha, fig.cap='Results of SVM with sigmoide kernel', out.width='80%', fig.asp=.75, fig.align='center', echo=FALSE}
+knitr::include_graphics("images/SVM-sigmoide-2-flecha.png")
+
+```
+
+
+The Table \@ref(tab:results-of-efficiency-svm) show a comparative framework of results of the four kernels that were tested. We can observe that the sigmoid and radial are the best evaluated with a slight advantage of 3 percentage points of the sigmoid over the radial. The linear kernel is not a bad choice if one thinks in terms of simplicity to program it and the little memory and processor that consumes.
+
+\begin{table}[ht]
+\centering
+\caption{Results of officiency in prediction with SVM algorithm}
+\label{tab:results-of-efficiency-svm}
+\begin{tabular}{lllll}
+\hline
+                         & Lineal degree one & Lineal degree two & Radial & Sigmoide \\ \hline
+Training dataset         & 72 \%             & 69 \%             & 80 \%  & 74 \%    \\
+Cross Validation dataset & 70 \%             & 78 \%             & 69 \%  & 59 \%    \\
+Test dataset             & 71 \%             & 67 \%             & 73 \%  & 76 \%    \\
+Parameter C              & 0.04              & 0.14              & 0.40   & 0.04     \\
+Parameter Gamma          & 0.5               & 0.5               & 0.5    & 0.5      \\ \hline
+\end{tabular}
+\end{table}
+
+The table also present the best C and Gamma parameters that the cross validation process selected for these algorithms, the parameter Gamma maitains its value in each one of the two kernels that is required (radial and sigmoide), 0.5 is the best value of the six values tested. On the other hand, the parameter C, shows that small values are more appropriate than big values. In this case C work in a range of 0.01 to 1000. It means that the gap between two levels of classifications is large as possible.
+
+
