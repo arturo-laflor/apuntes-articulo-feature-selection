@@ -1,43 +1,12 @@
 # Introduction {#intro}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+The monitoring of sleep and the estimation of sleep quality has become relevant in recent years due to research that has positively correlated poor sleep quality with various problems ranging from mild to serious. Minor and short-term problems include lack of concentration, difficulty remembering and learning new things and irritability, while more serious problems talk about hypertension, type II diabetes, Alzheimer's and other chronic degenerative diseases.
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+The intention of this work is to construct a model that infer the quality of  sleep of a person from the factors of the hygiene of the sleep. The literature discusses at least 21 factors of sleep hygiene that should be considered when studying the possible causes of a sleep disorder, physicians conduct interviews and apply questionnaires to their patients to investigate behaviors that favor or impair sleep quality, and from there they begin to generate a clinical file that allows them to diagnose or move to a second stage of the protocol that consists of laboratory studies such as polysomnography or actigraphy.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
+This work is aimed at the prevention of poor sleep quality and the possible prevention of a sleep disorder. It is a question of constructing a model that estimates the quality of sleep from the most relevant factors of sleep hygiene for a given population. The model will acquire data of the hygiene of the dream by means of sensors coupled to the surroundings of the user and will make an estimation of the quality of the dream, later the user will give a qualification to his quality of dream of such form that day to day the model is Adjustment to the lifestyle and sleep patterns of the person and the person make changes to that lifestyle, following model recommendations in such a way that their quality of sleep is favored.
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+The first part in the construction of the model consisted of collecting information through clinically proven questionnaires on the perception of sleep quality and sleep hygiene in a sample of people as Section \@ref(data-adquisition) explains. With these data a study of the most relevant factors was made so that of the 21 original sleep hygiene factors that were taken from the literature, only the most relevant set was selected (see Section \@ref(feature-selection)). This will make it possible to implement the model in a real system because a reduced number of factors implies few sensors in the context of the user, which translates into less design complexity, less intrusiveness and less infrastructure cost.
 
 
-This is an other form of reference a markdown table in R book down>
-
-| Feature | Count | Miss | Card |          Mode         |  MF |   MP   |    Mode2   | M2F |  M2P   |
-|:-------:|:-----:|:----:|:----:|:---------------------:|:---:|:------:|:----------:|:---:|:------:|
-|         | 338   | 0    | 2    | Femenino              | 188 | 55.62% | Masculino  | 150 | 44.38% |
-|         | 338   | 1    | 5    | Docente               | 143 | 42.31% | Empleado   | 70  | 20.71% |
-|         | 338   | 0    | 4    | Más mental            | 156 | 46.15% | Mental     | 143 | 42.31% |
-|         |       |      |      | que físico            |     |        |            |     |        |
-|  DD4    | 338   | 2    | 5    | ASD                   | 150 | 44.38% | Católica   | 129 | 38.17% |
-|         | 338   | 0    | 5    | Casada(o)             | 181 | 53.55% | Soltera(o) | 119 | 35.21% |
-|         | 338   | 0    | 5    | Ninguno               | 284 | 84.02% | Otro       | 26  | 7.69%  |
-|         | 338   | 1    | 5    | No                    | 272 | 80.47% | Otra       | 34  | 10.06% |
-
-Table: (\#tab:demographic-features) Demographic features in dataset
-
-
-The table \@ref(tab:demographic-features) shows the demographic features for the dataset that will be analyzed
-
-
-
+After selecting the most relevant factors for the estimation of sleep quality, we proceeded to test the model using the cross-validation technique. This was done with two purposes. The first one was to validate that the selection of factors was successful in verifying that with the subset of variables the model predicts with more efficiency the quality of sleep than when using the total factors. Second, this work was useful to obtain the first performance analysis of three supervised automated learning techniques to generate predictive models. The techniques tested were artificial neural networks (ANNs), logistic regression with regularization (LR) and vector supported machines (SVM). The three techniques had an efficient behavior as can be seen in the Section \@ref(evaluation-of-efficiency) and are candidates for any of them being chosen to be the basis of the model.

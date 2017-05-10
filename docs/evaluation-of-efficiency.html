@@ -7,26 +7,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Sleep quality analysis</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="description" content="This is a draft of the work done in the project of sleep quality through sleep hygiene factors.">
   <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Sleep quality analysis" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a draft of the work done in the project of sleep quality through sleep hygiene factors." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Sleep quality analysis" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a draft of the work done in the project of sleep quality through sleep hygiene factors." />
   
 
 <meta name="author" content="Arturo Laflor">
 
 
-<meta name="date" content="2017-05-09">
+<meta name="date" content="2017-05-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="feature-selection.html">
-<link rel="next" href="applications.html">
+<link rel="next" href="references.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,43 +51,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -104,7 +67,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Notes of feature selection</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Description of the work</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="data-adquisition.html"><a href="data-adquisition.html"><i class="fa fa-check"></i><b>3</b> <a href="data-adquisition.html#data-adquisition">Data adquisition</a></a><ul>
 <li class="chapter" data-level="3.1" data-path="data-adquisition.html"><a href="data-adquisition.html#questionnaire"><i class="fa fa-check"></i><b>3.1</b> Questionnaire</a><ul>
@@ -131,18 +94,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1" data-path="feature-selection.html"><a href="feature-selection.html#feature-selection-models"><i class="fa fa-check"></i><b>5.1</b> <a href="#feature-selection-model">Feature selection models</a></a></li>
 <li class="chapter" data-level="5.2" data-path="feature-selection.html"><a href="feature-selection.html#feature-selection-process"><i class="fa fa-check"></i><b>5.2</b> Feature selection process</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html"><i class="fa fa-check"></i><b>6</b> <a href="#efficiency-evaluation">Evaluation of Efficiency</a></a><ul>
+<li class="chapter" data-level="6" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html"><i class="fa fa-check"></i><b>6</b> <a href="evaluation-of-efficiency.html#evaluation-of-efficiency">Evaluation of Efficiency</a></a><ul>
 <li class="chapter" data-level="6.1" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#neural-networks-results"><i class="fa fa-check"></i><b>6.1</b> <a href="#NN-results">Neural Networks Results</a></a></li>
 <li class="chapter" data-level="6.2" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#logistic-regression-results"><i class="fa fa-check"></i><b>6.2</b> <a href="#LR-results">Logistic Regression Results</a></a></li>
-<li class="chapter" data-level="6.3" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#supprot-vector-machine-results"><i class="fa fa-check"></i><b>6.3</b> <a href="#SVM-results">Supprot Vector Machine Results</a></a></li>
+<li class="chapter" data-level="6.3" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#support-vector-machine-results"><i class="fa fa-check"></i><b>6.3</b> <a href="#SVM-results">Support Vector Machine Results</a></a></li>
 <li class="chapter" data-level="6.4" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#comparing-the-results-of-the-three-algorithms-and-their-variants"><i class="fa fa-check"></i><b>6.4</b> Comparing the results of the three algorithms and their variants</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>7</b> Applications</a><ul>
-<li class="chapter" data-level="7.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>7.1</b> Example one</a></li>
-<li class="chapter" data-level="7.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>7.2</b> Example two</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="8" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>8</b> Final Words</a></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -164,7 +123,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="evaluation-of-efficiency" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> <a href="#efficiency-evaluation">Evaluation of Efficiency</a></h1>
+<h1><span class="header-section-number">Chapter 6</span> <a href="evaluation-of-efficiency.html#evaluation-of-efficiency">Evaluation of Efficiency</a></h1>
 <p>Before testing the selected factors, models were trained using the 21 sleep hygiene factors to know the predictive efficiency that these models from various techniques of machine learning could achieve. The result was that both, the support vector machines (SVM) with linear kernel and logistic regression, were the two techniques with the best results. The SVM algorithm had an efficiency of 67% and the logistic regression reached an efficiency of 70%. With this background, the tests described below were made, taking into account only the four selected factors. If any of the techniques reaches an efficiency equal to or higher than the previous results, the selection of variables can be considered a successful process and these factors will be used for the prediction model of the study hereafter.</p>
 <p>One of the steps in the development of the investigation project, includes the selection of a technique to train a predictive model on supervised automated learning. We did a review of the literature and we select three techniques under certain criterion based in the nature of the problem. The purpose is train the model with the available data and select the one given the best prediction. So, at the same time that the evaluation of efficience of the selected factors was performed, the selection of the technique that will be used for the final training was done. The three techniques that meet the inclusion criteria, were: artificial neural networks, vector supported machines And logistic regression with regularization. As in feature selection, a Shiny application was developed to process the data and compare the outcomes for these three algorithms, training a model with total of the records and only the four features selected in the feature selection process as was explained in Section <a href="feature-selection.html#feature-selection">5</a>.</p>
 <p>The evaluation was performed by the cross validation technique using an iteration process of training, validation, analysis and refinement as the figure <a href="evaluation-of-efficiency.html#fig:cross-validation-process">6.1</a> shows. In this process a sixty percent of the data was used to train the model, when training conclude, the cross validation is performed through the prediction of the target variable in the cross validation set, containing a twenty percent of the main dataset. The analysis is done at that time and depending on the results, the parameters are adjusted to make a new iteration or reach the stop point. If the stop point was reached, the model is proved in the test set to obtain the final efficience of the model.</p>
@@ -183,7 +142,7 @@ Figure 6.1: Cross Validation Process
 Figure 6.2: Structure of neural network with four neurons in the hidden layer
 </p>
 </div>
-<p>The results for the two neural networks and the appropriate comparison between them, are in the Fig. <a href="evaluation-of-efficiency.html#fig:results-of-the-3-4-nn">6.3</a>. The network with better efficiency of two networks is the network with four neurons. The table describes that in the three sets, the behavior was superior in terms of efficiency, while the plot represents the error per each set with three and four neurons. CClearly, the lines decrease in favor of the training and validation with four neurons, where the error of the prediction is smaller.</p>
+<p>The results for the two neural networks and the appropriate comparison between them, are in the Fig. <a href="evaluation-of-efficiency.html#fig:results-of-the-3-4-nn">6.3</a>. The network with better efficiency of two networks is the network with four neurons. The table describes that in the three sets, the behavior was superior in terms of efficiency, while the plot represents the error per each set with three and four neurons. Clearly, the lines decrease in favor of the training and validation with four neurons, where the error of the prediction is smaller.</p>
 <div class="figure" style="text-align: center"><span id="fig:results-of-the-3-4-nn"></span>
 <img src="images/results-of-the-3-4-nn.png" alt="Comparison of the results for the two trained neural networks" width="80%" />
 <p class="caption">
@@ -217,8 +176,8 @@ Figure 6.4: Results of the LR and polynomial grade one
 
 <p>Comparing the three results in the table <a href="#tab:results-of-efficiency-logistic-regression"><strong>??</strong></a>, we conclude that the polynomial of degree one is the best choice for this study, because, is the algorithm that consumes the lower resources of the processor and memory and have similar predictions than the other two models of degree two and three. Results, also are satisfactory if they are compared with the results using the 21 input data.</p>
 </div>
-<div id="supprot-vector-machine-results" class="section level2">
-<h2><span class="header-section-number">6.3</span> <a href="#SVM-results">Supprot Vector Machine Results</a></h2>
+<div id="support-vector-machine-results" class="section level2">
+<h2><span class="header-section-number">6.3</span> <a href="#SVM-results">Support Vector Machine Results</a></h2>
 <p>As in the previous algorithms, for support vector machines algorithm, a cross valitation test was performed. In this case, were used four kernels, two lineal kernels with polynomials of degree one and two, one radial kernel and one sigmoide kernel. The Fig. <a href="evaluation-of-efficiency.html#fig:SVM-sigmoide-2-flecha">6.5</a> shows the results as they are presnted in the Shinny application, we can see in the left panel, the plot showing diferents values of C and Gamma parameters and how is the behavior of the error depending of these two parameters. In the right side we observe that the best values for C is 0.04 and the best value for Gamma is 0.5 to reach the best prediction for this kernel, 76% of prediction in the test set.</p>
 <div class="figure" style="text-align: center"><span id="fig:SVM-sigmoide-2-flecha"></span>
 <img src="images/SVM-sigmoide-2-flecha.png" alt="Results of SVM with sigmoide kernel" width="80%" />
@@ -232,7 +191,9 @@ Figure 6.5: Results of SVM with sigmoide kernel
 </div>
 <div id="comparing-the-results-of-the-three-algorithms-and-their-variants" class="section level2">
 <h2><span class="header-section-number">6.4</span> Comparing the results of the three algorithms and their variants</h2>
-<p>The results of all algorithms and their variants are described in the Table <a href="#tab:results-of-all-algoritms"><strong>??</strong></a>. This table shows that all algorithms yielded similar results, the percentaje of pressicion in prediction of the categorical variable for the sleep quality is arround of 70%, which is also similar to the results using all factors involved in the hygiene of sleep taken in account in the SHI questionnaire.</p>
+<p>All models that were trained with four factors exceed the precision of the prediction to the models that were trained with the 21 factors considered in the applied survey (see Table <a href="#tab:results-of-all-algoritms"><strong>??</strong></a>). The mean of the prediction in the models trained by the 21 factors is <span class="math inline">\(\mu=\)</span> 63.33 with a standard deviation of <span class="math inline">\(\sigma=\)</span> 2.45, less than in the models trained with the four factors selected by the algorithms described in Section <a href="feature-selection.html#feature-selection">5</a> is <span class="math inline">\(\mu=\)</span> 70.33 and standard deviation of <span class="math inline">\(\sigma =\)</span> 2.64.</p>
+
+<p>After obtaining these results, we decided to use only the four factors selected to train the model for the estimation of sleep quality. The next step is to choose the algorithm to be used for model generation. The metrics that will be used to choose the algorithm will be, precision of prediction, computational cost, implementation complexity in a mobile device, and the flexibility of scaling in The time required. In the table <a href="#tab:results-of-all-algoritms"><strong>??</strong></a>) we can see that the ANN of four neurons and the SVM with radial kernel are the best algorithms in prediction, however, the execution time are also of the highest. In terms of implementation, the simplest is the LR and we can see that the LR-trained model is below the SVM only two percentage points, and five percentage points below the ANN Of four neurons in the hidden layer. This allows us to have a preliminary idea of what should be done, however it is necessary to do more tests to arrive at more solid conclusions.</p>
 
 </div>
 </div>
@@ -242,7 +203,7 @@ Figure 6.5: Results of SVM with sigmoide kernel
         </div>
       </div>
 <a href="feature-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="applications.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

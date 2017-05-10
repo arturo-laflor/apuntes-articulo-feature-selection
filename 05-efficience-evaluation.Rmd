@@ -5,8 +5,7 @@ knitr::opts_chunk$set(echo = FALSE,root.dir="C:/Master/apuntes-articulo-feature-
 #setwd("C:/Master/apuntes-articulo-feature-selection/")
 ```
 
-# [Evaluation of Efficiency](#efficiency-evaluation)
-
+# [Evaluation of Efficiency](#evaluation-of-efficiency)
 
 Before testing the selected factors, models were trained using the 21 sleep hygiene factors to know the predictive efficiency that these models from various techniques of machine learning could achieve. The result was that both, the support vector machines (SVM) with linear kernel and logistic regression, were the two techniques with the best results. The SVM algorithm had an efficiency of 67% and the logistic regression reached an efficiency of 70%. With this background, the tests described below were made, taking into account only the four selected factors. If any of the techniques reaches an efficiency equal to or higher than the previous results, the selection of variables can be considered a successful process and these factors will be used for the prediction model of the study hereafter.
 

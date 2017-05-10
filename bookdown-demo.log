@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99996 (MiKTeX 2.9.6210 64-bit) (preloaded format=xelatex 2017.2.20)  10 MAY 2017 09:55
+This is XeTeX, Version 3.14159265-2.6-0.99996 (MiKTeX 2.9.6210 64-bit) (preloaded format=xelatex 2017.2.22)  10 MAY 2017 16:09
 entering extended mode
 **./bookdown-demo.tex
 (bookdown-demo.tex
@@ -131,16 +131,22 @@ Package fixltx2e Warning: fixltx2e is not required with releases after 2015
 (fixltx2e)                See the latexrelease package for details.
 
 Already applied: [0000/00/00] Old fixltx2e package on input line 53.
-) ("C:\Program Files\MiKTeX 2.9\tex\xelatex\mathspec\mathspec.sty"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\xelatex\mathspec\mathspe
+c.sty
 Package: mathspec 2016/12/22 v0.2b LaTeX Package (Mathematics font selection fo
 r XeLaTeX)
-("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
+
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\etoolbox\etoolbox.
+sty
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count100
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec.sty" ("C:\Program F
-iles\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty"
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\fontspec\fontspec.sty"
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3.sty
 Package: expl3 2017/02/10 v6878 L3 programming layer (loader) 
-("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3-code.tex"
+
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3-cod
+e.tex
 Package: expl3 2017/02/10 v6878 L3 programming layer (code)
 L3 Module: l3bootstrap 2016/12/28 v6805 L3 Bootstrap code
 L3 Module: l3names 2016/12/28 v6805 L3 Namespace for primitives
@@ -257,10 +263,14 @@ L3 Module: l3candidates 2017/01/30 v6835 L3 Experimental additions to l3kernel
 \l__coffin_scaled_total_height_dim=\dimen141
 \l__coffin_scaled_width_dim=\dimen142
 L3 Module: l3luatex 2016/12/28 v6805 L3 Experimental LuaTeX-specific functions
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3xdvipdfmx.def"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3xdvipdf
+mx.def
 File: l3xdvidpfmx.def 2016/12/28 v6805 L3 Experimental driver: xdvipdfmx
 \l__driver_tmp_box=\box43
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\l3packages\xparse\xparse.sty"
+))
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\l3packages\xparse\
+xparse.sty
 Package: xparse 2017/02/10 v6878 L3 Experimental document command parser
 \l__xparse_current_arg_int=\count133
 \g__xparse_grabber_int=\count134
@@ -466,7 +476,9 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 \c@eu@=\count147
 \c@eu@i=\count148
 \c@mkern=\count149
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\upquote\upquote.sty"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\upquote\upquote.st
+y
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
@@ -549,7 +561,9 @@ Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
 Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype.sty"
+))
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\microtyp
+e.sty
 Package: microtype 2016/05/14 v2.6a Micro-typographical refinements (RS)
 \MT@toks=\toks22
 \MT@count=\count150
@@ -557,12 +571,16 @@ LaTeX Info: Redefining \textls on input line 774.
 \MT@outer@kern=\dimen146
 LaTeX Info: Redefining \textmicrotypecontext on input line 1310.
 \MT@listname@count=\count151
-("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype-xetex.def"
+
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\microtyp
+e-xetex.def
 File: microtype-xetex.def 2016/05/14 v2.6a Definitions specific to xetex (RS)
 LaTeX Info: Redefining \lsstyle on input line 255.
 )
 Package microtype Info: Loading configuration file microtype.cfg.
-("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\microtype.cfg"
+
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\microtyp
+e.cfg
 File: microtype.cfg 2016/05/14 v2.6a microtype main configuration file (RS)
 )) ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
@@ -650,7 +668,7 @@ Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
 \c@Hy@tempcnt=\count158
-("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -705,7 +723,7 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 )
 Package hyperref Info: Option `breaklinks' set `true' on input line 30.
-("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip53
 \bibsep=\skip54
@@ -728,7 +746,9 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \c@LT@tables=\count171
 \c@LT@chunks=\count172
 \LT@p@ftn=\toks24
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.
+sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen160
 \lightrulewidth=\dimen161
@@ -773,7 +793,9 @@ Package grffile Info: Option `space' is set to `true'.
 Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 486.
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty"
 Package: parskip 2001/04/09 non-zero parskip adjustments
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\titling\titling.sty"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\titling\titling.st
+y
 Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip59
 \thanksmargin=\skip60
@@ -901,7 +923,9 @@ Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
-("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-LatinModernRoman.cfg"
+
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-Latin
+ModernRoman.cfg
 File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
 ern Roman (RS)
 )
@@ -960,7 +984,7 @@ LaTeX Info: Redefining \nameref on input line 102.
 ] [2
 
 ] (bookdown-demo.toc
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 7.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 4.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -968,34 +992,38 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 7.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 4.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 7.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 4.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 7.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 4.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 7.
+(Font)              <10> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 7.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 7.
-LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+(Font)              <5> on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msa.cfg"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msa.c
+fg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 7.
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\microtype\mt-msb.cfg"
+)
+(C:\Users\arturo.laflor\AppData\Roaming\MiKTeX\2.9\tex\latex\microtype\mt-msb.c
+fg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ))
 \tf@toc=\write4
@@ -1013,15 +1041,100 @@ Chapter 2.
 
 ]
 Chapter 3.
-[9] [10
+File: images/double-translation.png Graphic file (type QTm)
+<use  "images/double-translation.png" > [9] [10]
+Underfull \hbox (badness 2512) in paragraph at lines 398--398
+[]|\TU/lmr/m/n/10 No,Financial, Divorce process,
+ []
+
+
+Underfull \hbox (badness 5359) in paragraph at lines 444--444
+[]|\TU/lmr/m/n/10 An integer value.
+ []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 489--489
+[]|\TU/lmr/m/n/10 Group of circadian fea-
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 491--491
+[]|\TU/lmr/m/n/10 Sum of SHSTR,SHDIS,
+ []
+
+[11] [12] [13] [14]
+Chapter 4.
+[15
 
 ]
-Chapter 4.
-[11] [12
+File: images/hist-boxplots-continuous-variables.png Graphic file (type QTm)
+<use  "images/hist-boxplots-continuous-variables.png" > [16]
+Underfull \hbox (badness 1205) in paragraph at lines 639--639
+[]|\TU/lmr/m/n/10 Data contain 0.0, the correct
+ []
+
+
+Underfull \hbox (badness 4096) in paragraph at lines 662--662
+[]|\TU/lmr/m/n/10 Más mental
+ []
+
+[17]
+Underfull \hbox (badness 1231) in paragraph at lines 758--758
+[]|\TU/lmr/m/n/10 The mode is very high
+ []
+
+
+Underfull \vbox (badness 2103) has occurred while \output is active []
+
+[18]
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 790
+.
+("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
+[]\TU/lmtt/m/n/10 ifelse(is.na(dataSet$DD6),dataSet$DD6<-NA,dataSet[dataSet$DD6
+==\TS1/lmtt/m/n/10 '\TU/lmtt/m/n/10 Unión libre\TS1/lmtt/m/n/10 '\TU/lmtt/m/n/1
+0 ,7]<-"Unión
+ []
+
+
+Underfull \hbox (badness 4096) in paragraph at lines 868--868
+[]|\TU/lmr/m/n/10 Más mental
+ []
+
+[19]
+File: images/hist-boxplots-continuous-variables-after-delete-outliers.png Graph
+ic file (type QTm)
+<use  "images/hist-boxplots-continuous-variables-after-delete-outliers.png" >
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[20]
+Overfull \hbox (8.38507pt too wide) in paragraph at lines 947--961
+ [][] 
+ []
+
+[21]
+File: images/pattern-of-missing-data.png Graphic file (type QTm)
+<use  "images/pattern-of-missing-data.png" > [22] [23] [24
 
 ]
 Chapter 5.
-[13] [14
+File: images/feature-selection-process.png Graphic file (type QTm)
+<use  "images/feature-selection-process.png" >
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[25]
+File: images/filter-model.png Graphic file (type QTm)
+<use  "images/filter-model.png" >
+File: images/wrapper-model.png Graphic file (type QTm)
+<use  "images/wrapper-model.png" >
+File: images/main-dimensions-in-feature-selection.png Graphic file (type QTm)
+<use  "images/main-dimensions-in-feature-selection.png" > [26] [27] [28]
+File: images/four-methods-of-feature-selection.png Graphic file (type QTm)
+<use  "images/four-methods-of-feature-selection.png" >
+File: images/selected-factors.png Graphic file (type QTm)
+<use  "images/selected-factors.png" > [29] [30
 
 ]
 Chapter 6.
@@ -1029,63 +1142,51 @@ File: images/cross-validation-process.png Graphic file (type QTm)
 <use  "images/cross-validation-process.png" >
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[15]
+[31]
 File: images/nn-four-neurons.png Graphic file (type QTm)
 <use  "images/nn-four-neurons.png" >
 File: images/results-of-the-3-4-nn.png Graphic file (type QTm)
 <use  "images/results-of-the-3-4-nn.png" >
 Underfull \vbox (badness 5519) has occurred while \output is active []
 
-[16]
+[32]
 File: images/lr-poly-1.png Graphic file (type QTm)
 <use  "images/lr-poly-1.png" >
 Underfull \vbox (badness 5302) has occurred while \output is active []
 
-[17] [18]
+[33] [34]
 File: images/SVM-sigmoide-2-flecha.png Graphic file (type QTm)
 <use  "images/SVM-sigmoide-2-flecha.png" >
-Underfull \hbox (badness 10000) in paragraph at lines 371--371
+Underfull \hbox (badness 10000) in paragraph at lines 1654--1654
 []|\TU/lmr/bx/n/10 Time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--371
+Underfull \hbox (badness 10000) in paragraph at lines 1654--1654
 []|\TU/lmr/bx/n/10 Time
  []
 
-[19] [20]
+[35] [36]
 Chapter 7.
-[21
+(bookdown-demo.bbl [37
 
-] [22
+] [38
 
-]
-Chapter 8.
-[23] [24
-
-]
-Chapter 9.
-(bookdown-demo.bbl [25] [26
-
-]
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 409.
-[27]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 409.
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1690.
+[39]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1690.
 (bookdown-demo.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 409.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 409.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1690.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1690.
  ) 
 Here is how much of TeX's memory you used:
- 21488 strings out of 427899
- 385716 string characters out of 3153117
- 506603 words of memory out of 3000000
- 25160 multiletter control sequences out of 15000+200000
- 16351 words of font info for 43 fonts, out of 3000000 for 9000
+ 21656 strings out of 427899
+ 389970 string characters out of 3153117
+ 538568 words of memory out of 3000000
+ 25310 multiletter control sequences out of 15000+200000
+ 16672 words of font info for 46 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 41i,9n,68p,10413b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,11n,68p,10413b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bookdown-demo.pdf (27 pages).
+Output written on bookdown-demo.pdf (39 pages).
