@@ -26,7 +26,7 @@
 <meta name="author" content="Arturo Laflor">
 
 
-<meta name="date" content="2017-05-04">
+<meta name="date" content="2017-05-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -135,6 +135,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#neural-networks-results"><i class="fa fa-check"></i><b>6.1</b> <a href="#NN-results">Neural Networks Results</a></a></li>
 <li class="chapter" data-level="6.2" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#logistic-regression-results"><i class="fa fa-check"></i><b>6.2</b> <a href="#LR-results">Logistic Regression Results</a></a></li>
 <li class="chapter" data-level="6.3" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#supprot-vector-machine-results"><i class="fa fa-check"></i><b>6.3</b> <a href="#SVM-results">Supprot Vector Machine Results</a></a></li>
+<li class="chapter" data-level="6.4" data-path="evaluation-of-efficiency.html"><a href="evaluation-of-efficiency.html#comparing-the-results-of-the-three-algorithms-and-their-variants"><i class="fa fa-check"></i><b>6.4</b> Comparing the results of the three algorithms and their variants</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>7</b> Applications</a><ul>
 <li class="chapter" data-level="7.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>7.1</b> Example one</a></li>
@@ -218,7 +219,20 @@ Figure 6.4: Results of the LR and polynomial grade one
 </div>
 <div id="supprot-vector-machine-results" class="section level2">
 <h2><span class="header-section-number">6.3</span> <a href="#SVM-results">Supprot Vector Machine Results</a></h2>
-<p>In the same</p>
+<p>As in the previous algorithms, for support vector machines algorithm, a cross valitation test was performed. In this case, were used four kernels, two lineal kernels with polynomials of degree one and two, one radial kernel and one sigmoide kernel. The Fig. <a href="evaluation-of-efficiency.html#fig:SVM-sigmoide-2-flecha">6.5</a> shows the results as they are presnted in the Shinny application, we can see in the left panel, the plot showing diferents values of C and Gamma parameters and how is the behavior of the error depending of these two parameters. In the right side we observe that the best values for C is 0.04 and the best value for Gamma is 0.5 to reach the best prediction for this kernel, 76% of prediction in the test set.</p>
+<div class="figure" style="text-align: center"><span id="fig:SVM-sigmoide-2-flecha"></span>
+<img src="images/SVM-sigmoide-2-flecha.png" alt="Results of SVM with sigmoide kernel" width="80%" />
+<p class="caption">
+Figure 6.5: Results of SVM with sigmoide kernel
+</p>
+</div>
+<p>The Table <a href="#tab:results-of-efficiency-svm"><strong>??</strong></a> show a comparative framework of results of the four kernels that were tested. We can observe that the sigmoid and radial are the best evaluated with a slight advantage of 3 percentage points of the sigmoid over the radial. The linear kernel is not a bad choice if one thinks in terms of simplicity to program it and the little memory and processor that consumes.</p>
+
+<p>The Table <a href="#tab:results-of-efficiency-svm"><strong>??</strong></a>, also presents the best C and Gamma parameters that the cross validation process selected for these algorithm with different kernels, the parameter Gamma maintains its value in each one of the two kernels that is required (radial and sigmoide), 0.5 is the best value among the six values tested. On the other hand, the parameter C, shows that small values are more appropriate than big values. For C parameter, the best value is 0.40 for Radial kernel and 0.04 for sigmoide kernel. C was chosen in a range of 0.01 to 1000. It means that in both cases the algorithm selected a wide margin classifier.</p>
+</div>
+<div id="comparing-the-results-of-the-three-algorithms-and-their-variants" class="section level2">
+<h2><span class="header-section-number">6.4</span> Comparing the results of the three algorithms and their variants</h2>
+<p>The results of all algorithms and their variants are described in the Table <a href="#tab:results-of-all-algoritms"><strong>??</strong></a>. This table shows that all algorithms yielded similar results, the percentaje of pressicion in prediction of the categorical variable for the sleep quality is arround of 70%, which is also similar to the results using all factors involved in the hygiene of sleep taken in account in the SHI questionnaire.</p>
 
 </div>
 </div>

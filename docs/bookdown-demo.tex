@@ -84,7 +84,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-05-08}
+  \date{2017-05-10}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -200,7 +200,7 @@ between them, are in the Fig. \ref{fig:results-of-the-3-4-nn}. The
 network with better efficiency of two networks is the network with four
 neurons. The table describes that in the three sets, the behavior was
 superior in terms of efficiency, while the plot represents the error per
-each set with three and four neurons. CClearly, the lines decrease in
+each set with three and four neurons. Clearly, the lines decrease in
 favor of the training and validation with four neurons, where the error
 of the prediction is smaller.
 
@@ -291,9 +291,9 @@ memory and have similar predictions than the other two models of degree
 two and three. Results, also are satisfactory if they are compared with
 the results using the 21 input data.
 
-\section{\texorpdfstring{\protect\hyperlink{SVM-results}{Supprot Vector
+\section{\texorpdfstring{\protect\hyperlink{SVM-results}{Support Vector
 Machine
-Results}}{Supprot Vector Machine Results}}\label{supprot-vector-machine-results}
+Results}}{Support Vector Machine Results}}\label{support-vector-machine-results}
 
 As in the previous algorithms, for support vector machines algorithm, a
 cross valitation test was performed. In this case, were used four
@@ -337,6 +337,65 @@ Parameter C              & 0.04              & 0.14              & 0.40   & 0.04
 Parameter Gamma          & 0.5               & 0.5               & 0.5    & 0.5      \\ \hline
 \end{tabular}
 \end{table}
+
+The Table \ref{tab:results-of-efficiency-svm}, also presents the best C
+and Gamma parameters that the cross validation process selected for
+these algorithm with different kernels, the parameter Gamma maintains
+its value in each one of the two kernels that is required (radial and
+sigmoide), 0.5 is the best value among the six values tested. On the
+other hand, the parameter C, shows that small values are more
+appropriate than big values. For C parameter, the best value is 0.40 for
+Radial kernel and 0.04 for sigmoide kernel. C was chosen in a range of
+0.01 to 1000. It means that in both cases the algorithm selected a wide
+margin classifier.
+
+\section{Comparing the results of the three algorithms and their
+variants}\label{comparing-the-results-of-the-three-algorithms-and-their-variants}
+
+All models that were trained with four factors exceed the precision of
+the prediction to the models that were trained with the 21 factors
+considered in the applied survey (see Table
+\ref{tab:results-of-all-algoritms}). The mean of the prediction in the
+models trained by the 21 factors is \(\mu=\) 63.33 with a standard
+deviation of \(\sigma=\) 2.45, less than in the models trained with the
+four factors selected by the algorithms described in Section
+\ref{feature-selection} is \(\mu=\) 70.33 and standard deviation of
+\(\sigma =\) 2.64.
+
+\begin{table}[ht]
+    \centering
+    \caption{Results of all algorithms tested}
+    \label{tab:results-of-all-algoritms}
+    \begin{tabular}{llrrrrrr}
+        \hline
+        \multicolumn{1}{c}{\textbf{Algorithm}}  & \multicolumn{1}{c}{\textbf{Variant}} & \multicolumn{1}{p{1.5cm}}{\textbf{Features}} & \multicolumn{1}{c}{\textbf{Precision}} & \multicolumn{1}{p{1cm}}{\textbf{Time (sec)}} & \multicolumn{1}{p{1.5cm}}{\textbf{Features}} & \textbf{Precision} & \multicolumn{1}{p{1cm}}{\textbf{Time (sec)}} \\ \hline
+        \multirow{2}{*}{ANN} & 3 Neurons    & 21  & 64\%  & 0.14   & 4  & 71\%   & 16.40   \\
+                             & 4 Neurons    & 21  & 64\%  & 0.15   & 4  & 76\%   & 24.32    \\ \hline
+        \multirow{3}{*}{LR}  & Linear, dg 1 & 21  & 66\%  & 0.25   & 4  & 71\%   & 0.59      \\
+                             & Linear, dg 2 & 21  & 68\%  & 0.30   & 4  & 70\%   & 0.78       \\
+                             & Linear, dg 3 & 21  & 60\%  & 0.70   & 4  & 64\%   & 4.44       \\ \hline
+        \multirow{4}{*}{SVM} & Linear, dg 1 & 21  & 62\%  & 132.53 & 4  & 71\%   & 11.90      \\
+                             & Linear, dg 2 & 21  & 62\%  & 147.21 & 4  & 69\%   & 12.46   \\
+                             & Radial       & 21  & 62\%  & 20.47  & 4  & 73\%   & 8.11    \\
+                             & Sigmoid      & 21  & 62\%  & 15.94  & 4  & 68\%   & 7.48   \\ \hline
+    \end{tabular}
+\end{table}
+
+After obtaining these results, we decided to use only the four factors
+selected to train the model for the estimation of sleep quality. The
+next step is to choose the algorithm to be used for model generation.
+The metrics that will be used to choose the algorithm will be, precision
+of prediction, computational cost, implementation complexity in a mobile
+device, and the flexibility of scaling in The time required. In the
+table \ref{tab:results-of-all-algoritms}) we can see that the ANN of
+four neurons and the SVM with radial kernel are the best algorithms in
+prediction, however, the execution time are also of the highest. In
+terms of implementation, the simplest is the LR and we can see that the
+LR-trained model is below the SVM only two percentage points, and five
+percentage points below the ANN Of four neurons in the hidden layer.
+This allows us to have a preliminary idea of what should be done,
+however it is necessary to do more tests to arrive at more solid
+conclusions.
 
 \chapter{Applications}\label{applications}
 
